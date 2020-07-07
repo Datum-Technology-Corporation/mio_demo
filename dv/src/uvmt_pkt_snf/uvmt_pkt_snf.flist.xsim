@@ -31,10 +31,10 @@
 -f ${DV_UVME_PKT_SNF_PATH}/uvme_pkt_snf_pkg.flist
 
 // Packet Store-and-Forward test bench Directories
-+incdir+${DV_UVMT_PKT_SNF_PATH}
-+incdir+${DV_UVMT_PKT_SNF_PATH}/tests
-+incdir+${DV_UVMT_PKT_SNF_PATH}/tests/functional
-+incdir+${DV_UVMT_PKT_SNF_PATH}/vseq
+-i ${DV_UVMT_PKT_SNF_PATH}
+-i ${DV_UVMT_PKT_SNF_PATH}/tests
+-i ${DV_UVMT_PKT_SNF_PATH}/tests/functional
+-i ${DV_UVMT_PKT_SNF_PATH}/vseq
 
 // Packet Store-and-Forward tests (includes constants/macros/types meant for test bench)
 ${DV_UVMT_PKT_SNF_PATH}/uvmt_pkt_snf_pkg.sv
