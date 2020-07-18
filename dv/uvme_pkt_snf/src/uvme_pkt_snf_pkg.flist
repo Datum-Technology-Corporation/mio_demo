@@ -16,10 +16,11 @@
 
 
 // Directories
-+incdir+${DV_UVME_PKT_SNF_PATH}
-+incdir+${DV_UVME_PKT_SNF_PATH}/cov
-+incdir+${DV_UVME_PKT_SNF_PATH}/ral
-+incdir+${DV_UVME_PKT_SNF_PATH}/vseq
++incdir+${DV_UVME_PKT_SNF_SRC_PATH}
++incdir+${DV_UVME_PKT_SNF_SRC_PATH}/comps
++incdir+${DV_UVME_PKT_SNF_SRC_PATH}/obj
++incdir+${DV_UVME_PKT_SNF_SRC_PATH}/reg
++incdir+${DV_UVME_PKT_SNF_SRC_PATH}/seq
 
 // Files
-${DV_UVME_PKT_SNF_PATH}/uvme_pkt_snf_pkg.sv
+${DV_UVME_PKT_SNF_SRC_PATH}/uvme_pkt_snf_pkg.sv

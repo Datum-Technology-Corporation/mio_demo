@@ -16,7 +16,7 @@
 
 
 // Directories
-+incdir+${RTL_PKT_SNF_PATH}
++incdir+${RTL_PKT_SNF_SRC_PATH}
 
 // Files
-${RTL_PKT_SNF_PATH}/pkt_snf_top.sv
+${RTL_PKT_SNF_SRC_PATH}/pkt_snf_top.sv

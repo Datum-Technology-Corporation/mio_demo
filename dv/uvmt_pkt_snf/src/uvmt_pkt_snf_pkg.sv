@@ -28,11 +28,8 @@
 timeunit       1ns;
 timeprecision  1ps;
 
-// Interface(s) / Module(s) / Checker(s)
+// Interface(s)
 `include "uvmt_pkt_snf_clk_gen_if.sv"
-`ifdef UVMT_PKT_SNF_INC_DUT_CHKR
-`include "uvmt_pkt_snf_dut_chkr.sv"
-`endif
 
 
 /**
@@ -41,11 +38,11 @@ timeprecision  1ps;
  */
 package uvmt_pkt_snf_pkg;
    
-   import uvm_pkg::*;
-   import uvml_hrtbt_pkg::*;
-   import uvml_logs_pkg::*;
-   import uvma_apb_pkg::*;
-   import uvma_reset_pkg::*;
+   import uvm_pkg         ::*;
+   import uvml_hrtbt_pkg  ::*;
+   import uvml_logs_pkg   ::*;
+   import uvma_apb_pkg    ::*;
+   import uvma_reset_pkg  ::*;
    import uvme_pkt_snf_pkg::*;
    
    // Constants / Structs / Enums
@@ -67,6 +64,12 @@ package uvmt_pkt_snf_pkg;
    `include "uvmt_pkt_snf_reg_bit_bash_test.sv"
    
 endpackage : uvmt_pkt_snf_pkg
+
+
+// Module(s) / Checker(s)
+`include "uvmt_pkt_snf_dut_wrap.sv"
+`include "uvmt_pkt_snf_dut_chkr.sv"
+`include "uvmt_pkt_snf_tb.sv"
 
 
 `endif // __UVMT_PKT_SNF_PKG_SV__
