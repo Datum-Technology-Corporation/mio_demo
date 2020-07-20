@@ -50,10 +50,7 @@ package uvmt_pkt_snf_pkg;
    `include "uvmt_pkt_snf_constants.sv"
    `include "uvmt_pkt_snf_tdefs.sv"
    
-   // Virtual sequence library
-   // TODO Add virtual sequences
-   //      Ex: `include "uvmt_pkt_snf_sanity_vseq.sv"
-   `include "uvmt_pkt_snf_vseq_lib.sv"
+   // Sequences
    
    // Base test case
    `include "uvmt_pkt_snf_test_cfg.sv"

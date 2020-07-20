@@ -61,13 +61,12 @@ package uvme_pkt_snf_pkg;
    `include "uvme_pkt_snf_vsqr.sv"
    `include "uvme_pkt_snf_env.sv"
    
-   // Virtual sequences
+   // Sequences
    `include "uvme_pkt_snf_base_vseq.sv"
    `include "uvme_pkt_snf_reg_base_vseq.sv"
    `include "uvme_pkt_snf_reg_bit_bash_vseq.sv"
    `include "uvme_pkt_snf_reg_hw_reset_vseq.sv"
    `include "uvme_pkt_snf_reset_vseq.sv"
-   `include "uvme_pkt_snf_vseq_lib.sv"
    
 endpackage : uvme_pkt_snf_pkg
 
