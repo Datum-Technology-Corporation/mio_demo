@@ -34,8 +34,8 @@ timeprecision  1ps;
 
 
 /**
- * Encapsulates all the types and test cases for the verification of an
- * Packet Store-and-Forward RTL design.
+ * Encapsulates all the types and test cases for the verification of the
+ * Moore.io Demo Project Packet Store-and-Forward (SnF) RTL design.
  */
 package uvmt_pkt_snf_pkg;
    

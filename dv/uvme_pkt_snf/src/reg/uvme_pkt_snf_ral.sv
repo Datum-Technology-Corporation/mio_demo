@@ -21,8 +21,8 @@
 
 
 /**
- * Top-level object encapsulating ${name_normal_case} Register Abstraction Layer
- * (RAL).
+ * Top-level object encapsulating the Moore.io Demo Project Store-and-Forward
+ * (SnF) Register Abstraction Layer (RAL).
  */
 class uvme_pkt_snf_ral_c extends uvml_ral_reg_block_c;
    

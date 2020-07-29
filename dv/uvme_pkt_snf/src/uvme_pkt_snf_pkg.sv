@@ -30,7 +30,8 @@
 
  /**
  * Encapsulates all the types needed for an UVM environment capable of driving/
- * monitoring and verifying the behavior of an Packet Store-and-Forward design.
+ * monitoring and verifying the behavior of the Moore.io Demo Project Packet
+ * Store-and-Forward design.
  */
 package uvme_pkt_snf_pkg;
    
