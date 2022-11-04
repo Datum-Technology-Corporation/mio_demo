@@ -16,14 +16,14 @@ module fadder_top # (
    input                      clk      , ///< Clock
    input                      reset_n  , ///< Reset
    input                      op       , ///< Operation: '1' is addition and '0' is subtraction
-   input                      ex       , ///< Execution: a '1' triggers addition/subtraction
+   input                      en       , ///< Block enable
    input                      vld_in   , ///< Indicates data input lines are valid
+   input                      carry_in , ///< Carry in for additions
    input  [(DATA_WIDTH-1):0]  op_a     , ///< Operand A
    input  [(DATA_WIDTH-1):0]  op_b     , ///< Operand B
-   input                      carry_in , ///< Carry in for additions
    output                     vld_out  , ///< Indicates data output lines are valid
-   output [(DATA_WIDTH-1):0]  data_out , ///< Result of operation
-   output                     carry_out  ///< Carry out for addition, negative sign for subtraction
+   output                     carry_out, ///< Carry out for addition, negative sign for subtraction
+   output [(DATA_WIDTH-1):0]  data_out   ///< Result of operation
 );
 
    reg [(DATA_WIDTH-1):0]  buff_op_a, buff_op_b, buff_data_out;
@@ -46,7 +46,7 @@ module fadder_top # (
 
    always @(posedge clk) begin
       if (reset_n === 1) begin
-         if (ex) begin
+         if (en) begin
             if (op === 0) begin
                buff_data_out <= buff_op_a - buff_op_b;
                if (buff_op_b > buff_op_a) begin
