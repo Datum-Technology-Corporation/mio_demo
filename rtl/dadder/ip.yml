@@ -1,13 +1,14 @@
 ## Copyright 2022 Datum Technology Corporation
+## SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
 ########################################################################################################################
 
 
 ip:
-  name: "fadder"
+  name: "dadder"
   version: "1.0.0"
-  full-name: ""
+  full-name: "Decimal adder/subtracter"
   type: "RTL"
-  sub-type: ""
+  sub-type: "FLIST"
   sub-sub-type: ""
   description: ""
   home-page: ""
@@ -33,4 +34,4 @@ structure:
 
 hdl-src:
   directories: ["."]
-  top-files: ["fadder_top.sv"]
+  top-files: ["dadder_top.sv"]
