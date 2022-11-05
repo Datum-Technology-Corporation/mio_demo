@@ -1,0 +1,15 @@
+https://wavedrom.com/editor.html
+{signal: [
+  {name: 'clk'     , wave: 'p..|.......|.....|'},
+  {name: 'reset_n' , wave: '101|.......|.....|'},
+  {name: 'en'      , wave: '0..|101010.|1..0.|'},
+  {name: 'op'      , wave: 'x..|3x4x5x.|678x.|', data: ['A','B','C','D','E','F']},
+  {},
+  {name: 'carry_in', wave: 'x..|3x4x5x.|678x.|', data: ['A','B','C','D','E','F']},
+  {name: 'op_a'    , wave: 'x..|3x4x5x.|678x.|', data: ['A','B','C','D','E','F']},
+  {name: 'op_b'    , wave: 'x..|3x4x5x.|678x.|', data: ['A','B','C','D','E','F']},
+  {},
+  {name: 'vld_out' , wave: '0..|.101010|.1..0|', data: ['A','B','C','D','E','F']},
+  {name: 'of_out'  , wave: 'x..|.3x4x5x|.678x|', data: ['A','B','C','D','E','F']},
+  {name: 'data_out', wave: 'x..|.3x4x5x|.678x|', data: ['A','B','C','D','E','F']},
+]}
