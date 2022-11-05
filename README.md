@@ -9,7 +9,7 @@
 
 ## Device Under Test
 For this demo series, the DUT, [`dadder`](./rtl/dadder), is a full adder/subtracter in RTL form.  It does **NOT** use 1 or 2's complement.
-![](./rtl/dadder/doc/block_diagram.svg)
+![Decimal Adder/Subtractr Block Diagram](./rtl/dadder/doc/block_diagram.svg)
 
 # [Chapter 1 - Workstation Setup](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g)
 The first chapter deals with setting up a linux machine for UVM simulation using `mio` and [Xilinx® Vivado™ ML Edition](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html)
@@ -19,6 +19,8 @@ The first chapter deals with setting up a linux machine for UVM simulation using
 The second entry generates several IPs in one command and uses the resulting [UVM Block-Level Test Bench](https://mooreio-client.readthedocs.io/en/latest/code_templates.html#block-test-bench) to fully verify the [`dadder` RTL IP](./rtl/dadder) that ships with this branch using constrained-random stimulus, scoreboarding and functional coverage.
 
 Solution Branch: [`block_tb`](https://github.com/Datum-Technology-Corporation/mio_demo/tree/block_tb)
+
+[![Decimal Adder/Subtracter UVM Test Bench Block Diagram](https://github.com/Datum-Technology-Corporation/mio_demo/raw/block_tb/dv/uvmt_dadder/docs/tb_block_diagram.svg)](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g)
 
 
 # Chapter 3 - Verifying an APB Sub-System using Moore.io & UVM
