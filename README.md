@@ -9,7 +9,7 @@
 
 ### Device Under Test
 For this demo series, the DUT, [`dadder`](./rtl/dadder), is a full adder/subtracter in RTL form.  It does **NOT** use 1 or 2's complement.
-![Decimal Adder/Subtractr Block Diagram](./rtl/dadder/doc/block_diagram.svg)
+![Decimal Adder/Subtractr Block Diagram](./rtl/dadder/docs/block_diagram.svg)
 
 ## [Chapter 1 - Workstation Setup](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g)
 The first chapter deals with setting up a linux machine for UVM simulation using `mio` and [Xilinx® Vivado™ ML Edition](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html)
