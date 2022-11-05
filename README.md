@@ -5,7 +5,7 @@
 # About
 |  | Executive Summary |
 |-|-|
-| [![Moore.io Logo](https://www.mooreio.com/content/images/logo.png)](https://www.mooreio.com/) | Welcome to the Moore.io Demo project demonstrating the power of the Moore.io [CLI](https://mooreio-client.readthedocs.io/en/latest/commands.html) and [UVM Template System (MUTS)](https://mooreio-client.readthedocs.io/en/latest/code_templates.html).  Both are described thoroughly in the [Moore.io CLI User Manual](https://mooreio-client.readthedocs.io/en/latest/index.html).  This branch is the starting point, other branches are 'solutions' to the various chapters of the demo series. |
+| [![Moore.io Logo](https://www.mooreio.com/content/images/logo.png)](https://www.mooreio.com/) | The Moore.io Demo project demonstrates the power of the Moore.io [CLI](https://mooreio-client.readthedocs.io/en/latest/commands.html) and [UVM Template System](https://mooreio-client.readthedocs.io/en/latest/code_templates.html).  Both are described thoroughly in the [Moore.io CLI User Manual](https://mooreio-client.readthedocs.io/en/latest/index.html).  This branch (`main`) is the starting point, other branches are 'solutions' to the chapters of this demo series. |
 
 ## Device Under Test
 For this demo series, the DUT, [`dadder`](./rtl/dadder), is a full adder/subtracter in RTL form.  It does **NOT** use 1 or 2's complement.
