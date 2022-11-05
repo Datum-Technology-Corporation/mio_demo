@@ -9,7 +9,7 @@
 
 ### Device Under Test
 For this demo series, the DUT, [`mapu`](./rtl/mapu), is an integer 4x4 Matrix APU with **NO** overflow support.
-![Decimal Adder/Subtractr Block Diagram](./rtl/dadder/docs/block_diagram.svg)
+![Matrix APU Block Diagram](./rtl/mapu/docs/block_diagram.svg)
 
 ## [Chapter 1 - Workstation Setup](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g)
 The first chapter deals with setting up a linux machine for UVM simulation using `mio` and [Xilinx® Vivado™ ML Edition](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html)
@@ -19,9 +19,6 @@ The first chapter deals with setting up a linux machine for UVM simulation using
 The second entry generates several IPs in one command and uses the resulting [UVM Block-Level Test Bench](https://mooreio-client.readthedocs.io/en/latest/code_templates.html#block-test-bench) to fully verify the [`mapu` RTL IP](./rtl/mapu) that ships with this branch using constrained-random stimulus, scoreboarding and functional coverage.
 
 Solution Branch: [`block_tb`](https://github.com/Datum-Technology-Corporation/mio_demo/tree/block_tb)
-
-[![Matrix APU UVM Test Bench Block Diagram](https://github.com/Datum-Technology-Corporation/mio_demo/raw/block_tb/dv/uvmt_mapu/docs/tb_block_diagram.svg)](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g)
-
 
 ## Chapter 3 - Verifying an APB Sub-System using UVM & Moore.io
 **Coming soon**
