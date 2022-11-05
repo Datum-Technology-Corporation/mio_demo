@@ -1,6 +1,6 @@
 # Decimal Adder/Subtracter
 
-![alt text](./doc/block_diagram.svg "Block Diagram")
+![alt text](./docs/block_diagram.svg "Block Diagram")
 
 
 This wonky and simplistic decimal full adder/subtracter takes in 2 operands and outputs an 'overflow' bit which doubles as a negative sign.
@@ -12,4 +12,4 @@ It is controlled by:
   - add : `1`
   - subtract : `0`
  
-![alt text](./doc/timing_diagram.png "Timing Diagram")
+![alt text](./docs/timing_diagram.png "Timing Diagram")
