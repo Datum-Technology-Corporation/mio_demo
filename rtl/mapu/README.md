@@ -1,6 +1,8 @@
 # Integer Matrix APU
 
 ![alt text](./docs/block_diagram.svg "Block Diagram")
+ 
+![alt text](./docs/timing_diagram.svg "Timing Diagram")
 
 
 This simplistic matrix APU operates on 4x4 matrices loaded & output row-by-row.  Each member is an unsigned integer of
@@ -15,5 +17,3 @@ It is controlled by:
   - SUBTRACT : `2'b01`
   - MULTIPLY : `2'b10`
   - RESERVED : `2'b11`
- 
-![alt text](./docs/timing_diagram.png "Timing Diagram")
