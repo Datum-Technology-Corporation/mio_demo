@@ -6,7 +6,7 @@ Copyright 2022 [Datum Technology Corporation](https://datumtc.ca/)
 ## About
 |  | Executive Summary |
 |-|-|
-| [![Moore.io Logo](https://www.mooreio.com/content/images/logo.png)](https://www.mooreio.com/) | The [Moore.io](https://www.mooreio.com/) Demo project demonstrates the power of [Moore.io](https://datumtc.ca/products/mio) and [UVMx](https://datumtc.ca/products/uvmx).  Both are described thoroughly in the [Moore.io CLI User Manual](https://mooreio-client.readthedocs.io/en/latest/index.html).  This demo is broken into several chapters.  This branch (`main`) contains all code for all chapters.  The entire video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
+| [![Moore.io Logo](https://www.mooreio.com/content/images/logo.png)](https://www.mooreio.com/) | The [Moore.io](https://www.mooreio.com/) Demo project demonstrates the power of the [Moore.io CLI](https://mooreio-client.readthedocs.io/en/latest/commands.html) and [UVMx Template System](https://mooreio-client.readthedocs.io/en/latest/code_templates.html).  Both are described thoroughly in the [Moore.io CLI User Manual](https://mooreio-client.readthedocs.io/en/latest/index.html).  This demo is broken into several chapters.  This branch (`main`) contains all code for all chapters.  The entire video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
 
 
 ## [Chapter 1 - Workstation Setup](https://github.com/Datum-Technology-Corporation/mio_demo/tree/ch1_start)
