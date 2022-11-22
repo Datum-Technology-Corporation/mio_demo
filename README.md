@@ -1,6 +1,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # [Moore.io Demo Project](https://github.com/Datum-Technology-Corporation/mio_demo) - Chapter 1 - Start
+Copyright 2022 [Datum Technology Corporation](https://datumtc.ca/)
 
 ## About
 |  | Executive Summary |
