@@ -1,0 +1,9 @@
+## Copyright 2022 Acme Enterprises Inc.
+## All rights reserved.
+########################################################################################################################
+
+
+[project]
+name        = "demo_project"
+full-name   = "demo project"
+description = ""
