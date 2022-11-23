@@ -1,4 +1,5 @@
 module top(input clk, reset_n);
+
    always @(posedge clk) begin
       if (reset_n === 0) begin
          // Reset variables ...
@@ -7,4 +8,5 @@ module top(input clk, reset_n);
          // Do stuff ...
       end
    end
+
 endmodule
