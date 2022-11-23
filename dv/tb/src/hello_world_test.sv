@@ -8,9 +8,9 @@ class hello_world_test_c extends uvm_test;
 
    virtual task run_phase(uvm_phase phase);
       phase.raise_objection(this);
-      #1_000ns;
+      #(1_000 * 1ns);
       `uvm_info("TEST", "Hello, World!", UVM_NONE)
-      #1_000ns;
+      #(1_000 * 1ns);
       phase.drop_objection(this);
    endtask
 
