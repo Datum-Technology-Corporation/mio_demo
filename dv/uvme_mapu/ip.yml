@@ -1,0 +1,42 @@
+# Copyright 2022 Acme Enterprises Inc.
+# All rights reserved.
+########################################################################################################################
+
+
+ip:
+  name: "uvme_mapu"
+  vendor: "acme"
+  version: "1.0.0"
+  full-name: "Matrix APU Block UVM Environment"
+  type: "DV"
+  sub-type: "UVM Environment"
+  sub-sub-type: "Block"
+  description: "TODO Describe Matrix APU Block UVM Environment"
+  home-page: ""
+  repo-uri: ""
+  bugs: ""
+  aliases: []
+  logo: ""
+  block-diagram: "docs/env_block_diagram.svg"
+  languages: ["sv"]
+  simulators-supported:
+    viv: "2022.2"
+  tags: []
+  copyright-holders: ["Acme Enterprises Inc."]
+  licenses: ["All rights reserved."]
+
+dependencies:
+  "@datum/uvmx"    : "~1.0"
+  "@datum/uvml_sb" : "~1.0"
+  "uvma_mapu": "^"
+
+structure:
+  scripts-path : "bin"
+  docs-path    : "docs"
+  examples-path: "examples"
+  src-path     : "src"
+
+hdl-src:
+  directories: [".", "comps", "obj", "reg", "seq"]
+  top-files: ["uvme_mapu_pkg.sv"]
+  so-libs: []

@@ -1,0 +1,67 @@
+# Hello from your Code Generator!
+Thank you for using the Moore.io Block-Level UVM Agents+Environment+TB Code Template v1.0!
+
+Your parameters are:
+* Name: 'mapu'
+* Full Name: 'Matrix APU'
+
+If this is incorrect, it is recommended to delete the generated IP and re-generate with the correct parameters.
+
+This code template assumes the DUT has a single datapath (DP) direction and control plane (CP) signals.
+
+What follows is a short guide for developers of this new UVM Test Bench.  You may also use `grep -nr TODO .` for a full list.
+
+## 1 - Connect the DUT to the Interfaces
+ 1. - [ ] IP Metadata - `ip.yml` - Use the sample code as a guide to add your DUT information.
+ 1. - [ ] Macros - `src/uvmt_mapu_macros.svh` - Add any constants needed for the DUT Wrapper and/or Test Bench.
+ 1. - [ ] DUT Wrapper - `src/tb/uvmt_mapu_dut_wrap.sv` - Use the sample code as a guide to instantiate your DUT and connect its ports.
+ 1. - [ ] Test Bench - `src/tb/uvmt_mapu_tb.sv` - Instantiate and bind Checker (`uvme_mapu_chkr`) to add assertions.
+ 1. - [ ] Base Test Workaround Constraints - `src/tests/uvmt_mapu_base_test_workarounds.sv` - Remove line disabling scoreboarding.
+ 1. - [ ] Fixed Stimulus Test - `src/tests/uvmt_mapu_fixed_stim_test.sv` - Uncomment constraint rule to enable scoreboarding.
+ 1. - [ ] Random Stimulus Test - `src/tests/uvmt_mapu_rand_stim_test.sv` - Uncomment constraint rule to enable scoreboarding.
+ 1. - [ ] Fixed Illegal Stimulus Test - `src/tests/uvmt_mapu_fixed_ill_stim_test.sv` - Uncomment constraint rule to enable scoreboarding.
+ 1. - [ ] Random Illegal Stimulus Test - `src/tests/uvmt_mapu_rand_ill_stim_test.sv` - Uncomment constraint rule to enable scoreboarding.
+
+## Have fun!
+Make sure to check out the other IP generated along with this test bench:
+* `uvma_mapu_cp`
+* `uvma_mapu_dpi`
+* `uvma_mapu_dpo`
+* `uvme_mapu`
+
+
+
+
+# Acme Matrix APU Block UVM Test Bench
+
+
+# About
+This IP contains the Acme Matrix APU Block UVM Test Bench.
+
+TODO Describe Matrix APU
+
+
+# Block Diagram
+![alt text](./docs/tb_block_diagram.svg "Matrix APU Block UVM Test Bench Block Diagram")
+
+# Directory Structure
+* `bin` - Scripts, metadata and other miscellaneous files
+* `docs` - Reference documentation
+* `examples` - Code samples for adding to this test bench
+* `src` - Source code
+
+
+# Dependencies
+It is dependent on the following IP:
+
+* `uvm`
+* `uvml`
+* `uvml_logs`
+* `uvml_sb`
+* `uvml_ral`
+* `uvma_clk`
+* `uvma_reset`
+* `uvma_mapu_cp`
+* `uvma_mapu_dpi`
+* `uvma_mapu_dpo`
+* `uvme_mapu`

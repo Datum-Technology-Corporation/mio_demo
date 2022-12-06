@@ -1,0 +1,59 @@
+# Copyright 2022 Acme Enterprises Inc.
+# All rights reserved.
+########################################################################################################################
+
+
+test-suite:
+   info:
+      name: Matrix APU Block UVM Test Suite
+      ip: uvmt_mapu
+   target:
+      cmp-args : []
+      elab-args: []
+      sim-args : []
+   settings:
+      waves: [sanity, bugs]
+      cov  : [nightly, weekly]
+      verbosity:
+         sanity : high
+         nightly: medium
+         weekly : low
+         bugs   : debug
+      max-duration:
+         sanity :  1
+         nightly:  5
+         weekly : 12
+         bugs   :  1
+      max-jobs:
+         sanity :  5
+         nightly: 10
+         weekly : 20
+         bugs   :  1
+
+functional:
+   directed:
+      fixed_stim:
+         sanity : [1]
+         nightly: [1]
+         weekly : [1]
+         bugs   :  []
+   rand:
+      rand_stim:
+         sanity : [1]
+         nightly:  10
+         weekly : 100
+         bugs   :  []
+
+error:
+   directed:
+      fixed_ill_stim:
+         sanity : [1]
+         nightly: [1]
+         weekly : [1]
+         bugs   :  []
+   rand:
+      rand_ill_stim:
+         sanity : [1]
+         nightly:  10
+         weekly : 100
+         bugs   :  []
