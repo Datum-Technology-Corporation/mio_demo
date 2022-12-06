@@ -6,16 +6,16 @@ Copyright 2022 [Datum Technology Corporation](https://datumtc.ca/)
 ## About
 |  | Executive Summary |
 |-|-|
-| [![Moore.io Logo](https://www.mooreio.com/content/images/logo.png)](https://www.mooreio.com/) | The [Moore.io](https://www.mooreio.com/) Demo project demonstrates the power of the [Moore.io CLI](https://mooreio-client.readthedocs.io/en/latest/commands.html) and [UVMx Template System](https://mooreio-client.readthedocs.io/en/latest/code_templates.html).  Both are described thoroughly in the [Moore.io CLI User Manual](https://mooreio-client.readthedocs.io/en/latest/index.html).  This demo is broken into several chapters.  This branch (`main`) contains all code for all chapters.  The entire video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
+| [![Moore.io Logo](https://www.mooreio.com/content/images/logo.png)](https://www.mooreio.com/) | The [Moore.io](https://www.mooreio.com/) Demo project demonstrates the power of the [Moore.io CLI](https://mooreio-client.readthedocs.io/en/latest/commands.html) and [UVMx Template System](https://mooreio-client.readthedocs.io/en/latest/code_templates.html).  Both are described thoroughly in the [Moore.io CLI User Manual](https://mooreio-client.readthedocs.io/en/latest/index.html).  This demo is broken into several Parts.  This branch (`main`) contains all code for all Parts.  The entire video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
 
-For those who want to play along, it is best to fork this repository and start at the designated branches for each chapter.
+For those who want to play along, it is best to fork this repository and start at the designated branches for each Part.
 
-## [Chapter 1 - Workstation Setup](https://github.com/Datum-Technology-Corporation/mio_demo/tree/ch1_start)
-The first chapter deals with setting up a workstation for `mio` and [Xilinx® Vivado™ ML Edition](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html), importing existing Design and Test Bench code and running a simulation in Vivado.
+## [Part 1 - Workstation Setup](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p1_start)
+The first Part deals with setting up a workstation for `mio` and [Xilinx® Vivado™ ML Edition](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html), importing existing Design and Test Bench code and running a simulation in Vivado.
 
 
-## Chapter 2 - Verifying an RTL Block using UVM
+## Part 2 - Verifying an RTL Block using UVM
 **Coming soon**
 
-## Chapter 3 - Verifying an APB Sub-System using UVM
+## Part 3 - Verifying an APB Sub-System using UVM
 **Coming soon**
