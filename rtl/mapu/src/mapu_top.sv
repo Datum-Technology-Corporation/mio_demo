@@ -20,7 +20,8 @@ module mapu_top # (
    input                      clk    , ///< Clock
    input                      reset_n, ///< Reset
    input                      i_en   , ///< Block enable
-   input  [1:0]               i_op   , ///< Matrix operation to be performed
+   input                      i_op   , ///< Matrix operation to be performed
+   input                      o_of   , ///< Overflow indicator
    input                      i_vld  , ///< Indicates data input lines are valid
    input                      i_rdy  , ///< Flow control from downstream block
    input  [(DATA_WIDTH-1):0]  i_r0   , ///< Input row element 0
@@ -46,6 +47,11 @@ module mapu_top # (
    assign o_r1   = b_o_r1 ;
    assign o_r2   = b_o_r2 ;
    assign o_r3   = b_o_r3 ;
+
+   assign o_of = mc[0][0][DATA_WIDTH] | mc[0][1][DATA_WIDTH] | mc[0][2][DATA_WIDTH] | mc[0][3][DATA_WIDTH] |
+                 mc[1][0][DATA_WIDTH] | mc[1][1][DATA_WIDTH] | mc[1][2][DATA_WIDTH] | mc[1][3][DATA_WIDTH] |
+                 mc[2][0][DATA_WIDTH] | mc[2][1][DATA_WIDTH] | mc[2][2][DATA_WIDTH] | mc[2][3][DATA_WIDTH] |
+                 mc[3][0][DATA_WIDTH] | mc[3][1][DATA_WIDTH] | mc[3][2][DATA_WIDTH] | mc[3][3][DATA_WIDTH];
 
    always @(posedge clk) begin
       if (reset_n === 0) begin
@@ -138,7 +144,6 @@ module mapu_top # (
       b_o_vld <= 0;
       case (i_op)
          `MAPU_OP_ADD : do_add ();
-         `MAPU_OP_SUB : do_sub ();
          `MAPU_OP_MULT: do_mult();
       endcase
       row_count_o <= 0;
@@ -162,25 +167,6 @@ module mapu_top # (
       mc[3][2] <= ma[3][2] + mb[3][2];
       mc[3][3] <= ma[3][3] + mb[3][3];
    endfunction : do_add
-
-   function void do_sub();
-      mc[0][0] <= ma[0][0] - mb[0][0];
-      mc[0][1] <= ma[0][1] - mb[0][1];
-      mc[0][2] <= ma[0][2] - mb[0][2];
-      mc[0][3] <= ma[0][3] - mb[0][3];
-      mc[1][0] <= ma[1][0] - mb[1][0];
-      mc[1][1] <= ma[1][1] - mb[1][1];
-      mc[1][2] <= ma[1][2] - mb[1][2];
-      mc[1][3] <= ma[1][3] - mb[1][3];
-      mc[2][0] <= ma[2][0] - mb[2][0];
-      mc[2][1] <= ma[2][1] - mb[2][1];
-      mc[2][2] <= ma[2][2] - mb[2][2];
-      mc[2][3] <= ma[2][3] - mb[2][3];
-      mc[3][0] <= ma[3][0] - mb[3][0];
-      mc[3][1] <= ma[3][1] - mb[3][1];
-      mc[3][2] <= ma[3][2] - mb[3][2];
-      mc[3][3] <= ma[3][3] - mb[3][3];
-   endfunction : do_sub
 
    function void do_mult();
       mc[0][0] <= (ma[0][0]*mb[0][0])+(ma[0][1]*mb[0][1]+(ma[0][2]*mb[0][2])+(ma[0][3]*mb[0][3]));
