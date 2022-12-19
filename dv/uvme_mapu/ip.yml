@@ -21,14 +21,15 @@ ip:
   languages: ["sv"]
   simulators-supported:
     viv: "2022.2"
+    mtr: "20220822.10.0"
   tags: []
   copyright-holders: ["Acme Enterprises Inc."]
   licenses: ["All rights reserved."]
 
 dependencies:
-  "@datum/uvmx"    : "~1.0"
-  "@datum/uvml_sb" : "~1.0"
-  "uvma_mapu": "^"
+  "datum/uvmx"   : "~1.0"
+  "datum/uvml_sb": "~1.0"
+  "uvma_mapu"    : "^"
 
 structure:
   scripts-path : "bin"

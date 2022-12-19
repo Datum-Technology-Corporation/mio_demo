@@ -38,29 +38,6 @@ class uvma_mapu_cp_mon_trn_c extends uvmx_mon_trn_c #(
       super.new(name);
    endfunction
 
-   /**
-    * Describes transaction for logger.
-    */
-   virtual function uvmx_metadata_t get_metadata();
-      string  op_str, of_str;
-      if (i_en === 1) begin
-         op_str = (i_op === 1) ? "*" : "+";
-         get_metadata.push_back('{
-            name : "op",
-            width: op_str.len(),
-            value: op_str,
-            group: -1
-         });
-         of_str = (o_of === 1) ? "OF" : "  ";
-         get_metadata.push_back('{
-            name : "of",
-            width: of_str.len(),
-            value: of_str,
-            group: -1
-         });
-      end
-   endfunction
-
 endclass : uvma_mapu_cp_mon_trn_c
 
 

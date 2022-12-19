@@ -34,18 +34,22 @@ class uvma_mapu_dpo_drv_c extends uvmx_mp_drv_c #(
     */
    virtual task drive_item(ref uvma_mapu_dpo_seq_item_c item);
       mp.dpo_drv_cb.i_rdy <= item.i_rdy;
-   endtask
-
-   /**
-    * Samples #mp signals on the next clock edge for the last transaction.
-    */
-   virtual task sample_post_clk(ref uvma_mapu_dpo_seq_item_c item);
       item.o_vld = mp.dpo_drv_cb.o_vld;
       item.o_r0  = mp.dpo_drv_cb.o_r0 ;
       item.o_r1  = mp.dpo_drv_cb.o_r1 ;
       item.o_r2  = mp.dpo_drv_cb.o_r2 ;
       item.o_r3  = mp.dpo_drv_cb.o_r3 ;
    endtask
+
+   /**
+    * Zero-out unused data bits.
+    */
+   virtual function void process_item(ref uvma_mapu_dpo_seq_item_c item);
+      `uvmx_trim(item.o_r0, cfg.data_width)
+      `uvmx_trim(item.o_r1, cfg.data_width)
+      `uvmx_trim(item.o_r2, cfg.data_width)
+      `uvmx_trim(item.o_r3, cfg.data_width)
+   endfunction
 
 endclass : uvma_mapu_dpo_drv_c
 

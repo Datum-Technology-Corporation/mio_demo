@@ -32,7 +32,7 @@ test-suite:
 
 functional:
    directed:
-      fixed_stim:
+      fix_stim:
          sanity : [1]
          nightly: [1]
          weekly : [1]
@@ -46,14 +46,14 @@ functional:
 
 error:
    directed:
-      fixed_ill_stim:
-         sanity : [1]
-         nightly: [1]
-         weekly : [1]
-         bugs   :  []
+      fix_ill_stim:
+         sanity : []
+         nightly: []
+         weekly : []
+         bugs   : []
    rand:
       rand_ill_stim:
-         sanity : [1]
-         nightly:  10
-         weekly : 100
-         bugs   :  []
+         sanity : []
+         nightly: []
+         weekly : []
+         bugs   : []

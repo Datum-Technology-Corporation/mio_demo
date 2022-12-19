@@ -41,8 +41,8 @@ package uvmt_mapu_pkg;
    import uvml_sb_pkg   ::*;
    import uvma_clk_pkg  ::*;
    import uvma_reset_pkg::*;
-   import uvma_mapu_pkg::*;
-   import uvme_mapu_pkg::*;
+   import uvma_mapu_pkg ::*;
+   import uvme_mapu_pkg ::*;
 
    // Constants / Structs / Enums
    `include "uvmt_mapu_tdefs.sv"
@@ -51,8 +51,8 @@ package uvmt_mapu_pkg;
    // Tests
    `include "uvmt_mapu_test_cfg.sv"
    `include "uvmt_mapu_base_test.sv"
-   `include "uvmt_mapu_fixed_stim_test.sv"
-   `include "uvmt_mapu_fixed_ill_stim_test.sv"
+   `include "uvmt_mapu_fix_stim_test.sv"
+   `include "uvmt_mapu_fix_ill_stim_test.sv"
    `include "uvmt_mapu_rand_stim_test.sv"
    `include "uvmt_mapu_rand_ill_stim_test.sv"
 

@@ -38,14 +38,18 @@ class uvma_mapu_dpi_drv_c extends uvmx_mp_drv_c #(
       mp.dpi_drv_cb.i_r1  <= item.i_r1 ;
       mp.dpi_drv_cb.i_r2  <= item.i_r2 ;
       mp.dpi_drv_cb.i_r3  <= item.i_r3 ;
+      item.o_rdy = mp.dpi_drv_cb.o_rdy;
    endtask
 
    /**
-    * Samples #mp signals on the next clock edge for the last transaction.
+    * Zero-out unused data bits.
     */
-   virtual task sample_post_clk(ref uvma_mapu_dpi_seq_item_c item);
-      item.o_rdy = mp.dpi_drv_cb.o_rdy;
-   endtask
+   virtual function void process_item(ref uvma_mapu_dpi_seq_item_c item);
+      `uvmx_trim(item.i_r0, cfg.data_width)
+      `uvmx_trim(item.i_r1, cfg.data_width)
+      `uvmx_trim(item.i_r2, cfg.data_width)
+      `uvmx_trim(item.i_r3, cfg.data_width)
+   endfunction
 
 endclass : uvma_mapu_dpi_drv_c
 

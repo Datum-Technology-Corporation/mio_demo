@@ -30,6 +30,7 @@ class uvma_mapu_cfg_c extends uvmx_agent_cfg_c;
       `uvm_field_int (                         enabled        , UVM_DEFAULT)
       `uvm_field_enum(uvm_active_passive_enum, is_active      , UVM_DEFAULT)
       `uvm_field_int (                         data_width     , UVM_DEFAULT + UVM_DEC)
+      `uvm_field_int (                         ton            , UVM_DEFAULT + UVM_DEC)
       `uvm_field_int (                         bypass_mode    , UVM_DEFAULT)
       `uvm_field_enum(uvmx_reset_type_enum   , reset_type     , UVM_DEFAULT)
       `uvm_field_enum(uvm_sequencer_arb_mode , sqr_arb_mode   , UVM_DEFAULT)

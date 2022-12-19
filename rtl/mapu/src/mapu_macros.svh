@@ -7,9 +7,8 @@
 `define __MAPU_MACROS_SVH__
 
 
-`define MAPU_OP_ADD  2'b00
-`define MAPU_OP_SUB  2'b01
-`define MAPU_OP_MULT 2'b10
+`define MAPU_OP_ADD  1'b0
+`define MAPU_OP_MULT 1'b1
 
 
 `endif // __MAPU_MACROS_SVH__

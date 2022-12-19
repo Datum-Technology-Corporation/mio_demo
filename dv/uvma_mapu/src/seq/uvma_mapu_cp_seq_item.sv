@@ -46,16 +46,21 @@ class uvma_mapu_cp_seq_item_c extends uvmx_seq_item_c #(
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      string  op_str;
-      if (i_en === 1) begin
-         op_str = (i_op === 1) ? "*" : "+";
-         get_metadata.push_back('{
-            name : "op",
-            width: op_str.len(),
-            value: op_str,
-            group: -1
-         });
-      end
+      string  en_str, op_str;
+      en_str = (i_en === 1) ? "Y " : "N ";
+      get_metadata.push_back('{
+         name : "en",
+         width: en_str.len(),
+         value: en_str,
+         group: -1
+      });
+      op_str = (i_op === 1) ? "MULT" : "ADD";
+      get_metadata.push_back('{
+         name : "op",
+         width: op_str.len(),
+         value: op_str,
+         group: -1
+      });
    endfunction
 
 endclass : uvma_mapu_cp_seq_item_c

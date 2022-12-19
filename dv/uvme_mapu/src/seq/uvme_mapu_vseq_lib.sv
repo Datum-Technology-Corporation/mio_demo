@@ -8,8 +8,8 @@
 
 
 `include "uvme_mapu_base_vseq.sv"
-`include "uvme_mapu_fixed_ill_stim_vseq.sv"
-`include "uvme_mapu_fixed_stim_vseq.sv"
+`include "uvme_mapu_fix_ill_stim_vseq.sv"
+`include "uvme_mapu_fix_stim_vseq.sv"
 `include "uvme_mapu_rand_ill_stim_vseq.sv"
 `include "uvme_mapu_rand_stim_vseq.sv"
 
@@ -37,10 +37,10 @@ class uvme_mapu_vseq_lib_c extends uvmx_seq_lib_c #(
     * User hook.
     */
    virtual function void add_lib_sequences();
-      add_sequence(uvme_mapu_fixed_ill_stim_vseq_c::get_type());
-      add_sequence(uvme_mapu_fixed_stim_vseq_c    ::get_type());
-      add_sequence(uvme_mapu_rand_ill_stim_vseq_c ::get_type());
-      add_sequence(uvme_mapu_rand_stim_vseq_c     ::get_type());
+      add_sequence(uvme_mapu_fix_ill_stim_vseq_c ::get_type());
+      add_sequence(uvme_mapu_fix_stim_vseq_c     ::get_type());
+      add_sequence(uvme_mapu_rand_ill_stim_vseq_c::get_type());
+      add_sequence(uvme_mapu_rand_stim_vseq_c    ::get_type());
    endfunction
 
 endclass : uvme_mapu_vseq_lib_c

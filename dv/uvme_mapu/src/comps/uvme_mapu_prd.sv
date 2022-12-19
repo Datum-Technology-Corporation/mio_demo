@@ -54,12 +54,20 @@ class uvme_mapu_prd_c extends uvmx_prd_c #(
       in_fifo.get(in_a_trn);
       in_fifo.get(in_b_trn);
       out_trn = uvma_mapu_mon_trn_c::type_id::create("out_trn");
+      out_trn.op = in_b_trn.op;
       case (in_b_trn.op)
-         UVMA_MAPU_UP_ADD : out_trn.matrix = in_a_trn.matrix.add     (in_b_trn.matrix);
-         UVMA_MAPU_UP_MULT: out_trn.matrix = in_a_trn.matrix.multiply(in_b_trn.matrix);
+         UVMA_MAPU_OP_ADD : out_trn.matrix = in_a_trn.matrix.add     (in_b_trn.matrix);
+         UVMA_MAPU_OP_MULT: out_trn.matrix = in_a_trn.matrix.multiply(in_b_trn.matrix);
       endcase
-      if (out_trn.matrix.entry_above(uvml_math_max_pos_int)) begin
-         out_trn.overflow = 1;
+      out_trn.from(in_a_trn);
+      out_trn.from(in_b_trn);
+      foreach (out_trn.matrix.mi[ii]) begin
+         foreach (out_trn.matrix.mi[ii][jj]) begin
+            if (out_trn.matrix.mi[ii][jj] < 0) begin
+               out_trn.overflow = 1;
+               break;
+            end
+         end
       end
       out_ap.write(out_trn);
    endtask

@@ -28,14 +28,9 @@ class uvma_mapu_idle_vseq_c extends uvma_mapu_base_vseq_c;
     *
     */
    task idle();
-      uvma_mapu_cp_seq_item_c   cp_seq_item ;
       uvma_mapu_dpi_seq_item_c  dpi_seq_item;
       uvma_mapu_dpo_seq_item_c  dpo_seq_item;
       fork
-         begin
-            `uvm_create_on(cp_seq_item, p_sequencer.cp_sequencer)
-            `uvm_send_pri (cp_seq_item, `UVMX_PRI_IDLE)
-         end
          begin
             `uvm_create_on(dpi_seq_item, p_sequencer.dpi_sequencer)
             `uvm_send_pri (dpi_seq_item, `UVMX_PRI_IDLE)
@@ -44,7 +39,8 @@ class uvma_mapu_idle_vseq_c extends uvma_mapu_base_vseq_c;
             `uvm_create_on(dpo_seq_item, p_sequencer.dpo_sequencer)
             `uvm_send_pri (dpo_seq_item, `UVMX_PRI_IDLE)
          end
-      join
+      join_any
+      disable fork;
    endtask
 
 endclass : uvma_mapu_idle_vseq_c

@@ -23,7 +23,7 @@ class uvmt_mapu_rand_stim_test_c extends uvmt_mapu_base_test_c;
     * Rules for this test.
     */
    constraint rand_stim_cons {
-      // env_cfg.scoreboarding_enabled == 1; // TODO Uncomment this line to enable scoreboarding for this test
+      env_cfg.scoreboarding_enabled == 1;
       if (test_cfg.cli_num_items_override) {
          rand_stim_vseq.num_items == test_cfg.cli_num_items;
       }

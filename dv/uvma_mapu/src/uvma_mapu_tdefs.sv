@@ -7,16 +7,13 @@
 `define __UVMA_MAPU_TDEFS_SV__
 
 
-// Add enums and structs here
-// Ex: typedef bit [(`UVMA_MAPU_ABC_MAX_WIDTH-1):0]  uvma_mapu_abc_b_t;
-// Ex: typedef enum {
-//        UVMA_MAPU_MY_ABC
-//     } uvma_mapu_my_enum;
-// Ex: typedef struct {
-//        bit [2:0]  abc;
-//        logic      xyz;
-//     } uvma_mapu_my_struct;
+typedef enum bit {
+   UVMA_MAPU_OP_ADD  = 0,
+   UVMA_MAPU_OP_MULT = 1
+} uvma_mapu_op_enum;
 
+typedef bit   [(`UVMA_MAPU_MAX_DATA_WIDTH-1):0]  uvma_mapu_data_b_t;
+typedef logic [(`UVMA_MAPU_MAX_DATA_WIDTH-1):0]  uvma_mapu_data_l_t;
 
 // Default sequences
 typedef class uvma_mapu_mon_vseq_c    ;

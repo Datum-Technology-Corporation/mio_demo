@@ -28,7 +28,7 @@ class uvme_mapu_rand_stim_vseq_c extends uvme_mapu_base_vseq_c;
     * Default values for random fields.
     */
    constraint defaults_cons {
-      soft num_items == 10;
+      soft num_items == 1;
    }
 
 

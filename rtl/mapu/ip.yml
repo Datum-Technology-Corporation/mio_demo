@@ -5,6 +5,7 @@
 
 ip:
   name: "mapu"
+  vendor: "acme"
   version: "1.0.0"
   full-name: "Matrix APU"
   type: "RTL"

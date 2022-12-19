@@ -21,17 +21,20 @@ ip:
   languages: ["sv"]
   simulators-supported:
     viv: "2022.2"
+    mtr: "20220822.10.0"
   tags: []
   copyright-holders: ["Acme Enterprises Inc."]
   licenses: ["All rights reserved."]
 
+dut: acme/mapu
+
 dependencies:
-  "@datum/uvmx"      : "~1.0"
-  "@datum/uvml_sb"   : "~1.0"
-  "@datum/uvma_clk"  : "~1.0"
-  "@datum/uvma_reset": "~1.0"
-  "uvma_mapu": "^"
-  "uvme_mapu": "^"
+  "datum/uvmx"      : "~1.0"
+  "datum/uvml_sb"   : "~1.0"
+  "datum/uvma_clk"  : "~1.0"
+  "datum/uvma_reset": "~1.0"
+  "uvma_mapu"       : "^"
+  "uvme_mapu"       : "^"
 
 structure:
   scripts-path : "bin"
@@ -43,8 +46,5 @@ hdl-src:
   directories: [".", "tb", "tests"]
   top-files: ["uvmt_mapu_pkg.sv"]
   top-constructs: ["uvmt_mapu_tb", "uvmx.uvmx_sim_summary"]
-  so-libs: []
   tests-path: "tests"
   test-name-template: "uvmt_mapu_{{ name }}_test_c"
-
-dut: mapu

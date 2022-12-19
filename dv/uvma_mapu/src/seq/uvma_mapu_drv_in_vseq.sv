@@ -24,13 +24,6 @@ class uvma_mapu_drv_in_vseq_c extends uvma_mapu_base_vseq_c;
    endfunction
 
    /**
-    *
-    */
-   virtual function void process(ref uvma_mapu_seq_item_c seq_item);
-      `uvmx_trim(seq_item.abc, cfg.data_width)
-   endfunction
-
-   /**
     * If `async` is set to `1`, the response must be sent via `respond(item)`.
     */
    virtual task drive_item(bit async=0, ref uvma_mapu_seq_item_c seq_item);
@@ -40,15 +33,7 @@ class uvma_mapu_drv_in_vseq_c extends uvma_mapu_base_vseq_c;
       do begin
          randcase
             seq_item.ton: begin
-               `uvm_create_on(dpi_seq_item, p_sequencer.dpi_sequencer)
-               dpi_seq_item.from(seq_item);
-               `uvm_rand_send_pri_with(dpi_seq_item, `UVMX_PRI_DEFAULT, {
-                  i_vld == 1;
-                  i_r0  == seq_item.ma.mi[row_count][0];
-                  i_r1  == seq_item.ma.mi[row_count][1];
-                  i_r2  == seq_item.ma.mi[row_count][2];
-                  i_r3  == seq_item.ma.mi[row_count][3];
-               })
+               drive_row(seq_item, seq_item.ma, row_count);
                row_count++;
             end
             (100-seq_item.ton): begin
@@ -56,33 +41,20 @@ class uvma_mapu_drv_in_vseq_c extends uvma_mapu_base_vseq_c;
             end
          endcase
       end while (row_count<4);
-      row_count = 0;
       do begin
          randcase
             seq_item.ton: begin
-               `uvm_create_on(dpi_seq_item, p_sequencer.dpi_sequencer)
-               dpi_seq_item.from(seq_item);
                fork
                   begin
-                     `uvm_rand_send_pri_with(dpi_seq_item, `UVMX_PRI_DEFAULT, {
-                        i_vld == 1;
-                        i_r0  == seq_item.mb.mi[row_count][0];
-                        i_r1  == seq_item.mb.mi[row_count][1];
-                        i_r2  == seq_item.mb.mi[row_count][2];
-                        i_r3  == seq_item.mb.mi[row_count][3];
-                     })
+                     drive_row(seq_item, seq_item.mb, row_count-4);
                   end
                   begin
-                     if (row_count == 3) begin
+                     if (row_count == 7) begin
                         `uvm_create_on(cp_seq_item, p_sequencer.cp_sequencer)
                         cp_seq_item.from(seq_item);
-                        `uvm_rand_send_pri_with(cp_seq_item, `UVMX_PRI_DEFAULT, {
-                           i_en == 1;
-                           i_op == seq_item.op;
-                        })
-                     end
-                     else begin
-                        clk();
+                        cp_seq_item.i_en = 1;
+                        cp_seq_item.i_op = seq_item.op;
+                        `uvm_send_pri(cp_seq_item, `UVMX_PRI_DEFAULT)
                      end
                   end
                join
@@ -92,7 +64,25 @@ class uvma_mapu_drv_in_vseq_c extends uvma_mapu_base_vseq_c;
                clk();
             end
          endcase
-      end while (row_count<4);
+      end while (row_count<8);
+   endtask
+
+   /**
+    *
+    */
+   virtual task drive_row(uvma_mapu_seq_item_c seq_item, uvml_math_mtx_c matrix, int unsigned row);
+      uvma_mapu_dpi_seq_item_c  dpi_seq_item;
+      while (cntxt.vif.o_rdy !== 1) begin
+         clk();
+      end
+      `uvm_create_on(dpi_seq_item, p_sequencer.dpi_sequencer)
+      dpi_seq_item.from(seq_item);
+      dpi_seq_item.i_vld = 1;
+      dpi_seq_item.i_r0  = matrix.geti(row, 0, cfg.data_width);
+      dpi_seq_item.i_r1  = matrix.geti(row, 1, cfg.data_width);
+      dpi_seq_item.i_r2  = matrix.geti(row, 2, cfg.data_width);
+      dpi_seq_item.i_r3  = matrix.geti(row, 3, cfg.data_width);
+      `uvm_send_pri(dpi_seq_item, `UVMX_PRI_DEFAULT)
    endtask
 
 endclass : uvma_mapu_drv_in_vseq_c

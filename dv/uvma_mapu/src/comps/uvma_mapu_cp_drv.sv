@@ -30,17 +30,19 @@ class uvma_mapu_cp_drv_c extends uvmx_mp_drv_c #(
    endfunction
 
    /**
+    *
+    */
+   virtual task in_reset();
+      mp.cp_drv_cb.i_en <= 0;
+      mp.cp_drv_cb.i_op <= 0;
+   endtask
+
+   /**
     * Drives #mp signals using #req's contents on the next clock cycle.
     */
    virtual task drive_item(ref uvma_mapu_cp_seq_item_c item);
       mp.cp_drv_cb.i_en <= item.i_en;
       mp.cp_drv_cb.i_op <= item.i_op;
-   endtask
-
-   /**
-    * Samples #mp signals on the next clock edge for the last transaction.
-    */
-   virtual task sample_post_clk(ref uvma_mapu_cp_seq_item_c item);
       item.o_of = mp.cp_drv_cb.o_of;
    endtask
 

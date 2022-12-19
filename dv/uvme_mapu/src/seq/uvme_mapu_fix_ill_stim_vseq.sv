@@ -3,31 +3,31 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-`ifndef __UVME_MAPU_FIXED_STIM_VSEQ_SV__
-`define __UVME_MAPU_FIXED_STIM_VSEQ_SV__
+`ifndef __UVME_MAPU_FIX_ILL_STIM_VSEQ_SV__
+`define __UVME_MAPU_FIX_ILL_STIM_VSEQ_SV__
 
 
 /**
- * Sequence that always generates the same (i.e. reference) stimulus for the DUT.
+ * Sequence that always generates the same (i.e. reference) partially illegal stimulus for the DUT.
  * @ingroup uvme_mapu_seq
  */
-class uvme_mapu_fixed_stim_vseq_c extends uvme_mapu_base_vseq_c;
+class uvme_mapu_fix_ill_stim_vseq_c extends uvme_mapu_base_vseq_c;
 
-   `uvm_object_utils(uvme_mapu_fixed_stim_vseq_c)
+   `uvm_object_utils(uvme_mapu_fix_ill_stim_vseq_c)
 
    /**
     * Default constructor.
     */
-   function new(string name="uvme_mapu_fixed_stim_vseq");
+   function new(string name="uvme_mapu_fix_ill_stim_vseq");
       super.new(name);
    endfunction
 
    /**
-    * TODO Describe uvme_mapu_fixed_stim_vseq_c::body()
+    * TODO Describe uvme_mapu_fix_ill_stim_vseq_c::body()
     */
    virtual task body();
       uvma_mapu_seq_item_c  seq_item;
-      // TODO Implement uvme_mapu_fixed_stim_vseq_c::body()
+      // TODO Implement uvme_mapu_fix_ill_stim_vseq_c::body()
       //      Ex: `uvm_create_on(seq_item, p_sequencer.agent_vsequencer)
       //          seq_item.abc = 123;
       //          `uvm_send(seq_item)
@@ -36,7 +36,7 @@ class uvme_mapu_fixed_stim_vseq_c extends uvme_mapu_base_vseq_c;
       //          `uvm_send(seq_item)
    endtask
 
-endclass : uvme_mapu_fixed_stim_vseq_c
+endclass : uvme_mapu_fix_ill_stim_vseq_c
 
 
-`endif // __UVME_MAPU_FIXED_STIM_VSEQ_SV__
+`endif // __UVME_MAPU_FIX_ILL_STIM_VSEQ_SV__

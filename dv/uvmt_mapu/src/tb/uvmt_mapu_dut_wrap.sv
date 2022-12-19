@@ -35,7 +35,7 @@ module uvmt_mapu_dut_wrap (
       .o_r0   (agent_if.o_r0   ),
       .o_r1   (agent_if.o_r1   ),
       .o_r2   (agent_if.o_r2   ),
-      .o_r3   (agent_if.o_r3   ),
+      .o_r3   (agent_if.o_r3   )
    );
 
 endmodule : uvmt_mapu_dut_wrap

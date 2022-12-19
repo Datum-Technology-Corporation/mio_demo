@@ -1,1 +1,11 @@
 .mio
+.mdc_empty_dir_sync
+.mdc/sync
+.mdc/workspace
+.Xil
+*.jou
+*.log
+*.str
+*.wdb
+*.vcd
+_downloaded_*

@@ -1,0 +1,5 @@
+toolchain:
+  environment-variables: null
+  packages:
+  - name: uvm
+    version: '1.2'

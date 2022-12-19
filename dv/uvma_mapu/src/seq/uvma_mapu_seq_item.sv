@@ -41,9 +41,21 @@ class uvma_mapu_seq_item_c extends uvmx_seq_item_c #(
     * Describe constraint here
     */
    constraint limits_cons {
-      ma.num_rows == 4;
-      mb.num_rows == 4;
       ton inside {[1:100]};
+      if (op == UVMA_MAPU_OP_MULT) {
+         ma.max_val == 1_000;
+         mb.max_val == 1_000;
+      }
+      else {
+         ma.max_val == 1_000_000_000;
+         mb.max_val == 1_000_000_000;
+      }
+      ma.min_val == 0;
+      mb.min_val == 0;
+      ma.num_rows == 4;
+      ma.num_cols == 4;
+      mb.num_rows == 4;
+      mb.num_cols == 4;
    }
 
 
@@ -55,30 +67,40 @@ class uvma_mapu_seq_item_c extends uvmx_seq_item_c #(
    endfunction
 
    /**
+    * Create sub-objects.
+    */
+   virtual function void create_objects();
+      ma = uvml_math_mtx_c::type_id::create("ma");
+      mb = uvml_math_mtx_c::type_id::create("mb");
+   endfunction
+
+   /**
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
       string  op_str;
       uvmx_metadata_t  mad, mbd;
+      uvmx_metadata_field_st  field;
       case (op)
-         UVMA_MAPU_UP_ADD : op_str = "ADD ";
-         UVMA_MAPU_UP_MULT: op_str = "MULT";
+         UVMA_MAPU_OP_ADD : op_str = "ADD ";
+         UVMA_MAPU_OP_MULT: op_str = "MULT";
       endcase
       get_metadata.push_back('{
          name : "op",
          width: op_str.len(),
-         value: op_str
+         value: op_str,
+         group: -1
       });
       mad = ma.get_metadata();
-      get_metadata.push_back(mad[0]);
-      get_metadata.push_back(mad[1]);
-      get_metadata.push_back(mad[2]);
-      get_metadata.push_back(mad[3]);
+      foreach (mad[ii]) begin
+         get_metadata.push_back(mad[ii]);
+      end
       mbd = mb.get_metadata();
-      get_metadata.push_back(mbd[0]);
-      get_metadata.push_back(mbd[1]);
-      get_metadata.push_back(mbd[2]);
-      get_metadata.push_back(mbd[3]);
+      foreach (mbd[ii]) begin
+         field = mbd[ii];
+         field.group += 4;
+         get_metadata.push_back(field);
+      end
    endfunction
 
 endclass : uvma_mapu_seq_item_c
