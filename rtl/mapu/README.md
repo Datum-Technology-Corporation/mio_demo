@@ -1,8 +1,8 @@
 # Integer Matrix APU
 
-![alt text](./docs/block_diagram.svg "Block Diagram")
+![alt text](./docs/block_diagram.png "Block Diagram")
  
-![alt text](./docs/timing_diagram.svg "Timing Diagram")
+![alt text](./docs/timing_diagram.png "Timing Diagram")
 
 
 This simplistic Matrix APU operates on integer 4x4 matrices loaded & output row-by-row.  Each member is an unsigned integer of
