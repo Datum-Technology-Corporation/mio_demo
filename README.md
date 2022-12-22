@@ -1,21 +1,14 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-# [Moore.io](https://www.mooreio.com/) Demo Project
+# [Moore.io Demo Project](https://github.com/Datum-Technology-Corporation/mio_demo) - Part 2 - Start
 Copyright 2022 [Datum Technology Corporation](https://datumtc.ca/)
 
 ## About
 |  | Executive Summary |
 |-|-|
-| [![Moore.io Logo](https://www.mooreio.com/content/images/logo.png)](https://www.mooreio.com/) | The [Moore.io](https://www.mooreio.com/) Demo project demonstrates the power of the [Moore.io CLI](https://mooreio-client.readthedocs.io/en/latest/commands.html) and [UVMx Template System](https://mooreio-client.readthedocs.io/en/latest/code_templates.html).  Both are described thoroughly in the [Moore.io CLI User Manual](https://mooreio-client.readthedocs.io/en/latest/index.html).  This demo is broken into several Parts.  This branch (`main`) contains all code for all Parts.  The entire video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
+| [![Moore.io Logo](https://www.mooreio.com/content/images/logo.png)](https://www.mooreio.com/) | The [Moore.io](https://www.mooreio.com/) Demo project demonstrates the power of the [Moore.io CLI](https://mooreio-client.readthedocs.io/en/latest/commands.html) and [UVMx Template System](https://mooreio-client.readthedocs.io/en/latest/code_templates.html).  Both are described thoroughly in the [Moore.io CLI User Manual](https://mooreio-client.readthedocs.io/en/latest/index.html).  This demo series is broken into several Parts: this branch (`p2_start`) contains only the 4x4 Integer Matrix APU RTL IP.  The branch [`p2_end`](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p2_end) contains the 'solution' for those playing along.  The [video](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g) for this Part is available on [Datum's YouTube Channel](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
 
-For those who want to play along, it is best to fork this repository and start at the designated branches for each Part.
+The entire demo video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
 
-## [Part 1 - Workstation Setup](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p1_start)
-The first Part deals with setting up a workstation for `mio` and [Xilinx® Vivado™ ML Edition](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html), importing existing Design and Test Bench code and running a simulation in Vivado.
-
-
-## Part 2 - Verifying an RTL Block using UVM
-**Coming soon**
-
-## Part 3 - Verifying an APB Sub-System using UVM
-**Coming soon**
+# Contents
+TBD
