@@ -5,6 +5,7 @@
 
 ip:
   name: "mapu"
+  vendor: "acme"
   version: "1.0.0"
   full-name: "Matrix APU"
   type: "RTL"
@@ -17,7 +18,8 @@ ip:
   block-diagram: ""
   languages: [ "sv" ]
   simulators-supported:
-    vivado: "2022.1"
+    mdc: "20220822.10.0"
+    viv: "2022.2"
   tags: []
   copyright-holders: []
   licenses: []
