@@ -20,8 +20,8 @@ ip:
   block-diagram: "docs/tb_block_diagram.svg"
   languages: ["sv"]
   simulators-supported:
+    mdc: "20220822.10.0"
     viv: "2022.2"
-    mtr: "20220822.10.0"
   tags: []
   copyright-holders: ["Acme Enterprises Inc."]
   licenses: ["All rights reserved."]

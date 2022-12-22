@@ -66,7 +66,7 @@ module mapu_top # (
          b_o_vld      <= 0;
          op           <= 0;
          ready_for_op <= 0;
-         clear_matrices();
+         clear_memories();
       end
    end
 
@@ -115,7 +115,7 @@ module mapu_top # (
       end
    end
 
-   function void clear_matrices();
+   function void clear_memories();
       foreach (ma[ii]) begin
          foreach (ma[ii][jj]) begin
             ma[ii][jj] <= 0;
