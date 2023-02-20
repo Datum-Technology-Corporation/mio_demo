@@ -1,7 +1,3 @@
-timeunit       1ns;
-timeprecision  1ps;
-
-
 import uvm_pkg::*;
 `include "uvm_macros.svh"
 `include "hello_world_test.sv"
