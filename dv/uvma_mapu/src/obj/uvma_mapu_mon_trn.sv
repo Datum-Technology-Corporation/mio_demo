@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -48,7 +48,7 @@ class uvma_mapu_mon_trn_c extends uvmx_mon_trn_c #(
     */
    virtual function void create_objects();
       matrix = uvml_math_mtx_c::type_id::create("matrix");
-      matrix.build(4, 4);
+      matrix.build(3, 3);
    endfunction
 
 
@@ -70,7 +70,7 @@ class uvma_mapu_mon_trn_c extends uvmx_mon_trn_c #(
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      string  overflow_str, op_str;
+      string        overflow_str, op_str;
       uvmx_metadata_t  md;
       if (!dir_in) begin
          overflow_str = (overflow === 1) ? "OVF" : "   ";
@@ -92,6 +92,7 @@ class uvma_mapu_mon_trn_c extends uvmx_mon_trn_c #(
       end
       md = matrix.get_metadata();
       foreach (md[ii]) begin
+         md[ii].width = 10;
          get_metadata.push_back(md[ii]);
       end
    endfunction

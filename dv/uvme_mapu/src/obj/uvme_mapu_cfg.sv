@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -21,7 +21,7 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
 
    /// @name Objects
    /// @{
-   rand uvma_mapu_cfg_c  agent_cfg; ///< Control plane agent configuration
+   rand uvma_mapu_cfg_c        agent_cfg; ///< Control plane agent configuration
    rand uvml_sb_simplex_cfg_c  sb_cfg   ; ///< Data path scoreboard configuration
    /// @}
 
@@ -43,7 +43,7 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
     * Rules for safe default options: enabled, passive with scoreboarding and transaction logging enabled.
     */
    constraint defaults_cons {
-
+      data_width == uvma_mapu_default_data_width;
    }
 
    /**
@@ -103,23 +103,17 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
     *
     */
    function void post_randomize();
+      sb_cfg.log_entry_metadata_q.delete();
       sb_cfg.add_to_log("ovf");
       sb_cfg.add_to_log("m[0][0]");
       sb_cfg.add_to_log("m[0][1]");
       sb_cfg.add_to_log("m[0][2]");
-      sb_cfg.add_to_log("m[0][3]");
       sb_cfg.add_to_log("m[1][0]");
       sb_cfg.add_to_log("m[1][1]");
       sb_cfg.add_to_log("m[1][2]");
-      sb_cfg.add_to_log("m[1][3]");
       sb_cfg.add_to_log("m[2][0]");
       sb_cfg.add_to_log("m[2][1]");
       sb_cfg.add_to_log("m[2][2]");
-      sb_cfg.add_to_log("m[2][3]");
-      sb_cfg.add_to_log("m[3][0]");
-      sb_cfg.add_to_log("m[3][1]");
-      sb_cfg.add_to_log("m[3][2]");
-      sb_cfg.add_to_log("m[3][3]");
    endfunction
 
 endclass : uvme_mapu_cfg_c

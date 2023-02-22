@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -23,7 +23,6 @@ class uvma_mapu_dpi_mon_trn_c extends uvmx_mon_trn_c #(
    uvma_mapu_data_l_t  i_r0 ; ///< Input row element 0
    uvma_mapu_data_l_t  i_r1 ; ///< Input row element 1
    uvma_mapu_data_l_t  i_r2 ; ///< Input row element 2
-   uvma_mapu_data_l_t  i_r3 ; ///< Input row element 3
    /// @}
 
 
@@ -33,7 +32,6 @@ class uvma_mapu_dpi_mon_trn_c extends uvmx_mon_trn_c #(
       `uvm_field_int(i_r0 , UVM_DEFAULT)
       `uvm_field_int(i_r1 , UVM_DEFAULT)
       `uvm_field_int(i_r2 , UVM_DEFAULT)
-      `uvm_field_int(i_r3 , UVM_DEFAULT)
    `uvm_object_utils_end
 
 
@@ -48,7 +46,7 @@ class uvma_mapu_dpi_mon_trn_c extends uvmx_mon_trn_c #(
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      string  r0_str, r1_str, r2_str, r3_str;
+      string  r0_str, r1_str, r2_str;
       if ((i_vld === 1) && (o_rdy === 1)) begin
          r0_str = $sformatf("%h", i_r0);
          get_metadata.push_back('{
@@ -69,13 +67,6 @@ class uvma_mapu_dpi_mon_trn_c extends uvmx_mon_trn_c #(
             name : "r2",
             width: r2_str.len(),
             value: r2_str,
-            group: -1
-         });
-         r3_str = $sformatf("%h", i_r3);
-         get_metadata.push_back('{
-            name : "r3",
-            width: r3_str.len(),
-            value: r3_str,
             group: -1
          });
       end

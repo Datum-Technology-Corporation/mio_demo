@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -37,7 +37,6 @@ class uvma_mapu_dpi_drv_c extends uvmx_mp_drv_c #(
       mp.dpi_drv_cb.i_r0  <= item.i_r0 ;
       mp.dpi_drv_cb.i_r1  <= item.i_r1 ;
       mp.dpi_drv_cb.i_r2  <= item.i_r2 ;
-      mp.dpi_drv_cb.i_r3  <= item.i_r3 ;
       item.o_rdy = mp.dpi_drv_cb.o_rdy;
    endtask
 
@@ -48,7 +47,6 @@ class uvma_mapu_dpi_drv_c extends uvmx_mp_drv_c #(
       `uvmx_trim(item.i_r0, cfg.data_width)
       `uvmx_trim(item.i_r1, cfg.data_width)
       `uvmx_trim(item.i_r2, cfg.data_width)
-      `uvmx_trim(item.i_r3, cfg.data_width)
    endfunction
 
 endclass : uvma_mapu_dpi_drv_c

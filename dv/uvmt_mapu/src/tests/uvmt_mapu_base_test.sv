@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -46,7 +46,7 @@ class uvmt_mapu_base_test_c extends uvmx_test_c #(
     */
    constraint rules_cons {
       clk_vseq.frequency         == test_cfg.clk_frequency    ;
-      env_cfg.reset_type         == test_cfg.reset_type       ;
+      env_cfg .reset_type        == test_cfg.reset_type       ;
       env_cfg .trn_log_enabled   == test_cfg.trn_log_enabled  ;
       env_cfg .cov_model_enabled == test_cfg.cov_model_enabled;
    }

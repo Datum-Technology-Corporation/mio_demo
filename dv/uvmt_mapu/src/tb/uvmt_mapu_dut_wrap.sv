@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -29,13 +29,11 @@ module uvmt_mapu_dut_wrap (
       .i_r0   (agent_if.i_r0   ),
       .i_r1   (agent_if.i_r1   ),
       .i_r2   (agent_if.i_r2   ),
-      .i_r3   (agent_if.i_r3   ),
       .o_vld  (agent_if.o_vld  ),
       .o_rdy  (agent_if.o_rdy  ),
       .o_r0   (agent_if.o_r0   ),
       .o_r1   (agent_if.o_r1   ),
-      .o_r2   (agent_if.o_r2   ),
-      .o_r3   (agent_if.o_r3   )
+      .o_r2   (agent_if.o_r2   )
    );
 
 endmodule : uvmt_mapu_dut_wrap

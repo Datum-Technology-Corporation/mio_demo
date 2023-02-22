@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -22,7 +22,6 @@ class uvma_mapu_dpi_seq_item_c extends uvmx_seq_item_c #(
    rand uvma_mapu_data_b_t  i_r0 ; ///< Input row element 0
    rand uvma_mapu_data_b_t  i_r1 ; ///< Input row element 1
    rand uvma_mapu_data_b_t  i_r2 ; ///< Input row element 2
-   rand uvma_mapu_data_b_t  i_r3 ; ///< Input row element 3
    /// @}
 
    /// @name Metadata
@@ -36,7 +35,6 @@ class uvma_mapu_dpi_seq_item_c extends uvmx_seq_item_c #(
       `uvm_field_int(i_r0 , UVM_DEFAULT)
       `uvm_field_int(i_r1 , UVM_DEFAULT)
       `uvm_field_int(i_r2 , UVM_DEFAULT)
-      `uvm_field_int(i_r3 , UVM_DEFAULT)
       `uvm_field_int(o_rdy, UVM_DEFAULT)
    `uvm_object_utils_end
 
@@ -73,13 +71,6 @@ class uvma_mapu_dpi_seq_item_c extends uvmx_seq_item_c #(
             name : "r2",
             width: r2_str.len(),
             value: r2_str,
-            group: -1
-         });
-         r3_str = $sformatf("%h", i_r3);
-         get_metadata.push_back('{
-            name : "r3",
-            width: r3_str.len(),
-            value: r3_str,
             group: -1
          });
       end

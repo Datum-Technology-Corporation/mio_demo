@@ -1,4 +1,4 @@
-# Copyright 2022 Acme Enterprises Inc.
+# Copyright 2023 Acme Enterprises Inc.
 # All rights reserved.
 ########################################################################################################################
 
@@ -45,6 +45,6 @@ structure:
 hdl-src:
   directories: [".", "tb", "tests"]
   top-files: ["uvmt_mapu_pkg.sv"]
-  top-constructs: ["uvmt_mapu_tb", "uvmx.uvmx_sim_summary"]
+  top-constructs: ["uvmt_mapu_tb", "uvmx_sim_summary"]
   tests-path: "tests"
   test-name-template: "uvmt_mapu_{{ name }}_test_c"

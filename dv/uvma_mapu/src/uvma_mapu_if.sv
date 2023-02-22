@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -30,13 +30,11 @@ interface uvma_mapu_if #(
    wire [(DATA_WIDTH-1):0]  i_r0 ; ///< Input row element 0
    wire [(DATA_WIDTH-1):0]  i_r1 ; ///< Input row element 1
    wire [(DATA_WIDTH-1):0]  i_r2 ; ///< Input row element 2
-   wire [(DATA_WIDTH-1):0]  i_r3 ; ///< Input row element 3
    wire                     o_vld; ///< Indicates data output lines are valid
    wire                     o_rdy; ///< Flow control for upstream block
    wire [(DATA_WIDTH-1):0]  o_r0 ; ///< Output row element 0
    wire [(DATA_WIDTH-1):0]  o_r1 ; ///< Output row element 1
    wire [(DATA_WIDTH-1):0]  o_r2 ; ///< Output row element 2
-   wire [(DATA_WIDTH-1):0]  o_r3 ; ///< Output row element 3
    /// @}
 
 
@@ -44,8 +42,8 @@ interface uvma_mapu_if #(
     * Used by Matrix APU DUT.
     */
    clocking dut_cb @(posedge clk);
-      input  i_en, i_op, i_vld, i_rdy, i_r0, i_r1, i_r2, i_r3;
-      output o_of, o_vld, o_rdy, o_r0, o_r1, o_r2, o_r3;
+      input  i_en, i_op, i_vld, i_rdy, i_r0, i_r1, i_r2;
+      output o_of, o_vld, o_rdy, o_r0, o_r1, o_r2;
    endclocking
 
    /**
@@ -67,7 +65,7 @@ interface uvma_mapu_if #(
     * Used by uvma_mapu_dpi_drv_c.
     */
    clocking dpi_drv_cb @(posedge clk);
-      output  i_vld, i_r0, i_r1, i_r2, i_r3;
+      output  i_vld, i_r0, i_r1, i_r2;
       input   o_rdy;
    endclocking
 
@@ -75,7 +73,7 @@ interface uvma_mapu_if #(
     * Used by uvma_mapu_dpi_mon_c.
     */
    clocking dpi_mon_cb @(posedge clk);
-      input  o_rdy, i_vld, i_r0, i_r1, i_r2, i_r3;
+      input  o_rdy, i_vld, i_r0, i_r1, i_r2;
    endclocking
 
    /**
@@ -83,14 +81,14 @@ interface uvma_mapu_if #(
     */
    clocking dpo_drv_cb @(posedge clk);
       output  i_rdy;
-      input   o_vld, o_r0, o_r1, o_r2, o_r3;
+      input   o_vld, o_r0, o_r1, o_r2;
    endclocking
 
    /**
     * Used by uvma_mapu_dpo_mon_c.
     */
    clocking dpo_mon_cb @(posedge clk);
-      input  i_rdy, o_vld, o_r0, o_r1, o_r2, o_r3;
+      input  i_rdy, o_vld, o_r0, o_r1, o_r2;
    endclocking
 
 

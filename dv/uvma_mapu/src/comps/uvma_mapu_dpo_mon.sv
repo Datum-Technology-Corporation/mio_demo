@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -38,7 +38,6 @@ class uvma_mapu_dpo_mon_c extends uvmx_mp_mon_c #(
       trn.o_r0  = mp.dpo_mon_cb.o_r0 ;
       trn.o_r1  = mp.dpo_mon_cb.o_r1 ;
       trn.o_r2  = mp.dpo_mon_cb.o_r2 ;
-      trn.o_r3  = mp.dpo_mon_cb.o_r3 ;
    endtask
 
    /**
@@ -48,7 +47,6 @@ class uvma_mapu_dpo_mon_c extends uvmx_mp_mon_c #(
       `uvmx_trim(trn.o_r0, cfg.data_width)
       `uvmx_trim(trn.o_r1, cfg.data_width)
       `uvmx_trim(trn.o_r2, cfg.data_width)
-      `uvmx_trim(trn.o_r3, cfg.data_width)
    endfunction
 
 endclass : uvma_mapu_dpo_mon_c

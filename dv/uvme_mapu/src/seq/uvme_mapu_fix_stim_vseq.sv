@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -39,16 +39,14 @@ class uvme_mapu_fix_stim_vseq_c extends uvme_mapu_base_vseq_c;
       seq_item.ton = 100;
       seq_item.op  = UVMA_MAPU_OP_ADD;
       seq_item.ma.load('{
-         '{1,0,2,1},
-         '{3,2,1,0},
-         '{2,1,0,1},
-         '{2,1,0,0}
+         '{1,0,2},
+         '{3,2,1},
+         '{2,1,0}
       });
       seq_item.mb.load('{
-         '{1,0,2,1},
-         '{3,2,1,0},
-         '{2,1,0,1},
-         '{2,1,0,0}
+         '{1,0,2},
+         '{3,2,1},
+         '{2,1,0}
       });
       `uvm_send(seq_item)
 
@@ -56,16 +54,14 @@ class uvme_mapu_fix_stim_vseq_c extends uvme_mapu_base_vseq_c;
       seq_item.ton = 100;
       seq_item.op  = UVMA_MAPU_OP_ADD;
       seq_item.ma.load('{
-         '{2,1,0,0},
-         '{1,0,2,1},
-         '{2,1,0,1},
-         '{3,2,1,0}
+         '{2,1,0},
+         '{1,0,2},
+         '{2,1,0}
       });
       seq_item.mb.load('{
-         '{2,1,0,1},
-         '{1,0,2,1},
-         '{2,1,0,0},
-         '{3,2,1,0}
+         '{2,1,0},
+         '{1,0,2},
+         '{2,1,0}
       });
       `uvm_send(seq_item)
    endtask
@@ -79,16 +75,14 @@ class uvme_mapu_fix_stim_vseq_c extends uvme_mapu_base_vseq_c;
       seq_item.ton = 100;
       seq_item.op  = UVMA_MAPU_OP_MULT;
       seq_item.ma.load('{
-         '{1,0,2,1},
-         '{3,2,1,0},
-         '{2,1,0,1},
-         '{2,1,0,0}
+         '{1,0,2},
+         '{3,2,1},
+         '{2,1,0}
       });
       seq_item.mb.load('{
-         '{1,0,2,1},
-         '{3,2,1,0},
-         '{2,1,0,1},
-         '{2,1,0,0}
+         '{1,0,2},
+         '{3,2,1},
+         '{2,1,0}
       });
       `uvm_send(seq_item)
 
@@ -96,16 +90,14 @@ class uvme_mapu_fix_stim_vseq_c extends uvme_mapu_base_vseq_c;
       seq_item.ton = 100;
       seq_item.op  = UVMA_MAPU_OP_MULT;
       seq_item.ma.load('{
-         '{2,1,0,0},
-         '{1,0,2,1},
-         '{2,1,0,1},
-         '{3,2,1,0}
+         '{2,1,0},
+         '{1,0,2},
+         '{2,1,0}
       });
       seq_item.mb.load('{
-         '{2,1,0,1},
-         '{1,0,2,1},
-         '{2,1,0,0},
-         '{3,2,1,0}
+         '{2,1,0},
+         '{1,0,2},
+         '{2,1,0}
       });
       `uvm_send(seq_item)
    endtask

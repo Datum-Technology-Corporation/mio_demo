@@ -1,5 +1,5 @@
-# Copyright 2022 Datum Technology Corporation
-# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+# Copyright 2023 Datum Technology Corporation
+# SPDX-License-Identifier: GPL-3.0
 ########################################################################################################################
 
 
@@ -10,3 +10,6 @@ description = ""
 
 [simulation]
 preferred-simulators = [ "vivado" ]
+
+[ip]
+global-paths = ["/homes/dpoulin/git/uvmx/dv","/homes/dpoulin/git/uvml_math/dv"]

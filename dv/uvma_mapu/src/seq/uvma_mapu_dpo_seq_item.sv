@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -27,7 +27,6 @@ class uvma_mapu_dpo_seq_item_c extends uvmx_seq_item_c #(
    uvma_mapu_data_l_t  o_r0 ; ///< Input row element 0
    uvma_mapu_data_l_t  o_r1 ; ///< Input row element 1
    uvma_mapu_data_l_t  o_r2 ; ///< Input row element 2
-   uvma_mapu_data_l_t  o_r3 ; ///< Input row element 3
    /// @}
 
 
@@ -37,7 +36,6 @@ class uvma_mapu_dpo_seq_item_c extends uvmx_seq_item_c #(
       `uvm_field_int(o_r0 , UVM_DEFAULT)
       `uvm_field_int(o_r1 , UVM_DEFAULT)
       `uvm_field_int(o_r2 , UVM_DEFAULT)
-      `uvm_field_int(o_r3 , UVM_DEFAULT)
    `uvm_object_utils_end
 
 

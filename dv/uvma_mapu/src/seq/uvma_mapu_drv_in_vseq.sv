@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,16 +40,16 @@ class uvma_mapu_drv_in_vseq_c extends uvma_mapu_base_vseq_c;
                clk();
             end
          endcase
-      end while (row_count<4);
+      end while (row_count<3);
       do begin
          randcase
             seq_item.ton: begin
                fork
                   begin
-                     drive_row(seq_item, seq_item.mb, row_count-4);
+                     drive_row(seq_item, seq_item.mb, row_count-3);
                   end
                   begin
-                     if (row_count == 7) begin
+                     if (row_count == 5) begin
                         `uvm_create_on(cp_seq_item, p_sequencer.cp_sequencer)
                         cp_seq_item.from(seq_item);
                         cp_seq_item.i_en = 1;
@@ -64,7 +64,7 @@ class uvma_mapu_drv_in_vseq_c extends uvma_mapu_base_vseq_c;
                clk();
             end
          endcase
-      end while (row_count<8);
+      end while (row_count<6);
    endtask
 
    /**
@@ -81,7 +81,6 @@ class uvma_mapu_drv_in_vseq_c extends uvma_mapu_base_vseq_c;
       dpi_seq_item.i_r0  = matrix.geti(row, 0, cfg.data_width);
       dpi_seq_item.i_r1  = matrix.geti(row, 1, cfg.data_width);
       dpi_seq_item.i_r2  = matrix.geti(row, 2, cfg.data_width);
-      dpi_seq_item.i_r3  = matrix.geti(row, 3, cfg.data_width);
       `uvm_send_pri(dpi_seq_item, `UVMX_PRI_DEFAULT)
    endtask
 

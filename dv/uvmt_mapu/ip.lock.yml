@@ -1,0 +1,50 @@
+dependencies:
+  datum/uvma_clk: 1.0.0
+  datum/uvma_reset: 1.0.0
+  datum/uvml_sb: 1.0.0
+  datum/uvmx: 1.0.0
+  uvma_mapu: '@local'
+  uvme_mapu: '@local'
+dut: acme/mapu
+hdl-src:
+  directories:
+  - .
+  - tb
+  - tests
+  test-name-template: uvmt_mapu_{{ name }}_test_c
+  tests-path: tests
+  top-constructs:
+  - uvmt_mapu_tb
+  - uvmx_sim_summary
+  top-files:
+  - uvmt_mapu_pkg.sv
+ip:
+  aliases: []
+  block-diagram: docs/tb_block_diagram.svg
+  bugs: ''
+  copyright-holders:
+  - Acme Enterprises Inc.
+  description: TODO Describe Matrix APU Block UVM Test Bench
+  full-name: Matrix APU Block UVM Test Bench
+  home-page: ''
+  languages:
+  - sv
+  licenses:
+  - All rights reserved.
+  logo: ''
+  name: uvmt_mapu
+  repo-uri: ''
+  simulators-supported:
+    mdc: 20220822.10.0
+    viv: '2022.2'
+  sub-sub-type: Block
+  sub-type: UVM Test Bench
+  tags: []
+  type: DV
+  vendor: acme
+  version: 1.0.0
+structure:
+  docs-path: docs
+  examples-path: examples
+  scripts-path: bin
+  src-path: src

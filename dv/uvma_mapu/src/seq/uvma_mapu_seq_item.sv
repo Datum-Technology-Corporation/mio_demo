@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -47,15 +47,15 @@ class uvma_mapu_seq_item_c extends uvmx_seq_item_c #(
          mb.max_val == 1_000;
       }
       else {
-         ma.max_val == 1_000_000_000;
-         mb.max_val == 1_000_000_000;
+         ma.max_val == 1_000_000;
+         mb.max_val == 1_000_000;
       }
       ma.min_val == 0;
       mb.min_val == 0;
-      ma.num_rows == 4;
-      ma.num_cols == 4;
-      mb.num_rows == 4;
-      mb.num_cols == 4;
+      ma.num_rows == 3;
+      ma.num_cols == 3;
+      mb.num_rows == 3;
+      mb.num_cols == 3;
    }
 
 
@@ -78,7 +78,7 @@ class uvma_mapu_seq_item_c extends uvmx_seq_item_c #(
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      string  op_str;
+      string  op_str, t_on_str;
       uvmx_metadata_t  mad, mbd;
       uvmx_metadata_field_st  field;
       case (op)
@@ -89,6 +89,13 @@ class uvma_mapu_seq_item_c extends uvmx_seq_item_c #(
          name : "op",
          width: op_str.len(),
          value: op_str,
+         group: -1
+      });
+      t_on_str = $sformatf("%0d", ton);
+      get_metadata.push_back('{
+         name : "ton",
+         width: t_on_str.len(),
+         value: t_on_str,
          group: -1
       });
       mad = ma.get_metadata();

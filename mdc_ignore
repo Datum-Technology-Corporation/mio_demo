@@ -7,4 +7,10 @@
 
 # Downloaded files from the remote disk
 _downloaded_*
-.mio/simsimtoolssyndftlintdocs
+.mio/sim
+sim
+tools
+syn
+dft
+lint
+docs

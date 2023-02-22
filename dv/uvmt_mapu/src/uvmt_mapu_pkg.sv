@@ -1,4 +1,4 @@
-// Copyright 2022 Acme Enterprises Inc.
+// Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -26,9 +26,7 @@
 `include "uvme_mapu_macros.svh"
 `include "uvmt_mapu_macros.svh"
 
-// Time units and precision for this test bench
-timeunit       1ns;
-timeprecision  1ps;
+// Interface(s)
 
 
 /**
