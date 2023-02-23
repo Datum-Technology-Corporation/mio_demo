@@ -1,4 +1,4 @@
-// Copyright 2022 Datum Technology Corporation
+// Copyright 2023 Datum Technology Corporation
 // SPDX-License-Identifier: GPL-3.0
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -11,7 +11,7 @@
 
 
 /**
- * Matrix APU operating on 4x4 matrices of unsigned integers.
+ * Matrix APU operating on 3x3 matrices of unsigned integers.
  */
 module mapu_top # (
    parameter DATA_WIDTH = 32
@@ -26,13 +26,11 @@ module mapu_top # (
    input  [(DATA_WIDTH-1):0]  i_r0   , ///< Input row element 0
    input  [(DATA_WIDTH-1):0]  i_r1   , ///< Input row element 1
    input  [(DATA_WIDTH-1):0]  i_r2   , ///< Input row element 2
-   input  [(DATA_WIDTH-1):0]  i_r3   , ///< Input row element 3
    input                      i_rdy  , ///< Flow control from downstream block
    output                     o_vld  , ///< Indicates data output lines are valid
    output [(DATA_WIDTH-1):0]  o_r0   , ///< Output row element 0
    output [(DATA_WIDTH-1):0]  o_r1   , ///< Output row element 1
-   output [(DATA_WIDTH-1):0]  o_r2   , ///< Output row element 2
-   output [(DATA_WIDTH-1):0]  o_r3     ///< Output row element 3
+   output [(DATA_WIDTH-1):0]  o_r2     ///< Output row element 2
 );
 
    reg [3:0]               row_idx_i;
@@ -40,21 +38,19 @@ module mapu_top # (
    reg                     b_o_vld;
    reg                     op;
    reg                     ready_for_op;
-   reg [(DATA_WIDTH-1):0]  ma[4][4];
-   reg [(DATA_WIDTH-1):0]  mb[4][4];
-   reg [(DATA_WIDTH-1):0]  mc[4][4];
+   reg [(DATA_WIDTH-1):0]  ma[3][3];
+   reg [(DATA_WIDTH-1):0]  mb[3][3];
+   reg [(DATA_WIDTH-1):0]  mc[3][3];
 
    assign o_vld  = b_o_vld;
-   assign o_rdy  = (row_idx_i < 8);
+   assign o_rdy  = (row_idx_i < 6);
    assign o_r0   = mc[row_idx_o][0];
    assign o_r1   = mc[row_idx_o][1];
    assign o_r2   = mc[row_idx_o][2];
-   assign o_r3   = mc[row_idx_o][3];
 
-   assign o_of = mc[0][0][DATA_WIDTH-1] | mc[0][1][DATA_WIDTH-1] | mc[0][2][DATA_WIDTH-1] | mc[0][3][DATA_WIDTH-1] |
-                 mc[1][0][DATA_WIDTH-1] | mc[1][1][DATA_WIDTH-1] | mc[1][2][DATA_WIDTH-1] | mc[1][3][DATA_WIDTH-1] |
-                 mc[2][0][DATA_WIDTH-1] | mc[2][1][DATA_WIDTH-1] | mc[2][2][DATA_WIDTH-1] | mc[2][3][DATA_WIDTH-1] |
-                 mc[3][0][DATA_WIDTH-1] | mc[3][1][DATA_WIDTH-1] | mc[3][2][DATA_WIDTH-1] | mc[3][3][DATA_WIDTH-1] ;
+   assign o_of = mc[0][0][DATA_WIDTH-1] | mc[0][1][DATA_WIDTH-1] | mc[0][2][DATA_WIDTH-1] |
+                 mc[1][0][DATA_WIDTH-1] | mc[1][1][DATA_WIDTH-1] | mc[1][2][DATA_WIDTH-1] |
+                 mc[2][0][DATA_WIDTH-1] | mc[2][1][DATA_WIDTH-1] | mc[2][2][DATA_WIDTH-1] ;
 
    /**
     * Reset
@@ -62,7 +58,7 @@ module mapu_top # (
    always @(posedge clk) begin
       if (reset_n === 0) begin
          row_idx_i    <= 0;
-         row_idx_o    <= 3;
+         row_idx_o    <= 2;
          b_o_vld      <= 0;
          op           <= 0;
          ready_for_op <= 0;
@@ -76,13 +72,13 @@ module mapu_top # (
    always @(posedge clk) begin
       if (reset_n === 1) begin
          load_row();
-         if (row_idx_i == 8) begin
+         if ((row_idx_i == 6) && (row_idx_o == 2)) begin
             ready_for_op <= 1;
             if (i_en === 1) begin
                op <= i_op;
             end
          end
-         else if (row_idx_i == 7) begin
+         else if (row_idx_i == 5) begin
             if (i_en === 1) begin
                op <= i_op;
             end
@@ -99,10 +95,10 @@ module mapu_top # (
    always @(posedge clk) begin
       if (reset_n === 1) begin
          if (i_en === 1) begin
-            if ((row_idx_o === 3) && (ready_for_op === 1)) begin
+            if ((row_idx_o === 2) && (ready_for_op === 1)) begin
                do_op();
             end
-            else if (row_idx_o < 3) begin
+            else if (row_idx_o < 2) begin
                unload_row();
             end
             else begin
@@ -135,18 +131,16 @@ module mapu_top # (
 
    function void load_row();
       if (i_vld === 1) begin
-         if (row_idx_i < 4) begin
+         if (row_idx_i < 3) begin
             ma[row_idx_i][0] <= i_r0;
             ma[row_idx_i][1] <= i_r1;
             ma[row_idx_i][2] <= i_r2;
-            ma[row_idx_i][3] <= i_r3;
             row_idx_i <= row_idx_i + 1;
          end
-         else if (row_idx_i < 8) begin
-            mb[row_idx_i-4][0] <= i_r0;
-            mb[row_idx_i-4][1] <= i_r1;
-            mb[row_idx_i-4][2] <= i_r2;
-            mb[row_idx_i-4][3] <= i_r3;
+         else if (row_idx_i < 6) begin
+            mb[row_idx_i-3][0] <= i_r0;
+            mb[row_idx_i-3][1] <= i_r1;
+            mb[row_idx_i-3][2] <= i_r2;
             row_idx_i <= row_idx_i + 1;
          end
       end
@@ -173,38 +167,24 @@ module mapu_top # (
       mc[0][0] <= ma[0][0] + mb[0][0];
       mc[0][1] <= ma[0][1] + mb[0][1];
       mc[0][2] <= ma[0][2] + mb[0][2];
-      mc[0][3] <= ma[0][3] + mb[0][3];
       mc[1][0] <= ma[1][0] + mb[1][0];
       mc[1][1] <= ma[1][1] + mb[1][1];
       mc[1][2] <= ma[1][2] + mb[1][2];
-      mc[1][3] <= ma[1][3] + mb[1][3];
       mc[2][0] <= ma[2][0] + mb[2][0];
       mc[2][1] <= ma[2][1] + mb[2][1];
       mc[2][2] <= ma[2][2] + mb[2][2];
-      mc[2][3] <= ma[2][3] + mb[2][3];
-      mc[3][0] <= ma[3][0] + mb[3][0];
-      mc[3][1] <= ma[3][1] + mb[3][1];
-      mc[3][2] <= ma[3][2] + mb[3][2];
-      mc[3][3] <= ma[3][3] + mb[3][3];
    endfunction
 
    function void do_mult();
-      mc[0][0] <= (ma[0][0]*mb[0][0])+(ma[0][1]*mb[1][0]+(ma[0][2]*mb[2][0])+(ma[0][3]*mb[3][0]));
-      mc[0][1] <= (ma[0][0]*mb[0][1])+(ma[0][1]*mb[1][1]+(ma[0][2]*mb[2][1])+(ma[0][3]*mb[3][1]));
-      mc[0][2] <= (ma[0][0]*mb[0][2])+(ma[0][1]*mb[1][2]+(ma[0][2]*mb[2][2])+(ma[0][3]*mb[3][2]));
-      mc[0][3] <= (ma[0][0]*mb[0][3])+(ma[0][1]*mb[1][3]+(ma[0][2]*mb[2][3])+(ma[0][3]*mb[3][3]));
-      mc[1][0] <= (ma[1][0]*mb[0][0])+(ma[1][1]*mb[1][0]+(ma[1][2]*mb[2][0])+(ma[1][3]*mb[3][0]));
-      mc[1][1] <= (ma[1][0]*mb[0][1])+(ma[1][1]*mb[1][1]+(ma[1][2]*mb[2][1])+(ma[1][3]*mb[3][1]));
-      mc[1][2] <= (ma[1][0]*mb[0][2])+(ma[1][1]*mb[1][2]+(ma[1][2]*mb[2][2])+(ma[1][3]*mb[3][2]));
-      mc[1][3] <= (ma[1][0]*mb[0][3])+(ma[1][1]*mb[1][3]+(ma[1][2]*mb[2][3])+(ma[1][3]*mb[3][3]));
-      mc[2][0] <= (ma[2][0]*mb[0][0])+(ma[2][1]*mb[1][0]+(ma[2][2]*mb[2][0])+(ma[2][3]*mb[3][0]));
-      mc[2][1] <= (ma[2][0]*mb[0][1])+(ma[2][1]*mb[1][1]+(ma[2][2]*mb[2][1])+(ma[2][3]*mb[3][1]));
-      mc[2][2] <= (ma[2][0]*mb[0][2])+(ma[2][1]*mb[1][2]+(ma[2][2]*mb[2][2])+(ma[2][3]*mb[3][2]));
-      mc[2][3] <= (ma[2][0]*mb[0][3])+(ma[2][1]*mb[1][3]+(ma[2][2]*mb[2][3])+(ma[2][3]*mb[3][3]));
-      mc[3][0] <= (ma[3][0]*mb[0][0])+(ma[3][1]*mb[1][0]+(ma[3][2]*mb[2][0])+(ma[3][3]*mb[3][0]));
-      mc[3][1] <= (ma[3][0]*mb[0][1])+(ma[3][1]*mb[1][1]+(ma[3][2]*mb[2][1])+(ma[3][3]*mb[3][1]));
-      mc[3][2] <= (ma[3][0]*mb[0][2])+(ma[3][1]*mb[1][2]+(ma[3][2]*mb[2][2])+(ma[3][3]*mb[3][2]));
-      mc[3][3] <= (ma[3][0]*mb[0][3])+(ma[3][1]*mb[1][3]+(ma[3][2]*mb[2][3])+(ma[3][3]*mb[3][3]));
+      mc[0][0] <= (ma[0][0]*mb[0][0])+(ma[0][1]*mb[1][0]+(ma[0][2]*mb[2][0]));
+      mc[0][1] <= (ma[0][0]*mb[0][1])+(ma[0][1]*mb[1][1]+(ma[0][2]*mb[2][1]));
+      mc[0][2] <= (ma[0][0]*mb[0][2])+(ma[0][1]*mb[1][2]+(ma[0][2]*mb[2][2]));
+      mc[1][0] <= (ma[1][0]*mb[0][0])+(ma[1][1]*mb[1][0]+(ma[1][2]*mb[2][0]));
+      mc[1][1] <= (ma[1][0]*mb[0][1])+(ma[1][1]*mb[1][1]+(ma[1][2]*mb[2][1]));
+      mc[1][2] <= (ma[1][0]*mb[0][2])+(ma[1][1]*mb[1][2]+(ma[1][2]*mb[2][2]));
+      mc[2][0] <= (ma[2][0]*mb[0][0])+(ma[2][1]*mb[1][0]+(ma[2][2]*mb[2][0]));
+      mc[2][1] <= (ma[2][0]*mb[0][1])+(ma[2][1]*mb[1][1]+(ma[2][2]*mb[2][1]));
+      mc[2][2] <= (ma[2][0]*mb[0][2])+(ma[2][1]*mb[1][2]+(ma[2][2]*mb[2][2]));
    endfunction
 
 endmodule: mapu_top
