@@ -10,6 +10,3 @@ description = ""
 
 [simulation]
 preferred-simulators = [ "vivado" ]
-
-[ip]
-global-paths = ["/homes/dpoulin/git/uvmx/dv","/homes/dpoulin/git/uvml_math/dv"]
