@@ -18,7 +18,7 @@ class uvma_mapu_dpo_seq_item_c extends uvmx_seq_item_c #(
 
    /// @name Data
    /// @{
-   bit  i_rdy; ///< Flow control from downstream block
+   rand bit  i_rdy; ///< Flow control from downstream block
    /// @}
 
    /// @name Metadata
