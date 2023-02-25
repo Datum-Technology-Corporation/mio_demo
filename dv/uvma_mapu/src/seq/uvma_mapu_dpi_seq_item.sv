@@ -18,10 +18,10 @@ class uvma_mapu_dpi_seq_item_c extends uvmx_seq_item_c #(
 
    /// @name Data
    /// @{
-   bit                 i_vld; ///< Indicates data input lines are valid
-   uvma_mapu_data_b_t  i_r0 ; ///< Input row element 0
-   uvma_mapu_data_b_t  i_r1 ; ///< Input row element 1
-   uvma_mapu_data_b_t  i_r2 ; ///< Input row element 2
+   rand bit                 i_vld; ///< Indicates data input lines are valid
+   rand uvma_mapu_data_b_t  i_r0 ; ///< Input row element 0
+   rand uvma_mapu_data_b_t  i_r1 ; ///< Input row element 1
+   rand uvma_mapu_data_b_t  i_r2 ; ///< Input row element 2
    /// @}
 
    /// @name Metadata
