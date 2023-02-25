@@ -14,7 +14,7 @@
 class uvma_mapu_drv_in_vseq_c extends uvma_mapu_base_vseq_c;
 
    `uvm_object_utils(uvma_mapu_drv_in_vseq_c)
-   `uvmx_drv_in_vseq()
+   `uvmx_in_drv_vseq()
 
    /**
     * Default constructor.
