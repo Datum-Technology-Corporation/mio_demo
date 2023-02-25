@@ -4,8 +4,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
 		width="10.4155in" height="5.04145in" viewBox="0 0 749.913 362.984" xml:space="preserve" color-interpolation-filters="sRGB"
 		class="st23">
-	<title>uvmt_mapu</title>
-
 	<style type="text/css">
 	<![CDATA[
 		.st1 {fill:#ffffff;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
@@ -92,27 +90,27 @@
 			<title>Sheet.216</title>
 			<desc>&#60;uvme_mapu_vsqr_c&#62; vsequencer</desc>
 			<rect x="0" y="327.067" width="181.268" height="35.9176" class="st11"/>
-			<text x="46.98" y="338.27" class="st6">&#60;uvme_mapu_vsqr_c&#62; <tspan x="66.8" dy="1.14em" class="st7">vsequencer</tspan></text>		</g>
+			<text x="53.71" y="338.27" class="st6">&#60;uvme_mapu_vsqr_c&#62; <tspan x="66.8" dy="1.14em" class="st7">vsequencer</tspan></text>		</g>
 		<g id="shape217-32" transform="translate(25.5866,-104.5)">
 			<title>Sheet.217</title>
 			<desc>&#60;uvmt_mapu_test_cfg_c&#62; test_cfg</desc>
 			<rect x="0" y="327.067" width="127.559" height="35.9176" class="st5"/>
-			<text x="14.62" y="338.27" class="st6">&#60;uvmt_mapu_test_cfg_c&#62; <tspan x="47.27" dy="1.14em" class="st7">test_cfg</tspan></text>		</g>
+			<text x="21.35" y="338.27" class="st6">&#60;uvmt_mapu_test_cfg_c&#62; <tspan x="47.27" dy="1.14em" class="st7">test_cfg</tspan></text>		</g>
 		<g id="shape218-36" transform="translate(25.5866,-187.902)">
 			<title>Sheet.218</title>
 			<desc>&#60;uvme_mapu_cntxt_c&#62; env_cntxt</desc>
 			<rect x="0" y="327.067" width="127.559" height="35.9176" class="st5"/>
-			<text x="18.79" y="338.27" class="st6">&#60;uvme_mapu_cntxt_c&#62; <tspan x="43.18" dy="1.14em" class="st7">env_cntxt</tspan></text>		</g>
+			<text x="25.51" y="338.27" class="st6">&#60;uvme_mapu_cntxt_c&#62; <tspan x="43.18" dy="1.14em" class="st7">env_cntxt</tspan></text>		</g>
 		<g id="shape219-40" transform="translate(163.217,-147.311)">
 			<title>Sheet.219</title>
 			<desc>&#60;uvme_mapu_env_c&#62; env</desc>
 			<rect x="0" y="327.067" width="181.268" height="35.9176" class="st11"/>
-			<text x="47.95" y="338.27" class="st6">&#60;uvme_mapu_env_c&#62; <tspan x="83.07" dy="1.14em" class="st7">env</tspan></text>		</g>
+			<text x="54.68" y="338.27" class="st6">&#60;uvme_mapu_env_c&#62; <tspan x="83.07" dy="1.14em" class="st7">env</tspan></text>		</g>
 		<g id="shape220-44" transform="translate(25.5866,-147.266)">
 			<title>Sheet.220</title>
 			<desc>&#60;uvme_mapu_cfg_c&#62; env_cfg</desc>
 			<rect x="0" y="327.067" width="127.559" height="35.9176" class="st5"/>
-			<text x="22.2" y="338.27" class="st6">&#60;uvme_mapu_cfg_c&#62; <tspan x="47.68" dy="1.14em" class="st7">env_cfg</tspan></text>		</g>
+			<text x="28.92" y="338.27" class="st6">&#60;uvme_mapu_cfg_c&#62; <tspan x="47.68" dy="1.14em" class="st7">env_cfg</tspan></text>		</g>
 		<g id="shape260-48" transform="translate(272.118,308.386) rotate(-90)">
 			<title>Sheet.260</title>
 			<path d="M0 362.98 L13.33 362.98" class="st8"/>
@@ -186,7 +184,7 @@
 			<title>Sheet.283</title>
 			<desc>&#60;uvma_mapu_if&#62;</desc>
 			<rect x="0" y="351.705" width="213.307" height="11.2795" class="st21"/>
-			<text x="71.48" y="359.74" class="st6">&#60;uvma_mapu_if&#62;</text>		</g>
+			<text x="78.21" y="359.74" class="st6">&#60;uvma_mapu_if&#62;</text>		</g>
 		<g id="shape284-113" transform="translate(913.132,40.9482) rotate(90)">
 			<title>Sheet.284</title>
 			<path d="M0 362.98 L3.8 362.98" class="st22"/>

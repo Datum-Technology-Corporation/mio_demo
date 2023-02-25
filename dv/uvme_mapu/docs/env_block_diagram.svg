@@ -4,7 +4,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
 		width="8.16546in" height="3.93121in" viewBox="0 0 587.913 283.047" xml:space="preserve" color-interpolation-filters="sRGB"
 		class="st16">
-	<title>uvme_mapu_env_c</title>
+	<title>uvme_{{ name }}_env_c</title>
 
 	<style type="text/css">
 	<![CDATA[
@@ -52,17 +52,17 @@
 			<title>Sheet.118</title>
 			<desc>&#60;uvme_mapu_vsqr_c&#62; vsequencer</desc>
 			<rect x="0" y="223.414" width="165.321" height="59.6328" class="st3"/>
-			<text x="39" y="249.63" class="st4">&#60;uvme_mapu_vsqr_c&#62; <tspan x="58.83" dy="1.14em" class="st5">vsequencer</tspan></text>		</g>
+			<text x="45.73" y="249.63" class="st4">&#60;uvme_mapu_vsqr_c&#62; <tspan x="58.83" dy="1.14em" class="st5">vsequencer</tspan></text>		</g>
 		<g id="shape174-8" transform="translate(430.627,-215.606)">
 			<title>Sheet.174</title>
 			<desc>&#60;uvme_mapu_cfg_c&#62; cfg</desc>
 			<rect x="0" y="249.221" width="104.722" height="33.8267" class="st1"/>
-			<text x="10.78" y="262.53" class="st4">&#60;uvme_mapu_cfg_c&#62; <tspan x="46.32" dy="1.14em" class="st5">cfg</tspan></text>		</g>
+			<text x="17.51" y="262.53" class="st4">&#60;uvme_mapu_cfg_c&#62; <tspan x="46.32" dy="1.14em" class="st5">cfg</tspan></text>		</g>
 		<g id="shape175-12" transform="translate(430.627,-170.346)">
 			<title>Sheet.175</title>
 			<desc>&#60;uvme_mapu_cntxt_c&#62; cntxt</desc>
 			<rect x="0" y="249.221" width="104.722" height="33.8267" class="st1"/>
-			<text x="7.37" y="262.53" class="st4">&#60;uvme_mapu_cntxt_c&#62; <tspan x="41.82" dy="1.14em" class="st5">cntxt</tspan></text>		</g>
+			<text x="14.1" y="262.53" class="st4">&#60;uvme_mapu_cntxt_c&#62; <tspan x="41.82" dy="1.14em" class="st5">cntxt</tspan></text>		</g>
 		<g id="group270-16" transform="translate(61.2362,-73.1159)">
 			<title>Sheet.270</title>
 		</g>
@@ -78,7 +78,7 @@
 			<title>Sheet.114</title>
 			<desc>&#60;uvma_mapu_agent_c&#62; agent</desc>
 			<rect x="0" y="223.695" width="144.481" height="59.3521" class="st3"/>
-			<text x="26.3" y="249.77" class="st4">&#60;uvma_mapu_agent_c&#62; <tspan x="60.47" dy="1.14em" class="st5">agent</tspan></text>		</g>
+			<text x="33.02" y="249.77" class="st4">&#60;uvma_mapu_agent_c&#62; <tspan x="60.47" dy="1.14em" class="st5">agent</tspan></text>		</g>
 		<g id="shape115-33" transform="translate(383.576,103.559) rotate(90)">
 			<title>Diamond.115</title>
 			<path d="M7.36 283.05 L14.72 275.69 L7.36 268.32 L0 275.69 L7.36 283.05 Z" class="st1"/>
@@ -93,7 +93,7 @@
 				<title>Sheet.263</title>
 				<desc>&#60;uvme_mapu_prd_c&#62; predictor</desc>
 				<rect x="0" y="223.695" width="165.818" height="59.3521" class="st3"/>
-				<text x="40.52" y="249.77" class="st4">&#60;uvme_mapu_prd_c&#62; <tspan x="63.73" dy="1.14em" class="st5">predictor</tspan></text>			</g>
+				<text x="47.25" y="249.77" class="st4">&#60;uvme_mapu_prd_c&#62; <tspan x="63.73" dy="1.14em" class="st5">predictor</tspan></text>			</g>
 			<g id="shape281-46" transform="translate(-1.79856E-14,525.079) scale(1,-1)">
 				<title>Circle.121</title>
 				<path d="M0 277.44 A5.61129 5.61129 0 0 1 11.22 277.44 A5.61129 5.61129 0 0 1 0 277.44 Z" class="st1"/>
@@ -113,7 +113,7 @@
 				<title>Sheet.359</title>
 				<desc>&#60;uvme_mapu_sb_c&#62; scoreboard</desc>
 				<rect x="0" y="223.695" width="165.818" height="59.3521" class="st3"/>
-				<text x="42.45" y="249.77" class="st4">&#60;uvme_mapu_sb_c&#62; <tspan x="59.54" dy="1.14em" class="st5">scoreboard</tspan></text>			</g>
+				<text x="49.18" y="249.77" class="st4">&#60;uvme_mapu_sb_c&#62; <tspan x="59.54" dy="1.14em" class="st5">scoreboard</tspan></text>			</g>
 			<g id="shape438-57" transform="translate(23.7438,531.861) scale(1,-1)">
 				<title>Circle.438</title>
 				<path d="M0 277.44 A5.61129 5.61129 0 0 1 11.22 277.44 A5.61129 5.61129 0 0 1 0 277.44 Z" class="st13"/>
@@ -139,8 +139,7 @@
 				<title>Sheet.437</title>
 				<desc>&#60;uvme_mapu_cov_model_c&#62; cov_model</desc>
 				<rect x="0" y="234.966" width="139.588" height="48.0811" class="st3"/>
-				<text x="15.09" y="255.41" class="st4">&#60;uvme_mapu_cov_model_c&#62; <tspan x="46.97" dy="1.14em"
-							class="st5">cov_model</tspan></text>			</g>
+				<text x="21.82" y="255.41" class="st4">&#60;uvme_mapu_cov_model_c&#62; <tspan x="46.97" dy="1.14em" class="st5">cov_model</tspan></text>			</g>
 			<g id="shape483-72" transform="translate(64.5846,524.258) scale(1,-1)">
 				<title>Circle.483</title>
 				<path d="M0 277.44 A5.61129 5.61129 0 0 1 11.22 277.44 A5.61129 5.61129 0 0 1 0 277.44 Z" class="st1"/>

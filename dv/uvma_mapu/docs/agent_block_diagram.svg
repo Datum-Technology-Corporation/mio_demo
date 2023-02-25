@@ -4,7 +4,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
 		width="8.08667in" height="8.58093in" viewBox="0 0 582.241 617.827" xml:space="preserve" color-interpolation-filters="sRGB"
 		class="st36">
-	<title>uvma_mapu_agent_c</title>
+	<title>uvma_{{ name }}_agent_c</title>
 
 	<style type="text/css">
 	<![CDATA[
@@ -90,7 +90,7 @@
 			<title>Sheet.2</title>
 			<desc>&#60;uvma_mapu_cfg_c&#62; cfg</desc>
 			<rect x="0" y="584.001" width="90.9795" height="33.8267" class="st1"/>
-			<text x="14.36" y="596.71" class="st3">&#60;uvma_mapu_cfg_c&#62; <tspan x="39.44" dy="1.08em" class="st4">cfg</tspan></text>		</g>
+			<text x="19.4" y="596.71" class="st3">&#60;uvma_mapu_cfg_c&#62; <tspan x="39.44" dy="1.08em" class="st4">cfg</tspan></text>		</g>
 		<g id="shape4-8" transform="translate(120.969,-306.508)">
 			<title>Sheet.4</title>
 			<desc>&#60;uvma_mapu_vsqr_c&#62;</desc>
@@ -100,7 +100,7 @@
 			<title>Sheet.5</title>
 			<desc>monitor &#60;uvma_mapu_mon_c&#62;</desc>
 			<rect x="0" y="424.988" width="161.575" height="192.839" class="st5"/>
-			<text x="63.92" y="598.83" class="st2">monitor <tspan x="47.7" dy="2em" class="st6">&#60;uvma_mapu_mon_c&#62;</tspan></text>		</g>
+			<text x="63.92" y="598.83" class="st2">monitor <tspan x="52.74" dy="2em" class="st6">&#60;uvma_mapu_mon_c&#62;</tspan></text>		</g>
 		<g id="shape12-15" transform="translate(-20.1751,-359.208) rotate(-45)">
 			<title>Sheet.12</title>
 			<desc>dpi_mon_trn_ap</desc>
@@ -112,7 +112,7 @@
 				<title>Sheet.14</title>
 				<desc>&#60;uvma_mapu_dpi_sqr_c&#62; dpi_sequencer</desc>
 				<rect x="0" y="596.567" width="127.984" height="21.2598" class="st9"/>
-				<text x="27.33" y="603" class="st3">&#60;uvma_mapu_dpi_sqr_c&#62; <tspan x="33.44" dy="1.08em" class="st4">dpi_sequencer</tspan></text>			</g>
+				<text x="32.37" y="603" class="st3">&#60;uvma_mapu_dpi_sqr_c&#62; <tspan x="33.44" dy="1.08em" class="st4">dpi_sequencer</tspan></text>			</g>
 			<g id="shape15-23" transform="translate(6.39488E-14,-4.96063)">
 				<title>Sheet.15</title>
 				<rect x="0" y="606.489" width="11.3386" height="11.3386" class="st10"/>
@@ -124,7 +124,7 @@
 				<title>Sheet.17</title>
 				<desc>&#60;uvma_mapu_cp_sqr_c&#62; cp_sequencer</desc>
 				<rect x="0" y="596.567" width="127.984" height="21.2598" class="st9"/>
-				<text x="28.32" y="603" class="st3">&#60;uvma_mapu_cp_sqr_c&#62; <tspan x="35.26" dy="1.08em" class="st4">cp_sequencer</tspan></text>			</g>
+				<text x="33.37" y="603" class="st3">&#60;uvma_mapu_cp_sqr_c&#62; <tspan x="35.26" dy="1.08em" class="st4">cp_sequencer</tspan></text>			</g>
 			<g id="shape18-30" transform="translate(6.39488E-14,-4.96063)">
 				<title>Sheet.18</title>
 				<rect x="0" y="606.489" width="11.3386" height="11.3386" class="st11"/>
@@ -156,7 +156,7 @@
 				<title>Sheet.31</title>
 				<desc>&#60;uvma_mapu_dpi_drv_c&#62; dpi_driver</desc>
 				<rect x="0" y="596.567" width="141.732" height="21.2598" class="st9"/>
-				<text x="34.02" y="603" class="st3">&#60;uvma_mapu_dpi_drv_c&#62; <tspan x="49.43" dy="1.08em" class="st4">dpi_driver</tspan></text>			</g>
+				<text x="39.06" y="603" class="st3">&#60;uvma_mapu_dpi_drv_c&#62; <tspan x="49.43" dy="1.08em" class="st4">dpi_driver</tspan></text>			</g>
 			<g id="shape32-51" transform="translate(7.84967,1074.08) scale(1,-1)">
 				<title>Circle.131</title>
 				<path d="M0 612.22 A5.61129 5.61129 0 0 1 11.22 612.22 A5.61129 5.61129 0 0 1 0 612.22 Z" class="st10"/>
@@ -177,7 +177,7 @@
 				<title>Sheet.36</title>
 				<desc>&#60;uvma_mapu_cp_drv_c&#62; cp_driver</desc>
 				<rect x="0" y="596.567" width="141.732" height="21.2598" class="st9"/>
-				<text x="35.01" y="603" class="st3">&#60;uvma_mapu_cp_drv_c&#62; <tspan x="51.25" dy="1.08em" class="st4">cp_driver</tspan></text>			</g>
+				<text x="40.06" y="603" class="st3">&#60;uvma_mapu_cp_drv_c&#62; <tspan x="51.25" dy="1.08em" class="st4">cp_driver</tspan></text>			</g>
 			<g id="shape37-64" transform="translate(7.84967,1074.08) scale(1,-1)">
 				<title>Circle.131</title>
 				<path d="M0 612.22 A5.61129 5.61129 0 0 1 11.22 612.22 A5.61129 5.61129 0 0 1 0 612.22 Z" class="st11"/>
@@ -365,7 +365,7 @@
 				<title>Sheet.131</title>
 				<desc>&#60;uvma_mapu_dpo_sqr_c&#62; dpo_sequencer</desc>
 				<rect x="0" y="596.567" width="127.984" height="21.2598" class="st9"/>
-				<text x="26.43" y="603" class="st3">&#60;uvma_mapu_dpo_sqr_c&#62; <tspan x="31.98" dy="1.08em" class="st4">dpo_sequencer</tspan></text>			</g>
+				<text x="31.48" y="603" class="st3">&#60;uvma_mapu_dpo_sqr_c&#62; <tspan x="31.98" dy="1.08em" class="st4">dpo_sequencer</tspan></text>			</g>
 			<g id="shape132-186" transform="translate(6.39488E-14,-4.96063)">
 				<title>Sheet.132</title>
 				<rect x="0" y="606.489" width="11.3386" height="11.3386" class="st26"/>
@@ -377,7 +377,7 @@
 				<title>Sheet.134</title>
 				<desc>&#60;uvma_mapu_dpo_drv_c&#62; dpo_driver</desc>
 				<rect x="0" y="596.567" width="141.732" height="21.2598" class="st9"/>
-				<text x="33.12" y="603" class="st3">&#60;uvma_mapu_dpo_drv_c&#62; <tspan x="47.97" dy="1.08em" class="st4">dpo_driver</tspan></text>			</g>
+				<text x="38.17" y="603" class="st3">&#60;uvma_mapu_dpo_drv_c&#62; <tspan x="47.97" dy="1.08em" class="st4">dpo_driver</tspan></text>			</g>
 			<g id="shape135-193" transform="translate(7.84967,1074.08) scale(1,-1)">
 				<title>Circle.131</title>
 				<path d="M0 612.22 A5.61129 5.61129 0 0 1 11.22 612.22 A5.61129 5.61129 0 0 1 0 612.22 Z" class="st26"/>
@@ -433,18 +433,18 @@
 				<title>Sheet.3</title>
 				<desc>&#60;uvma_mapu_cntxt_c&#62; cntxt</desc>
 				<rect x="0" y="584.001" width="90.9795" height="33.8267" class="st1"/>
-				<text x="11.8" y="596.71" class="st3">&#60;uvma_mapu_cntxt_c&#62; <tspan x="34.95" dy="1.08em" class="st4">cntxt</tspan></text>			</g>
+				<text x="16.85" y="596.71" class="st3">&#60;uvma_mapu_cntxt_c&#62; <tspan x="34.95" dy="1.08em" class="st4">cntxt</tspan></text>			</g>
 			<g id="shape174-238" transform="translate(67.7673,-2.71067)">
 				<title>Sheet.174</title>
 				<desc>vif</desc>
 				<rect x="0" y="607.023" width="19.9699" height="10.8041" class="st30"/>
 				<text x="5.05" y="615.43" class="st31">vif</text>			</g>
 		</g>
-		<g id="shape176-241" transform="translate(95.8125,-537.751)">
+		<g id="shape176-241" transform="translate(98.2362,-537.751)">
 			<title>Sheet.176</title>
 			<desc>&#60;uvma_mapu_if&#62;</desc>
 			<rect x="0" y="602.512" width="102.259" height="15.3151" class="st7"/>
-			<text x="5.9" y="613.17" class="st32">&#60;uvma_mapu_if&#62;</text>		</g>
+			<text x="4" y="613.17" class="st32">&#60;uvma_mapu_if&#62;</text>		</g>
 		<g id="shape192-244" transform="translate(306.491,-491.458)">
 			<title>Diamond.192</title>
 			<path d="M7.36 617.83 L14.72 610.47 L7.36 603.1 L0 610.47 L7.36 617.83 Z" class="st12"/>
@@ -476,7 +476,7 @@
 				<title>Sheet.188</title>
 				<desc>&#60;uvma_mapu_dpo_mon_c&#62; dpo_monitor</desc>
 				<rect x="0" y="596.567" width="141.732" height="21.2598" class="st9"/>
-				<text x="31.55" y="603" class="st3">&#60;uvma_mapu_dpo_mon_c&#62; <tspan x="43.46" dy="1.08em" class="st4">dpo_monitor</tspan></text>			</g>
+				<text x="36.59" y="603" class="st3">&#60;uvma_mapu_dpo_mon_c&#62; <tspan x="43.46" dy="1.08em" class="st4">dpo_monitor</tspan></text>			</g>
 			<g id="shape191-265" transform="translate(0,-11.3386)">
 				<title>Sheet.191</title>
 				<desc>dpo_mon_ mp</desc>
@@ -493,7 +493,7 @@
 				<title>Sheet.183</title>
 				<desc>&#60;uvma_mapu_cp_mon_c&#62; cp_monitor</desc>
 				<rect x="0" y="596.567" width="141.732" height="21.2598" class="st9"/>
-				<text x="33.44" y="603" class="st3">&#60;uvma_mapu_cp_mon_c&#62; <tspan x="46.74" dy="1.08em" class="st4">cp_monitor</tspan></text>			</g>
+				<text x="38.48" y="603" class="st3">&#60;uvma_mapu_cp_mon_c&#62; <tspan x="46.74" dy="1.08em" class="st4">cp_monitor</tspan></text>			</g>
 			<g id="shape186-276" transform="translate(0,-11.3386)">
 				<title>Sheet.186</title>
 				<desc>cp_mon_ mp</desc>
@@ -510,7 +510,7 @@
 				<title>Sheet.178</title>
 				<desc>&#60;uvma_mapu_dpi_mon_c&#62; dpi_monitor</desc>
 				<rect x="0" y="596.567" width="141.732" height="21.2598" class="st9"/>
-				<text x="32.44" y="603" class="st3">&#60;uvma_mapu_dpi_mon_c&#62; <tspan x="44.92" dy="1.08em" class="st4">dpi_monitor</tspan></text>			</g>
+				<text x="37.49" y="603" class="st3">&#60;uvma_mapu_dpi_mon_c&#62; <tspan x="44.92" dy="1.08em" class="st4">dpi_monitor</tspan></text>			</g>
 			<g id="shape181-287" transform="translate(0,-11.3386)">
 				<title>Sheet.181</title>
 				<desc>dpi_mon_ mp</desc>
@@ -527,7 +527,7 @@
 				<title>Sheet.92</title>
 				<desc>&#60;uvma_mapu_logger_c&#62; logger</desc>
 				<rect x="0" y="571.433" width="122.457" height="46.3944" class="st5"/>
-				<text x="26.06" y="590.43" class="st3">&#60;uvma_mapu_logger_c&#62; <tspan x="48.28" dy="1.08em" class="st4">logger</tspan></text>			</g>
+				<text x="31.11" y="590.43" class="st3">&#60;uvma_mapu_logger_c&#62; <tspan x="48.28" dy="1.08em" class="st4">logger</tspan></text>			</g>
 			<g id="shape93-298" transform="translate(55.2971,1195.48) scale(1,-1)">
 				<title>Circle.81</title>
 				<path d="M0 612.22 A5.61129 5.61129 0 0 1 11.22 612.22 A5.61129 5.61129 0 0 1 0 612.22 Z" class="st1"/>
