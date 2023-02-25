@@ -1,0 +1,15 @@
+Plane,Name,Direction,Width,Description
+,data,,[32:64],
+cp,i_en,in,,Block enable
+cp,i_op,in,,Matrix operation to be performed
+cp,o_of,out,,Overflow indicator
+dpi,o_rdy,out,,Flow control for upstream block
+dpi,i_vld,in,,Indicates data input lines are valid
+dpi,i_r0,in,data,Input row element 0
+dpi,i_r1,in,data,Input row element 1
+dpi,i_r2,in,data,Input row element 2
+dpo,i_rdy,in,,Flow control from downstream block
+dpo,o_vld,out,,Indicates data output lines are valid
+dpo,o_r0,out,data,Output row element 0
+dpo,o_r1,out,data,Output row element 1
+dpo,o_r2,out,data,Output row element 2
