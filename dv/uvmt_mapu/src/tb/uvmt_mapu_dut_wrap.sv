@@ -12,28 +12,34 @@
  * @ingroup uvmt_mapu_tb
  */
 module uvmt_mapu_dut_wrap (
-   uvma_clk_if         clk_if  , ///< Clock generating interface
-   uvma_reset_if       reset_if, ///< Reset assertion interface
-   uvma_mapu_if        agent_if, ///<
-   uvme_mapu_probe_if  probe_if  ///< Misc. signals
+   uvma_mapu_if  agent_if, ///< Block signals
+   uvma_clk_if    clk_if  , ///< Clock generating interface
+   uvma_reset_if  reset_if  ///< Reset assertion interface
 );
 
+   /**
+    * Matrix APU Device Under Test from IP 'acme/mapu'.
+    */
    mapu_top  dut (
-      .clk    (clk_if  .clk    ),
-      .reset_n(reset_if.reset_n),
-      .i_en   (agent_if.i_en   ),
-      .i_op   (agent_if.i_op   ),
-      .o_of   (agent_if.o_of   ),
-      .i_vld  (agent_if.i_vld  ),
-      .i_rdy  (agent_if.i_rdy  ),
-      .i_r0   (agent_if.i_r0   ),
-      .i_r1   (agent_if.i_r1   ),
-      .i_r2   (agent_if.i_r2   ),
-      .o_vld  (agent_if.o_vld  ),
-      .o_rdy  (agent_if.o_rdy  ),
-      .o_r0   (agent_if.o_r0   ),
-      .o_r1   (agent_if.o_r1   ),
-      .o_r2   (agent_if.o_r2   )
+      // Control Plane
+      .i_en  (agent_if.i_en ),
+      .i_op  (agent_if.i_op ),
+      .o_of  (agent_if.o_of ),
+      // Data Plane Input
+      .i_vld (agent_if.i_vld),
+      .i_r0  (agent_if.i_r0 ),
+      .i_r1  (agent_if.i_r1 ),
+      .i_r2  (agent_if.i_r2 ),
+      .o_rdy (agent_if.o_rdy),
+      // Data Plane Output
+      .i_rdy (agent_if.i_rdy),
+      .o_vld (agent_if.o_vld),
+      .o_r0  (agent_if.o_r0 ),
+      .o_r1  (agent_if.o_r1 ),
+      .o_r2  (agent_if.o_r2 ),
+      
+      .clk     (clk_if  .clk    ),
+      .reset_n (reset_if.reset_n)
    );
 
 endmodule : uvmt_mapu_dut_wrap

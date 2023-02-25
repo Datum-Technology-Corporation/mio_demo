@@ -15,8 +15,8 @@ class uvmt_mapu_test_cfg_c extends uvmx_test_cfg_c;
 
    /// @name Integrals
    /// @{
-   rand int unsigned          clk_frequency; ///<
-   rand uvmx_reset_type_enum  reset_type   ; ///<
+   rand int unsigned          clk_frequency; ///< Test Bench clock frequency (Hz).
+   rand uvmx_reset_type_enum  reset_type   ; ///< Async/Sync reset.
    /// @}
 
    /// @name Command line arguments
@@ -27,8 +27,8 @@ class uvmt_mapu_test_cfg_c extends uvmx_test_cfg_c;
 
    /// @name Objects
    /// @{
-   rand uvma_clk_cfg_c    clk_agent_cfg  ; ///<
-   rand uvma_reset_cfg_c  reset_agent_cfg; ///<
+   rand uvma_clk_cfg_c    clk_agent_cfg  ; ///< Clock Agent configuration.
+   rand uvma_reset_cfg_c  reset_agent_cfg; ///< Reset Agent configuration.
    /// @}
 
 
@@ -53,7 +53,6 @@ class uvmt_mapu_test_cfg_c extends uvmx_test_cfg_c;
     */
    constraint defaults_cons {
       clk_frequency            == uvmt_mapu_default_clk_frequency           ;
-      reset_type               == UVMX_RESET_SYNC                                 ;
       startup_timeout          == uvmt_mapu_default_startup_timeout         ;
       heartbeat_period         == uvmt_mapu_default_heartbeat_period        ;
       heartbeat_refresh_period == uvmt_mapu_default_heartbeat_refresh_period;
@@ -61,9 +60,10 @@ class uvmt_mapu_test_cfg_c extends uvmx_test_cfg_c;
    }
 
    /**
-    * Describe rules_cons
+    * Sets Agents configuration.
     */
-   constraint rules_cons {
+   constraint agents_cons {
+      reset_type                        == UVMX_RESET_SYNC;
       reset_agent_cfg.reset_type        == reset_type;
       reset_agent_cfg.reset_type        == reset_type;
       clk_agent_cfg  .enabled           == 1;
@@ -86,7 +86,7 @@ class uvmt_mapu_test_cfg_c extends uvmx_test_cfg_c;
 
 
    /**
-    *
+    * Creates configuration objects.
     */
    virtual function void create_objects();
       clk_agent_cfg   = uvma_clk_cfg_c  ::type_id::create("clk_agent_cfg"  );
@@ -94,7 +94,7 @@ class uvmt_mapu_test_cfg_c extends uvmx_test_cfg_c;
    endfunction
 
    /**
-    * Processes command line interface arguments.
+    * Processes Command Line Interface arguments.
     */
    virtual function void process_cli_args();
       string  cli_num_items_str  = "";

@@ -8,7 +8,7 @@
 
 
 /**
- *
+ * Sequence Item providing stimulus for the Data Plane Input Driver (uvma_mapu_dpi_drv_c).
  * @ingroup uvma_mapu_seq
  */
 class uvma_mapu_dpi_seq_item_c extends uvmx_seq_item_c #(
@@ -18,10 +18,10 @@ class uvma_mapu_dpi_seq_item_c extends uvmx_seq_item_c #(
 
    /// @name Data
    /// @{
-   rand bit                 i_vld; ///< Indicates data input lines are valid
-   rand uvma_mapu_data_b_t  i_r0 ; ///< Input row element 0
-   rand uvma_mapu_data_b_t  i_r1 ; ///< Input row element 1
-   rand uvma_mapu_data_b_t  i_r2 ; ///< Input row element 2
+   bit                 i_vld; ///< Indicates data input lines are valid
+   uvma_mapu_data_b_t  i_r0 ; ///< Input row element 0
+   uvma_mapu_data_b_t  i_r1 ; ///< Input row element 1
+   uvma_mapu_data_b_t  i_r2 ; ///< Input row element 2
    /// @}
 
    /// @name Metadata
@@ -50,30 +50,21 @@ class uvma_mapu_dpi_seq_item_c extends uvmx_seq_item_c #(
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      string  r0_str, r1_str, r2_str, r3_str;
-      if ((i_vld === 1) && (o_rdy === 1)) begin
-         r0_str = $sformatf("%h", i_r0);
-         get_metadata.push_back('{
-            name : "r0",
-            width: r0_str.len(),
-            value: r0_str,
-            group: -1
-         });
-         r1_str = $sformatf("%h", i_r1);
-         get_metadata.push_back('{
-            name : "r1",
-            width: r1_str.len(),
-            value: r1_str,
-            group: -1
-         });
-         r2_str = $sformatf("%h", i_r2);
-         get_metadata.push_back('{
-            name : "r2",
-            width: r2_str.len(),
-            value: r2_str,
-            group: -1
-         });
-      end
+      string i_vld_str;
+      string i_r0_str;
+      string i_r1_str;
+      string i_r2_str;
+      string o_rdy_str;
+      i_vld_str = $sformatf("%h", i_vld);
+      i_r0_str = $sformatf("%h", i_r0);
+      i_r1_str = $sformatf("%h", i_r1);
+      i_r2_str = $sformatf("%h", i_r2);
+      o_rdy_str = $sformatf("%h", o_rdy);
+      `uvmx_metadata_field("i_vld", i_vld_str)
+      `uvmx_metadata_field("i_r0", i_r0_str)
+      `uvmx_metadata_field("i_r1", i_r1_str)
+      `uvmx_metadata_field("i_r2", i_r2_str)
+      `uvmx_metadata_field("o_rdy", o_rdy_str)
    endfunction
 
 endclass : uvma_mapu_dpi_seq_item_c

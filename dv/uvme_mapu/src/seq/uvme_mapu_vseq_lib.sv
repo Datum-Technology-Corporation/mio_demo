@@ -15,7 +15,7 @@
 
 
 /**
- * Object cataloging the Matrix APU Block environment's virtual sequences.
+ * Virtual Sequence Library containing Sequences for Matrix APU Block Environment.
  * @ingroup uvme_mapu_seq
  */
 class uvme_mapu_vseq_lib_c extends uvmx_seq_lib_c #(
@@ -26,15 +26,14 @@ class uvme_mapu_vseq_lib_c extends uvmx_seq_lib_c #(
    `uvm_sequence_library_utils(uvme_mapu_vseq_lib_c)
 
    /**
-    * 1. Initializes sequence library
-    * 2. Adds sequences to library
+    * Default constructor.
     */
    function new(string name="uvme_mapu_vseq_lib");
       super.new(name);
    endfunction
 
    /**
-    * User hook.
+    * Adds sequences to library.
     */
    virtual function void add_lib_sequences();
       add_sequence(uvme_mapu_fix_ill_stim_vseq_c ::get_type());

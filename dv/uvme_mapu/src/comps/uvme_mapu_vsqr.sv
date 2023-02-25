@@ -8,7 +8,7 @@
 
 
 /**
- * Component on which all Matrix APU Block environment (uvme_mapu_env_c) virtual sequences are run.
+ * Virtual Sequencer running Matrix APU Block Environment Virtual Sequences extending uvme_mapu_base_vseq_c.
  * @ingroup uvme_mapu_comps
  */
 class uvme_mapu_vsqr_c extends uvmx_env_vsqr_c #(
@@ -18,7 +18,7 @@ class uvme_mapu_vsqr_c extends uvmx_env_vsqr_c #(
 
    /// @name Sequencers
    /// @{
-   uvma_mapu_vsqr_c  agent_vsequencer; ///< Control plane agent sequencer
+   uvma_mapu_vsqr_c  agent_vsequencer; ///< Block Agent Sequencer.
    /// @}
 
 

@@ -7,8 +7,7 @@
 `define __UVME_MAPU_CONSTANTS_SV__
 
 
-// Add constants here
-// Ex: const int unsigned  uvme_mapu_example_cons = 10;
+const int unsigned  uvme_mapu_default_num_items_cons = 10; ///< Default number of Sequence Items to be generated in a Sequence.
 
 
 `endif // __UVME_MAPU_CONSTANTS_SV__

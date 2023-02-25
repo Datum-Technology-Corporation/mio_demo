@@ -8,7 +8,7 @@
 
 
 /**
- *
+ * Abstract Virtual Sequence from which all Matrix APU Agent Transport Sequences must extend.
  * @ingroup uvma_mapu_seq
  */
 class uvma_mapu_trn_base_vseq_c extends uvma_mapu_base_vseq_c;

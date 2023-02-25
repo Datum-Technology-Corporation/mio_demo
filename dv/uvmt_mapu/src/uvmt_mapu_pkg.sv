@@ -30,7 +30,8 @@
 
 
 /**
- * Encapsulates all the types of the Matrix APU Block UVM Test Bench.
+ * Encapsulates the test library of the Matrix APU Block Self-Test Bench.
+ * @ingroup uvmt_mapu_st_pkg
  */
 package uvmt_mapu_pkg;
 
@@ -39,16 +40,18 @@ package uvmt_mapu_pkg;
    import uvml_sb_pkg   ::*;
    import uvma_clk_pkg  ::*;
    import uvma_reset_pkg::*;
-   import uvma_mapu_pkg ::*;
-   import uvme_mapu_pkg ::*;
+   import uvma_mapu_pkg::*;
+   import uvme_mapu_pkg::*;
 
    // Constants / Structs / Enums
    `include "uvmt_mapu_tdefs.sv"
    `include "uvmt_mapu_constants.sv"
 
-   // Tests
+   // Base test
    `include "uvmt_mapu_test_cfg.sv"
    `include "uvmt_mapu_base_test.sv"
+
+   // Tests
    `include "uvmt_mapu_fix_stim_test.sv"
    `include "uvmt_mapu_fix_ill_stim_test.sv"
    `include "uvmt_mapu_rand_stim_test.sv"

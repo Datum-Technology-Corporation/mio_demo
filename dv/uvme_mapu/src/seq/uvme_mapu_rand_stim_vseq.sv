@@ -8,14 +8,14 @@
 
 
 /**
- * Sequence that runs 10 (by default) fully random DUT input sequence items.
+ * Sequence that runs a fixed number of fully random Sequence Items.
  * @ingroup uvme_mapu_seq
  */
 class uvme_mapu_rand_stim_vseq_c extends uvme_mapu_base_vseq_c;
 
    /// @name Knobs
    /// @{
-   rand int unsigned  num_items; ///< Number of sequence items to be generated.
+   rand int unsigned  num_items; ///< Number of Sequence Items to be generated.
    /// @}
 
 
@@ -28,7 +28,7 @@ class uvme_mapu_rand_stim_vseq_c extends uvme_mapu_base_vseq_c;
     * Default values for random fields.
     */
    constraint defaults_cons {
-      soft num_items == 10;
+      soft num_items == uvme_mapu_default_num_items_cons;
    }
 
 
@@ -40,13 +40,14 @@ class uvme_mapu_rand_stim_vseq_c extends uvme_mapu_base_vseq_c;
    endfunction
 
    /**
-    * Generates #num_items of fully random reqs.
+    * Generates #num_items of fully random Sequence Items.
     */
    virtual task body();
       uvma_mapu_seq_item_c  seq_item;
       for (int unsigned ii=0; ii<num_items; ii++) begin
-         `uvm_info("MAPU_RAND_STIM_VSEQ", $sformatf("Driving item #%0d of %0d", (ii+1), num_items), UVM_HIGH)
+         `uvm_info("MAPU_RAND_STIM_VSEQ", $sformatf("Starting driving item #%0d of %0d", (ii+1), num_items), UVM_LOW)
          `uvm_do_on(seq_item, p_sequencer.agent_vsequencer)
+         `uvm_info("MAPU_RAND_STIM_VSEQ", $sformatf("Finished driving item #%0d of %0d", (ii+1), num_items), UVM_MEDIUM)
       end
    endtask
 

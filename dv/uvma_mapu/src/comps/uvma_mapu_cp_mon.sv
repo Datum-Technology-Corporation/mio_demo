@@ -8,7 +8,7 @@
 
 
 /**
- *
+ * Monitor sampling Control Plane Monitor Transactions (uvma_mapu_cp_mon_trn_c) from uvma_mapu_if.
  * @ingroup uvma_mapu_comps
  */
 class uvma_mapu_cp_mon_c extends uvmx_mp_mon_c #(
@@ -30,7 +30,7 @@ class uvma_mapu_cp_mon_c extends uvmx_mp_mon_c #(
    endfunction
 
    /**
-    *
+    * Samples #trn from the Control Plane Monitor clocking block (cp_mon_cb) on each clock cycle.
     */
    virtual task sample_trn(ref uvma_mapu_cp_mon_trn_c trn);
       trn.i_en = mp.cp_mon_cb.i_en;

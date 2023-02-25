@@ -8,7 +8,7 @@
 
 
 /**
- *
+ * Driver driving uvma_mapu_if with Data Plane Input Sequence Items (uvma_mapu_dpi_seq_item_c).
  * @ingroup uvma_mapu_comps
  */
 class uvma_mapu_dpi_drv_c extends uvmx_mp_drv_c #(
@@ -30,24 +30,30 @@ class uvma_mapu_dpi_drv_c extends uvmx_mp_drv_c #(
    endfunction
 
    /**
-    * Drives #mp signals using #req's contents on the next clock cycle.
+    * Trims data outside configured widths.
+    */
+   virtual function void process_item(ref uvma_mapu_dpi_seq_item_c item);
+      `uvmx_trim(item.i_r0 , cfg.data_width)
+      `uvmx_trim(item.i_r1 , cfg.data_width)
+      `uvmx_trim(item.i_r2 , cfg.data_width)
+   endfunction
+
+   /**
+    * Drives the Data Plane Input Driver clocking block (dpi_drv_cb) on each clock cycle.
     */
    virtual task drive_item(ref uvma_mapu_dpi_seq_item_c item);
       mp.dpi_drv_cb.i_vld <= item.i_vld;
       mp.dpi_drv_cb.i_r0  <= item.i_r0 ;
       mp.dpi_drv_cb.i_r1  <= item.i_r1 ;
       mp.dpi_drv_cb.i_r2  <= item.i_r2 ;
-      item.o_rdy = mp.dpi_drv_cb.o_rdy;
    endtask
 
    /**
-    * Zero-out unused data bits.
+    * Samples the Data Plane Input Driver clocking block (dpi_drv_cb) after each clock cycle.
     */
-   virtual function void process_item(ref uvma_mapu_dpi_seq_item_c item);
-      `uvmx_trim(item.i_r0, cfg.data_width)
-      `uvmx_trim(item.i_r1, cfg.data_width)
-      `uvmx_trim(item.i_r2, cfg.data_width)
-   endfunction
+   virtual task sample_post_clk(ref uvma_mapu_dpi_seq_item_c item);
+      item.o_rdy = mp.dpi_drv_cb.o_rdy;
+   endtask
 
 endclass : uvma_mapu_dpi_drv_c
 

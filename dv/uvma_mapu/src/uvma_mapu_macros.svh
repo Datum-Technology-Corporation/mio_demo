@@ -7,9 +7,8 @@
 `define __UVMA_MAPU_MACROS_SVH__
 
 
-`ifndef UVMA_MAPU_MAX_DATA_WIDTH
-   `define UVMA_MAPU_MAX_DATA_WIDTH 64
-`endif
+`define UVMA_MAPU_DATA_MAX_WIDTH  32
+
 
 
 `endif // __UVMA_MAPU_MACROS_SVH__

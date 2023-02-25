@@ -8,7 +8,7 @@
 
 
 /**
- *
+ * Driver driving uvma_mapu_if with Control Plane Sequence Items (uvma_mapu_cp_seq_item_c).
  * @ingroup uvma_mapu_comps
  */
 class uvma_mapu_cp_drv_c extends uvmx_mp_drv_c #(
@@ -30,21 +30,19 @@ class uvma_mapu_cp_drv_c extends uvmx_mp_drv_c #(
    endfunction
 
    /**
-    *
-    */
-   virtual task in_reset();
-      mp.cp_drv_cb.i_en <= 0;
-      mp.cp_drv_cb.i_op <= 0;
-   endtask
-
-   /**
-    * Drives #mp signals using #req's contents on the next clock cycle.
+    * Drives the Control Plane Driver clocking block (cp_drv_cb) on each clock cycle.
     */
    virtual task drive_item(ref uvma_mapu_cp_seq_item_c item);
       mp.cp_drv_cb.i_en <= item.i_en;
       mp.cp_drv_cb.i_op <= item.i_op;
-      item.o_of = mp.cp_drv_cb.o_of;
    endtask
+
+   /**
+    * Samples the Control Plane Driver clocking block (cp_drv_cb) after each clock cycle.
+    */
+   virtual task sample_post_clk(ref uvma_mapu_cp_seq_item_c item);
+      item.o_of = mp.cp_drv_cb.o_of;
+  endtask
 
 endclass : uvma_mapu_cp_drv_c
 

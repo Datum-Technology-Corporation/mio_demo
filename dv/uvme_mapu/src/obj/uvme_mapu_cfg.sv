@@ -8,21 +8,20 @@
 
 
 /**
- * Object encapsulating all parameters for creating, connecting and running the Matrix APU Block environment
- * (uvme_mapu_env_c) components.
+ * Object encapsulating all parameters for creating, connecting and running the Matrix APU Block environment (uvme_mapu_env_c).
  * @ingroup uvme_mapu_obj
  */
 class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
 
    // @name Integrals
-   /// @{
-   rand int unsigned  data_width; ///<
+   /// @{ 
+   rand int unsigned data_width; ///< Selected data bit width.
    /// @}
 
    /// @name Objects
    /// @{
-   rand uvma_mapu_cfg_c        agent_cfg; ///< Control plane agent configuration
-   rand uvml_sb_simplex_cfg_c  sb_cfg   ; ///< Data path scoreboard configuration
+   rand uvma_mapu_cfg_c  agent_cfg; ///< Block Agent configuration
+   rand uvml_sb_simplex_cfg_c  sb_cfg; ///< Data path scoreboard configuration
    /// @}
 
 
@@ -30,7 +29,6 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
       `uvm_field_int (                         enabled              , UVM_DEFAULT)
       `uvm_field_enum(uvm_active_passive_enum, is_active            , UVM_DEFAULT)
       `uvm_field_enum(uvmx_reset_type_enum   , reset_type           , UVM_DEFAULT)
-      `uvm_field_int (                         data_width           , UVM_DEFAULT + UVM_DEC)
       `uvm_field_int (                         scoreboarding_enabled, UVM_DEFAULT)
       `uvm_field_int (                         cov_model_enabled    , UVM_DEFAULT)
       `uvm_field_int (                         trn_log_enabled      , UVM_DEFAULT)
@@ -40,18 +38,18 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
 
 
    /**
-    * Rules for safe default options: enabled, passive with scoreboarding and transaction logging enabled.
+    * Sets default values for all variable width buses.
     */
    constraint defaults_cons {
-      data_width == uvma_mapu_default_data_width;
+      soft data_width == uvma_mapu_data_default_width;
    }
 
    /**
-    * Sets agents configuration.
+    * Sets agent configuration.
     */
    constraint agent_cfg_cons {
-      agent_cfg.reset_type == reset_type;
       agent_cfg.data_width == data_width;
+      agent_cfg.reset_type == reset_type;
       if (enabled) {
          agent_cfg.enabled == 1;
       }
@@ -76,11 +74,8 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
     * Sets scoreboard configuration.
     */
    constraint sb_cons {
-      sb_cfg.enabled            == scoreboarding_enabled;
-      sb_cfg.mode               == UVML_SB_MODE_IN_ORDER;
-      sb_cfg.ignore_first_n_act == 0;
-      sb_cfg.ignore_first_n_exp == 0;
-      sb_cfg.log_enabled        == 1;
+      sb_cfg.enabled == scoreboarding_enabled;
+      sb_cfg.mode    == UVML_SB_MODE_IN_ORDER;
    }
 
 
@@ -92,28 +87,21 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
    endfunction
 
    /**
-    *
+    * Creates objects.
     */
    virtual function void create_objects();
       agent_cfg = uvma_mapu_cfg_c::type_id::create("agent_cfg");
-      sb_cfg    = uvml_sb_simplex_cfg_c::type_id::create("sb_cfg");
+      sb_cfg    = uvml_sb_simplex_cfg_c::type_id::create("sb_cfg"   );
    endfunction
 
    /**
-    *
+    * Adds fields to Scoreboard logs.
     */
    function void post_randomize();
-      sb_cfg.log_entry_metadata_q.delete();
-      sb_cfg.add_to_log("ovf");
-      sb_cfg.add_to_log("m[0][0]");
-      sb_cfg.add_to_log("m[0][1]");
-      sb_cfg.add_to_log("m[0][2]");
-      sb_cfg.add_to_log("m[1][0]");
-      sb_cfg.add_to_log("m[1][1]");
-      sb_cfg.add_to_log("m[1][2]");
-      sb_cfg.add_to_log("m[2][0]");
-      sb_cfg.add_to_log("m[2][1]");
-      sb_cfg.add_to_log("m[2][2]");
+      sb_cfg.reset_log();
+      // TODO Add scoreboard transaction log fields
+      //      Ex: sb_cfg.add_to_log("abc");
+      //          sb_cfg.add_to_log("def");
    endfunction
 
 endclass : uvme_mapu_cfg_c

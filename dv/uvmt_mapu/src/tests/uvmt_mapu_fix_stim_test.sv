@@ -13,7 +13,7 @@
  */
 class uvmt_mapu_fix_stim_test_c extends uvmt_mapu_base_test_c;
 
-   rand uvme_mapu_fix_stim_vseq_c  fix_stim_vseq; ///< Virtual Sequence to be run
+   rand uvme_mapu_fix_stim_vseq_c  fix_stim_vseq; ///< Virtual Sequence run during main_phase.
 
 
    `uvm_component_utils(uvmt_mapu_fix_stim_test_c)
@@ -23,8 +23,7 @@ class uvmt_mapu_fix_stim_test_c extends uvmt_mapu_base_test_c;
     * Rules for this test.
     */
    constraint fix_stim_cons {
-      env_cfg.scoreboarding_enabled == 1;
-      env_cfg.agent_cfg.ton == 100;
+      // env_cfg.scoreboarding_enabled == 1; // TODO Uncomment this line to enable scoreboarding for this test
    }
 
 
@@ -36,7 +35,7 @@ class uvmt_mapu_fix_stim_test_c extends uvmt_mapu_base_test_c;
    endfunction
 
    /**
-    * Creates rand_stim_vseq
+    * Creates fix_stim_vseq.
     */
    virtual function void create_sequences();
       super.create_sequences();
@@ -48,9 +47,9 @@ class uvmt_mapu_fix_stim_test_c extends uvmt_mapu_base_test_c;
     */
    virtual task main_phase(uvm_phase phase);
       phase.raise_objection(this);
-      `uvm_info("TEST", $sformatf("Starting Virtual Sequence:\n%s", fix_stim_vseq.sprint()), UVM_NONE)
+      `uvm_info("TEST", $sformatf("Starting 'fix_stim_vseq' Virtual Sequence:\n%s", fix_stim_vseq.sprint()), UVM_NONE)
       fix_stim_vseq.start(vsequencer);
-      `uvm_info("TEST", $sformatf("Finished Virtual Sequence:\n%s", fix_stim_vseq.sprint()), UVM_NONE)
+      `uvm_info("TEST", $sformatf("Finished 'fix_stim_vseq' Virtual Sequence:\n%s", fix_stim_vseq.sprint()), UVM_NONE)
       phase.drop_objection(this);
    endtask
 

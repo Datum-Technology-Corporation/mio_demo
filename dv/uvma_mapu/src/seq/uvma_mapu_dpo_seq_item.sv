@@ -8,7 +8,7 @@
 
 
 /**
- *
+ * Sequence Item providing stimulus for the Data Plane Output Driver (uvma_mapu_dpo_drv_c).
  * @ingroup uvma_mapu_seq
  */
 class uvma_mapu_dpo_seq_item_c extends uvmx_seq_item_c #(
@@ -18,15 +18,15 @@ class uvma_mapu_dpo_seq_item_c extends uvmx_seq_item_c #(
 
    /// @name Data
    /// @{
-   rand bit  i_rdy; ///< Flow control for upstream block
+   bit  i_rdy; ///< Flow control from downstream block
    /// @}
 
    /// @name Metadata
    /// @{
-   logic               o_vld; ///< Indicates data input lines are valid
-   uvma_mapu_data_l_t  o_r0 ; ///< Input row element 0
-   uvma_mapu_data_l_t  o_r1 ; ///< Input row element 1
-   uvma_mapu_data_l_t  o_r2 ; ///< Input row element 2
+   logic               o_vld; ///< Indicates data output lines are valid
+   uvma_mapu_data_l_t  o_r0 ; ///< Output row element 0
+   uvma_mapu_data_l_t  o_r1 ; ///< Output row element 1
+   uvma_mapu_data_l_t  o_r2 ; ///< Output row element 2
    /// @}
 
 
@@ -44,6 +44,27 @@ class uvma_mapu_dpo_seq_item_c extends uvmx_seq_item_c #(
     */
    function new(string name="uvma_mapu_dpo_seq_item");
       super.new(name);
+   endfunction
+
+   /**
+    * Describes transaction for logger.
+    */
+   virtual function uvmx_metadata_t get_metadata();
+      string i_rdy_str;
+      string o_vld_str;
+      string o_r0_str;
+      string o_r1_str;
+      string o_r2_str;
+      i_rdy_str = $sformatf("%h", i_rdy);
+      o_vld_str = $sformatf("%h", o_vld);
+      o_r0_str = $sformatf("%h", o_r0);
+      o_r1_str = $sformatf("%h", o_r1);
+      o_r2_str = $sformatf("%h", o_r2);
+      `uvmx_metadata_field("i_rdy", i_rdy_str)
+      `uvmx_metadata_field("o_vld", o_vld_str)
+      `uvmx_metadata_field("o_r0", o_r0_str)
+      `uvmx_metadata_field("o_r1", o_r1_str)
+      `uvmx_metadata_field("o_r2", o_r2_str)
    endfunction
 
 endclass : uvma_mapu_dpo_seq_item_c

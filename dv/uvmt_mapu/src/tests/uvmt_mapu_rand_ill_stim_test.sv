@@ -8,12 +8,12 @@
 
 
 /**
- * Test which runs Virtual Sequence 'rand_ill_stim_vseq' for 10 items of completely random, partially illegal stimulus.
+ * Test which runs Virtual Sequence 'rand_ill_stim_vseq': fixed number of items of completely random, partially illegal stimulus.
  * @ingroup uvmt_mapu_tests
  */
 class uvmt_mapu_rand_ill_stim_test_c extends uvmt_mapu_base_test_c;
 
-   rand uvme_mapu_rand_ill_stim_vseq_c  rand_ill_stim_vseq; ///< Virtual Sequence to be run
+   rand uvme_mapu_rand_ill_stim_vseq_c  rand_ill_stim_vseq; ///< Virtual Sequence run during main_phase.
 
 
    `uvm_component_utils(uvmt_mapu_rand_ill_stim_test_c)
@@ -22,13 +22,13 @@ class uvmt_mapu_rand_ill_stim_test_c extends uvmt_mapu_base_test_c;
    /**
     * Rules for this test.
     */
-   constraint rand_stim_cons {
+   constraint rand_ill_stim_cons {
       // env_cfg.scoreboarding_enabled == 1; // TODO Uncomment this line to enable scoreboarding for this test
       if (test_cfg.cli_num_items_override) {
          rand_ill_stim_vseq.num_items == test_cfg.cli_num_items;
       }
       else {
-         rand_ill_stim_vseq.num_items == 10;
+         rand_ill_stim_vseq.num_items == uvme_mapu_default_num_items_cons;
       }
    }
 
@@ -41,7 +41,7 @@ class uvmt_mapu_rand_ill_stim_test_c extends uvmt_mapu_base_test_c;
    endfunction
 
    /**
-    * Creates rand_stim_vseq
+    * Creates rand_ill_stim_vseq.
     */
    virtual function void create_sequences();
       super.create_sequences();
@@ -49,13 +49,13 @@ class uvmt_mapu_rand_ill_stim_test_c extends uvmt_mapu_base_test_c;
    endfunction
 
    /**
-    * Runs fixed_stim_vseq on vsequencer.
+    * Runs rand_ill_stim_vseq on vsequencer.
     */
    virtual task main_phase(uvm_phase phase);
       phase.raise_objection(this);
-      `uvm_info("TEST", $sformatf("Starting Virtual Sequence:\n%s", rand_ill_stim_vseq.sprint()), UVM_NONE)
+      `uvm_info("TEST", $sformatf("Starting 'rand_ill_stim_vseq' Virtual Sequence:\n%s", rand_ill_stim_vseq.sprint()), UVM_NONE)
       rand_ill_stim_vseq.start(vsequencer);
-      `uvm_info("TEST", $sformatf("Finished Virtual Sequence:\n%s", rand_ill_stim_vseq.sprint()), UVM_NONE)
+      `uvm_info("TEST", $sformatf("Finished 'rand_ill_stim_vseq' Virtual Sequence:\n%s", rand_ill_stim_vseq.sprint()), UVM_NONE)
       phase.drop_objection(this);
    endtask
 

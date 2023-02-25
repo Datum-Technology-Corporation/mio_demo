@@ -36,7 +36,7 @@ None
 
 
 @section release_history Release History
-@subsection v_1_0_0 2022/01/01 - v.1.0.0
+@subsection v_1_0_0 2023/01/01 - v.1.0.0
 - Initial release
 
 

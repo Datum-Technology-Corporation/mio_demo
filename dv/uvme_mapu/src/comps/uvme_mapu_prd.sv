@@ -8,17 +8,22 @@
 
 
 /**
- * Component implementing transaction-based model of Matrix APU Block.
+ * Component implementing TLM prediction of Matrix APU Block behavior.
  * @ingroup uvme_mapu_comps
  */
 class uvme_mapu_prd_c extends uvmx_prd_c #(
    .T_CFG  (uvme_mapu_cfg_c  ),
    .T_CNTXT(uvme_mapu_cntxt_c)
 );
-   /// @name TLM
+
+   /// @name FIFOs
    /// @{
    uvm_tlm_analysis_fifo #(uvma_mapu_mon_trn_c)  in_fifo; ///< Queue of control plane monitor transactions
-   uvm_analysis_port     #(uvma_mapu_mon_trn_c)  out_ap ; ///< Port producing predicted data plane output transactions
+   /// @}
+
+   /// @name Ports
+   /// @{
+   uvm_analysis_port #(uvma_mapu_mon_trn_c)  out_ap ; ///< Port producing predicted data plane output transactions
    /// @}
 
 
@@ -40,43 +45,23 @@ class uvme_mapu_prd_c extends uvmx_prd_c #(
    endfunction
 
    /**
-    * Creates Analysis Ports.
+    * Creates TLM Ports.
     */
    virtual function void create_ports();
       out_ap = new("out_ap", this);
    endfunction
 
    /**
-    *
+    * TODO Describe uvme_mapu_prd_c::predict()
     */
    virtual task predict();
-      uvma_mapu_mon_trn_c  in_a_trn, in_b_trn, out_trn;
-      bit drop = 0;
-      in_fifo.get(in_a_trn);
-      in_fifo.get(in_b_trn);
-      out_trn = uvma_mapu_mon_trn_c::type_id::create("out_trn");
-      out_trn.from(in_a_trn);
-      out_trn.from(in_b_trn);
-      out_trn.op = in_b_trn.op;
-      case (in_b_trn.op)
-         UVMA_MAPU_OP_ADD : out_trn.matrix = in_a_trn.matrix.add     (in_b_trn.matrix);
-         UVMA_MAPU_OP_MULT: out_trn.matrix = in_a_trn.matrix.multiply(in_b_trn.matrix);
-         default: begin
-            `uvm_error("MAPU_PRD", $sformatf("Invalid op ''. Dropping:\n%s", in_b_trn.op.name(), in_b_trn.sprint()))
-            drop = 1;
-         end
-      endcase
-      if (!drop) begin
-         foreach (out_trn.matrix.mi[ii]) begin
-            foreach (out_trn.matrix.mi[ii][jj]) begin
-               if (out_trn.matrix.mi[ii][jj] < 0) begin
-                  out_trn.overflow = 1;
-                  break;
-               end
-            end
-         end
-         out_ap.write(out_trn);
-      end
+      uvma_mapu_mon_trn_c  in_trn, out_trn;
+      in_fifo.get(in_trn);
+      // TODO Implement uvme_mapu_prd_c::predict()
+      //      Ex: out_trn = uvma_mapu_mon_trn_c::type_id::create("out_trn");
+      //          out_trn.dir_in = 0;
+      //          out_trn.abc = in_trn.abc*2;
+      //          out_ap.write(out_trn);
    endtask
 
 endclass : uvme_mapu_prd_c

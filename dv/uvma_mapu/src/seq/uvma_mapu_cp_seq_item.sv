@@ -8,7 +8,7 @@
 
 
 /**
- *
+ * Sequence Item providing stimulus for the Control Plane Driver (uvma_mapu_cp_drv_c).
  * @ingroup uvma_mapu_seq
  */
 class uvma_mapu_cp_seq_item_c extends uvmx_seq_item_c #(
@@ -18,8 +18,8 @@ class uvma_mapu_cp_seq_item_c extends uvmx_seq_item_c #(
 
    /// @name Data
    /// @{
-   rand bit  i_en; ///< Block enable
-   rand bit  i_op; ///< Matrix operation to be performed
+   bit  i_en; ///< Block enable
+   bit  i_op; ///< Matrix operation to be performed
    /// @}
 
    /// @name Metadata
@@ -46,21 +46,15 @@ class uvma_mapu_cp_seq_item_c extends uvmx_seq_item_c #(
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      string  en_str, op_str;
-      en_str = (i_en === 1) ? "Y " : "N ";
-      get_metadata.push_back('{
-         name : "en",
-         width: en_str.len(),
-         value: en_str,
-         group: -1
-      });
-      op_str = (i_op === 1) ? "MULT" : "ADD";
-      get_metadata.push_back('{
-         name : "op",
-         width: op_str.len(),
-         value: op_str,
-         group: -1
-      });
+      string i_en_str;
+      string i_op_str;
+      string o_of_str;
+      i_en_str = $sformatf("%h", i_en);
+      i_op_str = $sformatf("%h", i_op);
+      o_of_str = $sformatf("%h", o_of);
+      `uvmx_metadata_field("i_en", i_en_str)
+      `uvmx_metadata_field("i_op", i_op_str)
+      `uvmx_metadata_field("o_of", o_of_str)
    endfunction
 
 endclass : uvma_mapu_cp_seq_item_c

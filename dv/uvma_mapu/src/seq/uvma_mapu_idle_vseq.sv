@@ -8,7 +8,7 @@
 
 
 /**
- *
+ * Virtual Sequence generating 'idle' Sequence Items at all times.
  * @ingroup uvma_mapu_seq
  */
 class uvma_mapu_idle_vseq_c extends uvma_mapu_base_vseq_c;
@@ -25,7 +25,7 @@ class uvma_mapu_idle_vseq_c extends uvma_mapu_base_vseq_c;
    endfunction
 
    /**
-    *
+    * Infinite loops generating idle Data Plane Sequence Items.
     */
    task idle();
       uvma_mapu_dpi_seq_item_c  dpi_seq_item;

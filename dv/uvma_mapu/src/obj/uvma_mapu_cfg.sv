@@ -8,29 +8,26 @@
 
 
 /**
- * Object encapsulating all parameters for creating, connecting and running all Matrix APU agent (uvma_mapu_agent_c) components.
+ * Object encapsulating all parameters for creating, connecting and running all Matrix APU Agent (uvma_mapu_agent_c) components.
  * @ingroup uvma_mapu_obj
  */
 class uvma_mapu_cfg_c extends uvmx_agent_cfg_c;
 
    /// @name Integrals
-   /// @{
-   rand int unsigned  data_width; ///<
-   rand int unsigned  ton       ; ///<
+   /// @{ 
+   rand int unsigned data_width; ///< Selected data bit width.
    /// @}
 
-   /// @name Sequence Types
+   /// @name Virtual Sequence Types
    /// @{
-   uvm_object_wrapper  drv_in_vseq_type ; ///<
-   uvm_object_wrapper  drv_out_vseq_type; ///<
+   uvm_object_wrapper  in_drv_vseq_type ; ///< Virtual Sequence Type driving data into the DUT.
+   uvm_object_wrapper  out_drv_vseq_type; ///< Virtual Sequence Type driving data out of the DUT.
    /// @}
 
 
    `uvm_object_utils_begin(uvma_mapu_cfg_c)
       `uvm_field_int (                         enabled        , UVM_DEFAULT)
       `uvm_field_enum(uvm_active_passive_enum, is_active      , UVM_DEFAULT)
-      `uvm_field_int (                         data_width     , UVM_DEFAULT + UVM_DEC)
-      `uvm_field_int (                         ton            , UVM_DEFAULT + UVM_DEC)
       `uvm_field_int (                         bypass_mode    , UVM_DEFAULT)
       `uvm_field_enum(uvmx_reset_type_enum   , reset_type     , UVM_DEFAULT)
       `uvm_field_enum(uvm_sequencer_arb_mode , sqr_arb_mode   , UVM_DEFAULT)
@@ -39,19 +36,21 @@ class uvma_mapu_cfg_c extends uvmx_agent_cfg_c;
 
 
    /**
-    * Rules for safe default options: enabled, passive, synchronous reset with transaction logging enabled.
+    * Sets default values for all variable width buses.
     */
    constraint defaults_cons {
-      soft data_width == uvma_mapu_default_data_width;
+      soft data_width == uvma_mapu_data_default_width;
    }
 
    /**
-    * Coverage model is in the environment.
+    * * Disables the agent coverage model (model is in IP 'uvme_mapu')
+    * * Sets max sizes for all variable width buses
     */
-   constraint limits_cons {
+   constraint rules_cons {
       cov_model_enabled == 0;
-      data_width <= `UVMA_MAPU_MAX_DATA_WIDTH;
-      ton inside {[1:100]};
+      data_width <= `UVMA_MAPU_DATA_MAX_WIDTH;
+      // TODO Add rules to constrain data_width
+      //      Ex: data_width inside {32,64};
    }
 
 
@@ -63,13 +62,14 @@ class uvma_mapu_cfg_c extends uvmx_agent_cfg_c;
    endfunction
 
    /**
-    *
+    * Sets default Virtual Sequence types.
     */
-   function void post_randomize();
+   function void pre_randomize();
+      super.pre_randomize();
       mon_vseq_type     = uvma_mapu_mon_vseq_c    ::get_type();
       idle_vseq_type    = uvma_mapu_idle_vseq_c   ::get_type();
-      drv_in_vseq_type  = uvma_mapu_drv_in_vseq_c ::get_type();
-      drv_out_vseq_type = uvma_mapu_drv_out_vseq_c::get_type();
+      in_drv_vseq_type  = uvma_mapu_in_drv_vseq_c ::get_type();
+      out_drv_vseq_type = uvma_mapu_out_drv_vseq_c::get_type();
    endfunction
 
 endclass : uvma_mapu_cfg_c

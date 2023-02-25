@@ -1,76 +1,86 @@
-// Copyright 2023 Acme Enterprises Inc.
+// Copyright 2022-2023 Datum Technology Corporation
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// This file contains sample code that demonstrates how to add an instance of the Matrix APU UVM Agent to an example UVM environment.
-// NOTE: It is recommended to split up class member declaration and definition.  These classes are all inline to keep the example short.
+// This file contains sample code that demonstrates how to add an instance of the Matrix APU Block UVM Agent to an example UVMx environment.
+// NOTE: It is recommended to split up classes into separate files.
 
 
-`ifndef __UVME_EXAMPLE_CFG_SV__
-`define __UVME_EXAMPLE_CFG_SV__
+`ifndef __UVME_EXAMPLE_ENV_CFG_SV__
+`define __UVME_EXAMPLE_ENV_CFG_SV__
 
 
 /**
  * Object encapsulating all configuration information for uvme_example_env_c.
  */
-class uvme_example_cfg_c extends uvml_cfg_c;
+class uvme_example_env_cfg_c extends uvmx_env_cfg_c;
 
-   rand uvma_mapu_cfg_c  mapu_cfg; ///< Handle to mapu agent configuration
+   rand uvma_mapu_cfg_c  mapu_cfg; ///< Handle to Matrix APU Block Agent configuration
 
-   `uvm_object_utils_begin(uvme_example_cfg_c)
+   `uvm_object_utils_begin(uvme_example_env_cfg_c)
       `uvm_field_object(mapu_cfg, UVM_DEFAULT)
    `uvm_object_utils_end
 
    /**
-    * mapu_cfg in active mode.
+    * Rules for safe default options
     */
    constraint defaults_cons {
-      mapu_cfg.enabled         == 1;
-      mapu_cfg.is_active       == UVM_ACTIVE;
-      mapu_cfg.reset_type      == UVML_RESET_TYPE_SYNCHRONOUS;
-      mapu_cfg.trn_log_enabled == 1;
+      soft mapu_cfg.enabled == 1;
    }
+
+   /**
+    * Default constructor.
+    */
+   function new(uvm_component parent=null, string name="uvme_example_env_cfg");
+      super.new(parent, name);
+   endfunction
 
    /**
     * Creates sub-configuration objects
     */
-   function new(string name="uvme_example_cfg");
-      super.new(name);
+   virtual function void create_objects();
       mapu_cfg = uvma_mapu_cfg_c::type_id::create("mapu_cfg");
-   endfunction : new
+   endfunction
 
-endclass : uvme_example_cfg_c
-
-
-`endif // __UVME_EXAMPLE_CFG_SV__
+endclass : uvme_example_env_cfg_c
 
 
-`ifndef __UVME_EXAMPLE_CNTXT_SV__
-`define __UVME_EXAMPLE_CNTXT_SV__
+`endif // __UVME_EXAMPLE_ENV_CFG_SV__
+
+
+`ifndef __UVME_EXAMPLE_ENV_CNTXT_SV__
+`define __UVME_EXAMPLE_ENV_CNTXT_SV__
 
 
 /**
  * Object encapsulating all state variables for uvme_example_env_c.
  */
-class uvme_example_cntxt_c extends uvml_cntxt_c;
+class uvme_example_env_cntxt_c extends uvmx_env_cntxt_c;
 
-   uvma_mapu_cntxt_c  mapu_cntxt; ///< Handle to mapu agent context
+   uvma_mapu_cntxt_c  mapu_cntxt; ///< Handle to Matrix APU Block Agent context
 
-   `uvm_object_utils_begin(uvme_example_cntxt_c)
+   `uvm_object_utils_begin(uvme_example_env_cntxt_c)
       `uvm_field_object(mapu_cntxt, UVM_DEFAULT)
    `uvm_object_utils_end
 
    /**
     * Creates sub-context objects
     */
-   function new(string name="uvme_example_cntxt");
-      super.new(name);
+   function new(uvm_component parent=null, string name="uvme_example_env_cntxt");
+      super.new(parent, name);
+      cntxt = uvma_mapu_cntxt_c::type_id::create("mapu_cntxt");
+   endfunction
+
+   /**
+    * Creates sub-context objects
+    */
+   virtual function void create_objects();
       mapu_cntxt = uvma_mapu_cntxt_c::type_id::create("mapu_cntxt");
-   endfunction : new
+   endfunction
 
-endclass : uvme_example_cntxt_c
+endclass : uvme_example_env_cntxt_c
 
 
-`endif // __UVME_EXAMPLE_CNTXT_SV__
+`endif // __UVME_EXAMPLE_ENV_CNTXT_SV__
 
 
 `ifndef __UVME_EXAMPLE_ENV_SV__
@@ -78,53 +88,39 @@ endclass : uvme_example_cntxt_c
 
 
 /**
- * Component encapsulating the example environment.
+ * Component encapsulating the environment.
  */
-class uvme_example_env_c extends uvml_env_c;
+class uvme_example_env_c extends uvmx_env_c #(
+   .T_CFG      (uvme_example_env_cfg_c      ),
+   .T_CNTXT    (uvme_example_env_cntxt_c    ),
+   .T_VSQR     (uvme_example_env_vsqr_c     ),
+   .T_PRD      (uvme_example_env_prd_c      ),
+   .T_SB       (uvme_example_env_sb_c       ),
+   .T_COV_MODEL(uvme_example_env_cov_model_c)
+);
 
-   uvme_example_cfg_c    cfg  ; ///< Configuration handle. Must be provided by component instantiating this environment.
-   uvme_example_cntxt_c  cntxt; ///< Context handle.  Can be provided by component instantiating this environment.
-   uvma_mapu_agent_c  mapu_agent; ///< Matrix APU agent instance.
+   uvma_mapu_env_c  mapu_agent; ///< Matrix APU Block Agent instance.
 
-   `uvm_component_utils_begin(uvme_example_env_c)
-      `uvm_field_object(cfg  , UVM_DEFAULT)
-      `uvm_field_object(cntxt, UVM_DEFAULT)
-   `uvm_component_utils_end
+   `uvm_component_utils(uvme_example_env_c)
 
    /**
     * Default constructor.
     */
    function new(uvm_component parent=null, string name="uvme_example_env");
       super.new(parent, name);
-   endfunction : new
+   endfunction
 
-   /**
-    * 1. Ensures #cfg & #cntxt handles are not null
-    * 2. Assigns #cfg and #cntxt handles
-    * 3. Creates #mapu_agent
-    */
-   virtual function void build_phase(uvm_phase phase);
-      super.build_phase(phase);
+   virtual function void assign_cfg();
+      uvm_config_db#(uvma_mapu_cfg_c)::set(this, "mapu_agent", "cfg", cfg.mapu_cfg);
+   endfunction
 
-      void'(uvm_config_db#(uvme_example_cfg_c)::get(this, "", "cfg", cfg));
-      if (!cfg) begin
-         `uvm_fatal("EXAMPLE_ENV", "Configuration handle is null")
-      end
-      else begin
-         `uvm_info("EXAMPLE_ENV", $sformatf("Found configuration handle:\n%s", cfg.sprint()), UVM_DEBUG)
-         void'(uvm_config_db#(uvme_example_cntxt_c)::get(this, "", "cntxt", cntxt));
-         if (!cntxt) begin
-            `uvm_info("EXAMPLE_ENV", "Context handle is null; creating.", UVM_DEBUG)
-            cntxt = uvme_example_cntxt_c::type_id::create("cntxt");
-         end
-         uvm_config_db#(uvme_example_cfg_c  )::set(this, "*", "cfg"  , cfg  );
-         uvm_config_db#(uvme_example_cntxt_c)::set(this, "*", "cntxt", cntxt);
-         uvm_config_db#(uvma_mapu_cfg_c  )::set(this, "mapu_agent", "cfg"  , cfg  .mapu_cfg  );
-         uvm_config_db#(uvma_mapu_cntxt_c)::set(this, "mapu_agent", "cntxt", cntxt.mapu_cntxt);
-         mapu_agent = uvma_mapu_agent_c::type_id::create("mapu_agent", this);
-         end
-      end
-   endfunction : build_phase
+   virtual function void assign_cntxt();
+      uvm_config_db#(uvma_mapu_cntxt_c)::set(this, "mapu_agent", "cntxt", cfg.mapu_cntxt);
+   endfunction
+
+   virtual function void create_agents();
+      mapu_agent = uvma_mapu_env_c::type_id::create("mapu_agent", this);
+   endfunction
 
 endclass : uvme_example_env_c
 

@@ -8,12 +8,10 @@
 
 
 /**
- * Object encapsulating all state variables for Matrix APU Block environment (uvme_mapu_env_c) components.
+ * Object encapsulating all state variables for Matrix APU Block environment (uvme_mapu_env_c).
  * @ingroup uvme_mapu_obj
  */
 class uvme_mapu_cntxt_c extends uvmx_env_cntxt_c;
-
-   virtual uvme_mapu_probe_if  probe_vif; ///< Handle to DUT probe interface
 
    /// @name Integrals
    /// @{
@@ -21,8 +19,8 @@ class uvme_mapu_cntxt_c extends uvmx_env_cntxt_c;
 
    /// @name Objects
    /// @{
-   uvma_mapu_cntxt_c  agent_cntxt; ///< Data plane output agent content
-   uvml_sb_simplex_cntxt_c  sb_cntxt   ; ///< Data path scoreboard context
+   uvma_mapu_cntxt_c  agent_cntxt; ///< Block Agent context.
+   uvml_sb_simplex_cntxt_c  sb_cntxt   ; ///< Scoreboard context
    /// @}
 
 
@@ -34,14 +32,14 @@ class uvme_mapu_cntxt_c extends uvmx_env_cntxt_c;
 
 
    /**
-    * Builds events and sub-context objects.
+    * Default constructor.
     */
    function new(string name="uvme_mapu_cntxt");
       super.new(name);
    endfunction
 
    /**
-    *
+    * Creates objects.
     */
    virtual function void create_objects();
       agent_cntxt = uvma_mapu_cntxt_c::type_id::create("agent_cntxt");

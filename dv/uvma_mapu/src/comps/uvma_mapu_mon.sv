@@ -8,7 +8,7 @@
 
 
 /**
- * Component sampling transactions from Matrix APU virtual interface (uvma_mapu_if).
+ * Component sampling Monitor Transactions from Matrix APU Interface (uvma_mapu_if).
  * @ingroup uvma_mapu_comps
  */
 class uvma_mapu_mon_c extends uvmx_mon_c #(
@@ -37,7 +37,7 @@ class uvma_mapu_mon_c extends uvmx_mon_c #(
    endfunction
 
    /**
-    *
+    * Creates Monitor components.
     */
    virtual function void create_monitors();
       cp_monitor  = uvma_mapu_cp_mon_c ::type_id::create("cp_monitor" , this);

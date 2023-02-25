@@ -8,7 +8,7 @@
 
 
 /**
- * Component which logs to disk information of the transactions generated and monitored by uvma_mapu_agent_c.
+ * Component logging to disk metadata from the transactions generated and monitored by uvma_mapu_agent_c.
  * @ingroup uvma_mapu_comps
  */
 class uvma_mapu_logger_c extends uvmx_agent_logger_c #(
@@ -19,14 +19,14 @@ class uvma_mapu_logger_c extends uvmx_agent_logger_c #(
 
    /// @name Loggers
    /// @{
-   uvmx_logger_c #(uvma_mapu_mon_trn_c     )  in_mon_trn_logger  ; ///<
-   uvmx_logger_c #(uvma_mapu_mon_trn_c     )  out_mon_trn_logger ; ///<
-   uvmx_logger_c #(uvma_mapu_cp_seq_item_c )  cp_seq_item_logger ; ///<
-   uvmx_logger_c #(uvma_mapu_dpi_seq_item_c)  dpi_seq_item_logger; ///<
-   uvmx_logger_c #(uvma_mapu_dpo_seq_item_c)  dpo_seq_item_logger; ///<
-   uvmx_logger_c #(uvma_mapu_cp_mon_trn_c  )  cp_mon_trn_logger  ; ///<
-   uvmx_logger_c #(uvma_mapu_dpi_mon_trn_c )  dpi_mon_trn_logger ; ///<
-   uvmx_logger_c #(uvma_mapu_dpo_mon_trn_c )  dpo_mon_trn_logger ; ///<
+   uvmx_logger_c #(uvma_mapu_mon_trn_c     )  in_mon_trn_logger  ; ///< Logger for Input Monitor Transactions.
+   uvmx_logger_c #(uvma_mapu_mon_trn_c     )  out_mon_trn_logger ; ///< Logger for Output Monitor Transactions.
+   uvmx_logger_c #(uvma_mapu_cp_seq_item_c )  cp_seq_item_logger ; ///< Logger for Control Plane Sequence Items.
+   uvmx_logger_c #(uvma_mapu_dpi_seq_item_c)  dpi_seq_item_logger; ///< Logger for Data Plane Input Sequence Items.
+   uvmx_logger_c #(uvma_mapu_dpo_seq_item_c)  dpo_seq_item_logger; ///< Logger for Data Plane Output Sequence Items.
+   uvmx_logger_c #(uvma_mapu_cp_mon_trn_c  )  cp_mon_trn_logger  ; ///< Logger for Control Plane Monitor Transactions.
+   uvmx_logger_c #(uvma_mapu_dpi_mon_trn_c )  dpi_mon_trn_logger ; ///< Logger for Data Plane Input Monitor Transactions.
+   uvmx_logger_c #(uvma_mapu_dpo_mon_trn_c )  dpo_mon_trn_logger ; ///< Logger for Data Plane Output Monitor Transactions.
    /// @}
 
 

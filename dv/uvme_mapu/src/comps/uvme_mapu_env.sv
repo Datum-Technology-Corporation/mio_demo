@@ -8,7 +8,7 @@
 
 
 /**
- * Top-level component that encapsulates, builds and connects all other Matrix APU Block environment components.
+ * Matrix APU Block UVM Environment with TLM self-checking scoreboards and prediction.
  * @ingroup uvme_mapu_comps
  */
 class uvme_mapu_env_c extends uvmx_env_c #(
@@ -34,18 +34,6 @@ class uvme_mapu_env_c extends uvmx_env_c #(
     */
    function new(string name="uvme_mapu_env", uvm_component parent=null);
       super.new(name, parent);
-   endfunction
-
-   /**
-    * Retrieves probe_vif in #cntxt using uvm_config_db.
-    */
-   virtual function void get_vifs();
-      if (!uvm_config_db#(virtual uvme_mapu_probe_if)::get(this, "", "vif", cntxt.probe_vif)) begin
-         `uvm_fatal("MAPU_ENV", $sformatf("Could not find probe_vif handle of type %s in uvm_config_db", $typename(cntxt.probe_vif)))
-      end
-      else begin
-         `uvm_info("MAPU_ENV", $sformatf("Found probe_vif handle of type %s in uvm_config_db", $typename(cntxt.probe_vif)), UVM_DEBUG)
-      end
    endfunction
 
    /**

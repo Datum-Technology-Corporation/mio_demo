@@ -8,8 +8,8 @@
 
 
 /**
- * Component from which all other Matrix APU Block tests must extend.
- * Subclasses must provide stimulus via the virtual sequencer by implementing UVM runtime phases.
+ * Abstract Test from which all other Matrix APU Block Tests must extend.
+ * Subclasses must provide stimulus via vsequencer by implementing UVM runtime phases.
  * @ingroup uvmt_mapu_tests
  */
 class uvmt_mapu_base_test_c extends uvmx_test_c #(
@@ -22,22 +22,18 @@ class uvmt_mapu_base_test_c extends uvmx_test_c #(
 
    /// @name Agents
    /// @{
-   uvma_clk_agent_c    clk_agent  ; ///<
-   uvma_reset_agent_c  reset_agent; ///<
+   uvma_clk_agent_c    clk_agent  ; ///< Clock agent.
+   uvma_reset_agent_c  reset_agent; ///< Reset agent.
    /// @}
 
-   /// @name Default sequences
+   /// @name Default Sequences
    /// @{
-   rand uvma_clk_start_vseq_c    clk_vseq  ; ///< Starts clock generation during pre_reset_phase()
-   rand uvma_reset_pulse_vseq_c  reset_vseq; ///< Asserts reset during reset_phase()
+   rand uvma_clk_start_vseq_c    clk_vseq  ; ///< Starts clock generation during pre_reset_phase.
+   rand uvma_reset_pulse_vseq_c  reset_vseq; ///< Asserts reset during reset_phase.
    /// @}
 
 
-   `uvm_component_utils_begin(uvmt_mapu_base_test_c)
-      `uvm_field_object(test_cfg , UVM_DEFAULT)
-      `uvm_field_object(env_cfg  , UVM_DEFAULT)
-      `uvm_field_object(env_cntxt, UVM_DEFAULT)
-   `uvm_component_utils_end
+   `uvm_component_utils(uvmt_mapu_base_test_c)
    `include "uvmt_mapu_base_test_workarounds.sv"
 
 
@@ -60,7 +56,7 @@ class uvmt_mapu_base_test_c extends uvmx_test_c #(
    endfunction
 
    /**
-    *
+    * Creates Agent components.
     */
    virtual function void create_components();
       clk_agent   = uvma_clk_agent_c  ::type_id::create("clk_agent"  , this);
@@ -68,14 +64,14 @@ class uvmt_mapu_base_test_c extends uvmx_test_c #(
    endfunction
 
    /**
-    *
+    * Connects the reset agent to the environment's reset port.
     */
    virtual function void connect_env_reset();
       reset_agent.reset_mon_trn_ap.connect(env.reset_mon_trn_export);
    endfunction
 
    /**
-    *
+    * Assigns configuration objects to Agents.
     */
    virtual function void assign_cfg();
       uvm_config_db#(uvma_clk_cfg_c  )::set(this, "clk_agent"  , "cfg", test_cfg.clk_agent_cfg  );
@@ -83,7 +79,7 @@ class uvmt_mapu_base_test_c extends uvmx_test_c #(
    endfunction
 
    /**
-    *
+    * Creates Sequences.
     */
    virtual function void create_sequences();
       clk_vseq   = uvma_clk_start_vseq_c  ::type_id::create("clk_vseq"  );

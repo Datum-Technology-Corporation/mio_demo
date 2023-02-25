@@ -10,3 +10,6 @@ description = ""
 
 [simulation]
 preferred-simulators = [ "vivado" ]
+
+[ip]
+paths = ["rtl", "dv/og"]

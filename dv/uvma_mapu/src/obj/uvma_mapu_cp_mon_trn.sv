@@ -8,7 +8,8 @@
 
 
 /**
- * Object rebuilt by Control Plane Monitor (uvma_mapu_cp_mon_c).  Analog of uvma_mapu_cp_seq_item_c.
+ * Control Plane Monitor Transaction sampled by uvma_mapu_cp_mon_c.
+ * Analog of uvma_mapu_cp_seq_item_c.
  * @ingroup uvma_mapu_obj
  */
 class uvma_mapu_cp_mon_trn_c extends uvmx_mon_trn_c #(
@@ -36,6 +37,21 @@ class uvma_mapu_cp_mon_trn_c extends uvmx_mon_trn_c #(
     */
    function new(string name="uvma_mapu_cp_mon_trn");
       super.new(name);
+   endfunction
+
+   /**
+    * Describes transaction for logger.
+    */
+   virtual function uvmx_metadata_t get_metadata();
+      string i_en_str;
+      string i_op_str;
+      string o_of_str;
+      i_en_str = $sformatf("%h", i_en);
+      i_op_str = $sformatf("%h", i_op);
+      o_of_str = $sformatf("%h", o_of);
+      `uvmx_metadata_field("i_en", i_en_str)
+      `uvmx_metadata_field("i_op", i_op_str)
+      `uvmx_metadata_field("o_of", o_of_str)
    endfunction
 
 endclass : uvma_mapu_cp_mon_trn_c

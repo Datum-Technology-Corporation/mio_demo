@@ -9,13 +9,13 @@
 
 
 /**
- * Example Virtual Sequence that runs 10 (by default) fully random items.
+ * Example Sequence that generates 10 fully random items by default.
  */
 class uvme_mapu_example_vseq_c extends uvme_mapu_base_vseq_c;
 
    /// @name Knobs
    /// @{
-   rand int unsigned  num_items; ///< Number of sequence items to be generated.
+   rand int unsigned  num_items; ///< Number of items to be generated.
    /// @}
 
 
@@ -35,59 +35,24 @@ class uvme_mapu_example_vseq_c extends uvme_mapu_base_vseq_c;
    /**
     * Default constructor.
     */
-   extern function new(string name="uvme_mapu_example_vseq");
+   function new(string name="uvme_mapu_example_vseq");
+      super.new(name);
+   endfunction
 
    /**
-    * Generates #num_items.
+    * Generates num_items of fully random items.
     */
-   extern virtual task body();
+   virtual task body();
+      for (int unsigned ii=0; ii<num_items; ii++) begin
+         `uvm_info("MAPU_EXAMPLE_VSEQ", $sformatf("Starting item %0d/%0d", (ii+1), num_items), UVM_LOW)
+         `uvm_do_on_with(req, psequencer.agent_sequencer, {
+            // ...
+         })
+         `uvm_info("MAPU_EXAMPLE_VSEQ", $sformatf("Finished item %0d/%0d", (ii+1), num_items), UVM_MEDIUM)
+      end
+   endtask
 
 endclass : uvme_mapu_example_vseq_c
-
-
-function uvme_mapu_example_vseq_c::new(string name="uvme_mapu_example_vseq");
-
-   super.new(name);
-
-endfunction : new
-
-
-task uvme_mapu_example_vseq_c::body();
-
-   uvma_mapu_cp_seq_item_c   cp_req ;
-   uvma_mapu_dpi_seq_item_c  dpi_req;
-   uvma_mapu_dpo_seq_item_c  dpo_req;
-
-   fork
-      begin : main
-         for (int unsigned ii=0; ii<num_items; ii++) begin
-            `uvm_info("MAPU_EXAMPLE_VSEQ", $sformatf("Starting item %0d/%0d", (ii+1), num_items), UVM_HIGH)
-            fork
-               begin
-                  `uvm_do_on_with(cp_req , p_sequencer.cp_sequencer, {
-                     // ...
-                  })
-               end
-               begin
-                  `uvm_do_on_with(dpi_req, p_sequencer.dpi_sequencer, {
-                     // ...
-                  })
-               end
-            join
-         end
-      end
-
-      begin : dpo
-         forever begin
-            `uvm_do_on_with(dpo_req, p_sequencer.dpo_sequencer, {
-               // ...
-            })
-         end
-      end
-   join_any
-   disable fork;
-
-endtask : body
 
 
 `endif // __UVME_MAPU_EXAMPLE_VSEQ_SV__

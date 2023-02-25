@@ -8,7 +8,7 @@
 
 
 /**
- * Object encapsulating all state variables for all Matrix APU agent (uvma_mapu_agent_c) components.
+ * Object encapsulating all state variables for all Matrix APU Agent (uvma_mapu_agent_c) components.
  * @ingroup uvma_mapu_obj
  */
 class uvma_mapu_cntxt_c extends uvmx_agent_cntxt_c #(
@@ -22,17 +22,17 @@ class uvma_mapu_cntxt_c extends uvmx_agent_cntxt_c #(
    /// @{
    /// @}
 
-   /// @name Sequences
+   /// @name Virtual Sequences
    /// @{
-   uvm_sequence_base  drv_in_vseq ; ///<
-   uvm_sequence_base  drv_out_vseq; ///<
+   uvm_sequence_base  in_drv_vseq ; ///< Virtual Sequence driving data into the DUT.
+   uvm_sequence_base  out_drv_vseq; ///< Virtual Sequence driving data out of the DUT.
    /// @}
 
 
    `uvm_object_utils_begin(uvma_mapu_cntxt_c)
       `uvm_field_enum(uvmx_reset_state_enum, reset_state, UVM_DEFAULT)
-      `uvm_field_object(drv_in_vseq , UVM_DEFAULT)
-      `uvm_field_object(drv_out_vseq, UVM_DEFAULT)
+      `uvm_field_object(in_drv_vseq , UVM_DEFAULT)
+      `uvm_field_object(out_drv_vseq, UVM_DEFAULT)
    `uvm_object_utils_end
 
 
@@ -45,7 +45,6 @@ class uvma_mapu_cntxt_c extends uvmx_agent_cntxt_c #(
 
    /**
     * Returns all state variables to initial values.
-    * Called by monitor (uvma_mapu_mon_c) when it witnesses a reset pulse.
     */
    virtual function void reset();
       // TODO Implement uvma_mapu_cntxt_c::reset()

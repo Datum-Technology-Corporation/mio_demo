@@ -20,15 +20,14 @@ ip:
   block-diagram: "docs/agent_block_diagram.svg"
   languages: ["sv"]
   simulators-supported:
-    mdc: "20220822.10.0"
     viv: "2022.2"
+    mdc: "20220822.10.0"
   tags: []
   copyright-holders: ["Acme Enterprises Inc."]
   licenses: ["All rights reserved."]
 
 dependencies:
-  "datum/uvmx"     : "~1.0"
-  "datum/uvml_math": "~1.0"
+  "datum/uvmx": "~1.0"
 
 structure:
   scripts-path : "bin"
@@ -39,3 +38,4 @@ structure:
 hdl-src:
   directories: [".", "comps", "obj", "seq"]
   top-files: ["uvma_mapu_pkg.sv"]
+  so-libs: []

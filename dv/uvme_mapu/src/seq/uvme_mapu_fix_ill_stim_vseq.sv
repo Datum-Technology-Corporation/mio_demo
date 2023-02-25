@@ -8,7 +8,7 @@
 
 
 /**
- * Sequence that always generates the same (i.e. reference) partially illegal stimulus for the DUT.
+ * Virtual Sequence that always generates the same (i.e. reference) partially illegal stimulus for the DUT.
  * @ingroup uvme_mapu_seq
  */
 class uvme_mapu_fix_ill_stim_vseq_c extends uvme_mapu_base_vseq_c;

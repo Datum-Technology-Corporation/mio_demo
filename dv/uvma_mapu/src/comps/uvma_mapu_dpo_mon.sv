@@ -8,7 +8,7 @@
 
 
 /**
- *
+ * Monitor sampling Data Plane Output Monitor Transactions (uvma_mapu_dpo_mon_trn_c) from uvma_mapu_if.
  * @ingroup uvma_mapu_comps
  */
 class uvma_mapu_dpo_mon_c extends uvmx_mp_mon_c #(
@@ -30,24 +30,15 @@ class uvma_mapu_dpo_mon_c extends uvmx_mp_mon_c #(
    endfunction
 
    /**
-    *
+    * Samples #trn from the Data Plane Output Monitor clocking block (dpi_mon_cb) on each clock cycle.
     */
    virtual task sample_trn(ref uvma_mapu_dpo_mon_trn_c trn);
-      trn.o_vld = mp.dpo_mon_cb.o_vld;
       trn.i_rdy = mp.dpo_mon_cb.i_rdy;
+      trn.o_vld = mp.dpo_mon_cb.o_vld;
       trn.o_r0  = mp.dpo_mon_cb.o_r0 ;
       trn.o_r1  = mp.dpo_mon_cb.o_r1 ;
       trn.o_r2  = mp.dpo_mon_cb.o_r2 ;
    endtask
-
-   /**
-    *
-    */
-   virtual function void process_trn(ref uvma_mapu_dpo_mon_trn_c trn);
-      `uvmx_trim(trn.o_r0, cfg.data_width)
-      `uvmx_trim(trn.o_r1, cfg.data_width)
-      `uvmx_trim(trn.o_r2, cfg.data_width)
-   endfunction
 
 endclass : uvma_mapu_dpo_mon_c
 

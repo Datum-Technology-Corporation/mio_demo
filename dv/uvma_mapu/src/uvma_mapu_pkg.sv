@@ -21,7 +21,6 @@
 // Pre-processor macros
 `include "uvm_macros.svh"
 `include "uvmx_macros.svh"
-`include "uvml_math_macros.svh"
 `include "uvma_mapu_macros.svh"
 
 // Interface(s)
@@ -34,9 +33,8 @@
  */
 package uvma_mapu_pkg;
 
-   import uvm_pkg      ::*;
-   import uvmx_pkg     ::*;
-   import uvml_math_pkg::*;
+   import uvm_pkg ::*;
+   import uvmx_pkg::*;
 
    // Constants / Structs / Enums
    `include "uvma_mapu_tdefs.sv"
@@ -73,11 +71,15 @@ package uvma_mapu_pkg;
    `include "uvma_mapu_base_vseq.sv"
    `include "uvma_mapu_trn_base_vseq.sv"
    `include "uvma_mapu_mon_vseq.sv"
+   `include "uvma_mapu_in_drv_vseq.sv"
+   `include "uvma_mapu_out_drv_vseq.sv"
    `include "uvma_mapu_idle_vseq.sv"
-   `include "uvma_mapu_drv_in_vseq.sv"
-   `include "uvma_mapu_drv_out_vseq.sv"
 
 endpackage : uvma_mapu_pkg
+
+
+// Module(s) / Checker(s)
+`include "uvma_mapu_if_chkr.sv"
 
 
 `endif // __UVMA_MAPU_PKG_SV__

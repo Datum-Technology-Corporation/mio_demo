@@ -8,7 +8,7 @@
 
 
 /**
- * Component driving a Matrix APU virtual interface (uvma_mapu_if) with contents from uvma_mapu_seq_item_c requests.
+ * Component driving Matrix APU Interface (uvma_mapu_if) for all planes.
  * @ingroup uvma_mapu_comps
  */
 class uvma_mapu_drv_c extends uvmx_drv_c #(
@@ -18,9 +18,9 @@ class uvma_mapu_drv_c extends uvmx_drv_c #(
 
    /// @name Components
    /// @{
-   uvma_mapu_cp_drv_c   cp_driver ; ///<
-   uvma_mapu_dpi_drv_c  dpi_driver; ///<
-   uvma_mapu_dpo_drv_c  dpo_driver; ///<
+   uvma_mapu_cp_drv_c   cp_driver ; ///< Control Plane Driver.
+   uvma_mapu_dpi_drv_c  dpi_driver; ///< Data Plane Input Driver.
+   uvma_mapu_dpo_drv_c  dpo_driver; ///< Data Plane Output Driver.
    /// @}
 
 
@@ -35,7 +35,7 @@ class uvma_mapu_drv_c extends uvmx_drv_c #(
    endfunction
 
    /**
-    *
+    * Creates Driver components.
     */
    virtual function void create_drivers();
       cp_driver  = uvma_mapu_cp_drv_c ::type_id::create("cp_driver" , this);

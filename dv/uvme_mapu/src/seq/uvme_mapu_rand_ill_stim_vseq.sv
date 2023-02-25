@@ -8,7 +8,7 @@
 
 
 /**
- * Sequence that runs 10 (by default) fully random illegal DUT input sequence items.
+ * Sequence that runs a fixed number of fully, potentially illegal random Sequence Items.
  * @ingroup uvme_mapu_seq
  */
 class uvme_mapu_rand_ill_stim_vseq_c extends uvme_mapu_base_vseq_c;
@@ -36,7 +36,7 @@ class uvme_mapu_rand_ill_stim_vseq_c extends uvme_mapu_base_vseq_c;
     * Default values for random fields.
     */
    constraint defaults_cons {
-      soft num_items  == 10;
+      soft num_items  == uvme_mapu_default_num_items_cons;
       soft num_errors == 1;
    }
 

@@ -47,13 +47,13 @@ functional:
 error:
    directed:
       fix_ill_stim:
-         sanity : []
-         nightly: []
-         weekly : []
-         bugs   : []
+         sanity : [1]
+         nightly: [1]
+         weekly : [1]
+         bugs   :  []
    rand:
       rand_ill_stim:
-         sanity : []
-         nightly: []
-         weekly : []
-         bugs   : []
+         sanity : [1]
+         nightly:  10
+         weekly : 100
+         bugs   :  []

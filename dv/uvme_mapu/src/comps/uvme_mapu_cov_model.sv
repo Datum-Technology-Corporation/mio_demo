@@ -8,7 +8,7 @@
 
 
 /**
- * Component encapsulating Matrix APU Sub-Sytem's functional coverage model.
+ * Component encapsulating Matrix APU Block's functional coverage model.
  * @ingroup uvme_mapu_comps
  */
 class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
@@ -18,22 +18,22 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
 
    /// @name Objects
    /// @{
-   uvma_mapu_seq_item_c     seq_item   ; ///<
-   uvma_mapu_mon_trn_c      in_mon_trn ; ///<
-   uvma_mapu_mon_trn_c      out_mon_trn; ///<
-   uvma_mapu_cp_mon_trn_c   cp_mon_trn ; ///< Control plane transaction being sampled
-   uvma_mapu_dpi_mon_trn_c  dpi_mon_trn; ///< Data plane input transaction being sampled
-   uvma_mapu_dpo_mon_trn_c  dpo_mon_trn; ///< Data plane output transaction being sampled
+   uvma_mapu_seq_item_c     seq_item   ; ///< Sequence Item being sampled.
+   uvma_mapu_mon_trn_c      in_mon_trn ; ///< Input Monitor Transaction being sampled.
+   uvma_mapu_mon_trn_c      out_mon_trn; ///< Output Monitor Transaction being sampled.
+   uvma_mapu_cp_mon_trn_c   cp_mon_trn ; ///< Control Plane Monitor Transaction being sampled
+   uvma_mapu_dpi_mon_trn_c  dpi_mon_trn; ///< Data Plane Input Monitor Transaction being sampled
+   uvma_mapu_dpo_mon_trn_c  dpo_mon_trn; ///< Data Plane Output Monitor Transaction being sampled
    /// @}
 
    /// @name FIFOs
    /// @{
-   uvm_tlm_analysis_fifo #(uvma_mapu_seq_item_c   )  seq_item_fifo   ; ///< Queue of control plane transactions
-   uvm_tlm_analysis_fifo #(uvma_mapu_mon_trn_c    )  in_mon_trn_fifo ; ///< Queue of control plane transactions
-   uvm_tlm_analysis_fifo #(uvma_mapu_mon_trn_c    )  out_mon_trn_fifo; ///< Queue of control plane transactions
-   uvm_tlm_analysis_fifo #(uvma_mapu_cp_mon_trn_c )  cp_mon_trn_fifo ; ///< Queue of control plane transactions
-   uvm_tlm_analysis_fifo #(uvma_mapu_dpi_mon_trn_c)  dpi_mon_trn_fifo; ///< Queue of data plane input transactions
-   uvm_tlm_analysis_fifo #(uvma_mapu_dpo_mon_trn_c)  dpo_mon_trn_fifo; ///< Queue of data plane output transactions
+   uvm_tlm_analysis_fifo #(uvma_mapu_seq_item_c   )  seq_item_fifo   ; ///< Input FIFO for Sequence Items.
+   uvm_tlm_analysis_fifo #(uvma_mapu_mon_trn_c    )  in_mon_trn_fifo ; ///< Input FIFO for Input Monitor Transactions.
+   uvm_tlm_analysis_fifo #(uvma_mapu_mon_trn_c    )  out_mon_trn_fifo; ///< Input FIFO for Output Monitor Transactions.
+   uvm_tlm_analysis_fifo #(uvma_mapu_cp_mon_trn_c )  cp_mon_trn_fifo ; ///< Input FIFO for Control Plane transactions.
+   uvm_tlm_analysis_fifo #(uvma_mapu_dpi_mon_trn_c)  dpi_mon_trn_fifo; ///< Input FIFO for Data Plane Input transactions.
+   uvm_tlm_analysis_fifo #(uvma_mapu_dpo_mon_trn_c)  dpo_mon_trn_fifo; ///< Input FIFO for Data Plane Output transactions.
    /// @}
 
 
@@ -41,7 +41,7 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
 
 
    /**
-    * Coverage for cfg
+    * Environment configuration functional coverage.
     */
    covergroup mapu_cfg_cg;
       // TODO Implement mapu_cfg_cg
@@ -49,7 +49,7 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
    endgroup
 
    /**
-    * Coverage for cntxt
+    * Environment context functional coverage.
     */
    covergroup mapu_cntxt_cg;
       // TODO Implement mapu_cntxt_cg
@@ -57,7 +57,7 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
    endgroup
 
    /**
-    * Coverage for agent virtual interface.
+    * Agent Interface functional coverage.
     */
    covergroup mapu_agent_vif_cg;
       // TODO Implement mapu_cntxt_cg
@@ -65,15 +65,7 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
    endgroup
 
    /**
-    * Coverage for probe virtual interface.
-    */
-   covergroup mapu_probe_vif_cg;
-      // TODO Implement mapu_cntxt_cg
-      //      Ex: abc_cp : coverpoint cntxt.probe_vif.abc;
-   endgroup
-
-   /**
-    * Coverage for Sequence Items
+    * Sequence Item functional coverage.
     */
    covergroup mapu_seq_item_cg;
       // TODO Implement mapu_seq_item_cg
@@ -81,7 +73,7 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
    endgroup
 
    /**
-    * Coverage for input transactions
+    * Input Monitor Transaction functional coverage.
     */
    covergroup mapu_in_mon_trn_cg;
       // TODO Implement mapu_in_mon_trn_cg
@@ -89,7 +81,7 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
    endgroup
 
    /**
-    * Coverage for output transactions
+    * Output Monitor Transaction functional coverage.
     */
    covergroup mapu_out_mon_trn_cg;
       // TODO Implement mapu_out_mon_trn_cg
@@ -97,7 +89,7 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
    endgroup
 
    /**
-    * Coverage for control plane transactions
+    * Control Plane Monitor Transaction functional coverage.
     */
    covergroup mapu_cp_mon_trn_cg;
       // TODO Implement mapu_cp_mon_trn_cg
@@ -105,7 +97,7 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
    endgroup
 
    /**
-    * Coverage for data plane input transactions
+    * Data Plane Input Monitor Transaction functional coverage.
     */
    covergroup mapu_dpi_mon_trn_cg;
       // TODO Implement mapu_dpi_mon_trn_cg
@@ -113,7 +105,7 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
    endgroup
 
    /**
-    * Coverage for data plane output transactions
+    * Data Plane Output Monitor Transaction functional coverage.
     */
    covergroup mapu_dpo_mon_trn_cg;
       // TODO Implement mapu_dpo_mon_trn_cg
@@ -129,7 +121,6 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
       mapu_cfg_cg         = new();
       mapu_cntxt_cg       = new();
       mapu_agent_vif_cg   = new();
-      mapu_probe_vif_cg   = new();
       mapu_seq_item_cg    = new();
       mapu_in_mon_trn_cg  = new();
       mapu_out_mon_trn_cg = new();
@@ -152,23 +143,14 @@ class uvme_mapu_cov_model_c extends uvmx_env_cov_model_c #(
 
    /// @name Sampling functions
    /// @{
-   virtual function void sample_cfg();
-      mapu_cfg_cg.sample();
-   endfunction
-
-   virtual function void sample_cntxt();
-      mapu_cntxt_cg.sample();
-   endfunction
+   virtual function void sample_cfg  (); mapu_cfg_cg  .sample(); endfunction
+   virtual function void sample_cntxt(); mapu_cntxt_cg.sample(); endfunction
 
    virtual task sample_vifs();
       fork
          forever begin
-            @(cntxt.agent_cntxt.vif.dut_mp.dut_cb);
+            cntxt.agent_cntxt.clk_e.wait_trigger();
             mapu_agent_vif_cg.sample();
-         end
-         forever begin
-            @(cntxt.probe_vif.mp.cb);
-            mapu_probe_vif_cg.sample();
          end
       join
    endtask

@@ -8,8 +8,7 @@
 
 
 /**
- * Top-level component that encapsulates, builds and connects all others to implement the Matrix APU UVM Agent.
- * Capable of driving/monitoring Matrix APU virtual interface.
+ * Sequence-based UVM Agent capable of driving/monitoring the Matrix APU Interface (uvma_mapu_if).
  * @ingroup uvma_mapu_comps
  */
 class uvma_mapu_agent_c extends uvmx_agent_c #(
@@ -26,14 +25,14 @@ class uvma_mapu_agent_c extends uvmx_agent_c #(
 
    /// @name Ports
    /// @{
-   uvm_analysis_port #(uvma_mapu_mon_trn_c     )  in_mon_trn_ap  ; ///<
-   uvm_analysis_port #(uvma_mapu_mon_trn_c     )  out_mon_trn_ap ; ///<
-   uvm_analysis_port #(uvma_mapu_cp_seq_item_c )  cp_seq_item_ap ; ///<
-   uvm_analysis_port #(uvma_mapu_dpi_seq_item_c)  dpi_seq_item_ap; ///<
-   uvm_analysis_port #(uvma_mapu_dpo_seq_item_c)  dpo_seq_item_ap; ///<
-   uvm_analysis_port #(uvma_mapu_cp_mon_trn_c  )  cp_mon_trn_ap  ; ///<
-   uvm_analysis_port #(uvma_mapu_dpi_mon_trn_c )  dpi_mon_trn_ap ; ///<
-   uvm_analysis_port #(uvma_mapu_dpo_mon_trn_c )  dpo_mon_trn_ap ; ///<
+   uvm_analysis_port #(uvma_mapu_mon_trn_c     )  in_mon_trn_ap  ; ///< Output port for Input Monitor Transactions
+   uvm_analysis_port #(uvma_mapu_mon_trn_c     )  out_mon_trn_ap ; ///< Output port for Output Monitor Transactions
+   uvm_analysis_port #(uvma_mapu_cp_seq_item_c )  cp_seq_item_ap ; ///< Output port for Control Plane Sequence Items
+   uvm_analysis_port #(uvma_mapu_dpi_seq_item_c)  dpi_seq_item_ap; ///< Output port for Data Plane Input Sequence Items
+   uvm_analysis_port #(uvma_mapu_dpo_seq_item_c)  dpo_seq_item_ap; ///< Output port for Data Plane Output Sequence Items
+   uvm_analysis_port #(uvma_mapu_cp_mon_trn_c  )  cp_mon_trn_ap  ; ///< Output port for Control Plane Monitor Transactions
+   uvm_analysis_port #(uvma_mapu_dpi_mon_trn_c )  dpi_mon_trn_ap ; ///< Output port for Data Plane Input Monitor Transactions
+   uvm_analysis_port #(uvma_mapu_dpo_mon_trn_c )  dpo_mon_trn_ap ; ///< Output port for Data Plane Output Monitor Transactions
    /// @}
 
 
@@ -48,7 +47,7 @@ class uvma_mapu_agent_c extends uvmx_agent_c #(
    endfunction
 
    /**
-    * Connects sequencer to monitor and driver's TLM ports.
+    * Connects sequencer to driver's TLM ports.
     */
    virtual function void connect_drivers_sequencers();
       driver.cp_driver .seq_item_port.connect(vsequencer.cp_sequencer .seq_item_export);
@@ -57,7 +56,7 @@ class uvma_mapu_agent_c extends uvmx_agent_c #(
    endfunction
 
    /**
-    * Connects sequencer to monitor and driver's TLM ports.
+    * Connects sequencer to monitor's TLM ports.
     */
    virtual function void connect_monitor_vsequencer();
       monitor.cp_monitor .ap.connect(vsequencer.cp_mon_trn_fifo .analysis_export);
@@ -66,7 +65,7 @@ class uvma_mapu_agent_c extends uvmx_agent_c #(
    endfunction
 
    /**
-    *
+    * Connects top-level ports to lower-level components'.
     */
    virtual function void connect_ports();
       in_mon_trn_ap   = vsequencer.in_mon_trn_ap ;
@@ -80,7 +79,7 @@ class uvma_mapu_agent_c extends uvmx_agent_c #(
    endfunction
 
    /**
-    *
+    * Connects loggers to ports.
     */
    virtual function void connect_logger();
       in_mon_trn_ap  .connect(logger.in_mon_trn_logger  .analysis_export);
@@ -94,12 +93,12 @@ class uvma_mapu_agent_c extends uvmx_agent_c #(
    endfunction
 
    /**
-    *
+    * Starts internal Sequences for driving and monitoring.
     */
    virtual task start_sequences();
       if (cfg.is_active) begin
-         start_sequence(cfg.drv_in_vseq_type , cntxt.drv_in_vseq );
-         start_sequence(cfg.drv_out_vseq_type, cntxt.drv_out_vseq);
+         start_sequence(cfg.in_drv_vseq_type , cntxt.in_drv_vseq );
+         start_sequence(cfg.out_drv_vseq_type, cntxt.out_drv_vseq);
       end
    endtask
 

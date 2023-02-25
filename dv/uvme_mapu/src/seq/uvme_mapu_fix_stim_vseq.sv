@@ -8,7 +8,7 @@
 
 
 /**
- * Sequence that always generates the same (i.e. reference) stimulus for the DUT.
+ * Virtual Sequence that always generates the same (i.e. reference) stimulus for the DUT.
  * @ingroup uvme_mapu_seq
  */
 class uvme_mapu_fix_stim_vseq_c extends uvme_mapu_base_vseq_c;
@@ -26,80 +26,14 @@ class uvme_mapu_fix_stim_vseq_c extends uvme_mapu_base_vseq_c;
     * TODO Describe uvme_mapu_fix_stim_vseq_c::body()
     */
    virtual task body();
-      add ();
-      mult();
-   endtask
-
-   /**
-    * TODO Describe uvme_mapu_fix_stim_vseq_c::add()
-    */
-   virtual task add();
       uvma_mapu_seq_item_c  seq_item;
-      `uvm_create_on(seq_item, p_sequencer.agent_vsequencer)
-      seq_item.ton = 100;
-      seq_item.op  = UVMA_MAPU_OP_ADD;
-      seq_item.ma.load('{
-         '{1,0,2},
-         '{3,2,1},
-         '{2,1,0}
-      });
-      seq_item.mb.load('{
-         '{1,0,2},
-         '{3,2,1},
-         '{2,1,0}
-      });
-      `uvm_send(seq_item)
-
-      `uvm_create_on(seq_item, p_sequencer.agent_vsequencer)
-      seq_item.ton = 100;
-      seq_item.op  = UVMA_MAPU_OP_ADD;
-      seq_item.ma.load('{
-         '{2,1,0},
-         '{1,0,2},
-         '{2,1,0}
-      });
-      seq_item.mb.load('{
-         '{2,1,0},
-         '{1,0,2},
-         '{2,1,0}
-      });
-      `uvm_send(seq_item)
-   endtask
-
-   /**
-    * TODO Describe uvme_mapu_fix_stim_vseq_c::mult()
-    */
-   virtual task mult();
-      uvma_mapu_seq_item_c  seq_item;
-      `uvm_create_on(seq_item, p_sequencer.agent_vsequencer)
-      seq_item.ton = 100;
-      seq_item.op  = UVMA_MAPU_OP_MULT;
-      seq_item.ma.load('{
-         '{1,0,2},
-         '{3,2,1},
-         '{2,1,0}
-      });
-      seq_item.mb.load('{
-         '{1,0,2},
-         '{3,2,1},
-         '{2,1,0}
-      });
-      `uvm_send(seq_item)
-
-      `uvm_create_on(seq_item, p_sequencer.agent_vsequencer)
-      seq_item.ton = 100;
-      seq_item.op  = UVMA_MAPU_OP_MULT;
-      seq_item.ma.load('{
-         '{2,1,0},
-         '{1,0,2},
-         '{2,1,0}
-      });
-      seq_item.mb.load('{
-         '{2,1,0},
-         '{1,0,2},
-         '{2,1,0}
-      });
-      `uvm_send(seq_item)
+      // TODO Implement uvme_mapu_fix_stim_vseq_c::body()
+      //      Ex: `uvm_create_on(seq_item, p_sequencer.agent_vsequencer)
+      //          seq_item.abc = 123;
+      //          `uvm_send(seq_item)
+      //          `uvm_create_on(seq_item, p_sequencer.agent_vsequencer)
+      //          seq_item.abc = 456;
+      //          `uvm_send(seq_item)
    endtask
 
 endclass : uvme_mapu_fix_stim_vseq_c
