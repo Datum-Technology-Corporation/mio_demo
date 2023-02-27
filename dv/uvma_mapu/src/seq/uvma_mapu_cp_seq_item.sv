@@ -18,8 +18,8 @@ class uvma_mapu_cp_seq_item_c extends uvmx_seq_item_c #(
 
    /// @name Data
    /// @{
-   bit  i_en; ///< Block enable
-   bit  i_op; ///< Matrix operation to be performed
+   rand bit  i_en; ///< Block enable
+   rand bit  i_op; ///< Matrix operation to be performed
    /// @}
 
    /// @name Metadata
