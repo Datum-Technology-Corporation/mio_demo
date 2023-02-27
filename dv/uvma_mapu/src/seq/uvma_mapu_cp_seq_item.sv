@@ -48,13 +48,10 @@ class uvma_mapu_cp_seq_item_c extends uvmx_seq_item_c #(
    virtual function uvmx_metadata_t get_metadata();
       string i_en_str;
       string i_op_str;
-      string o_of_str;
-      i_en_str = $sformatf("%h", i_en);
-      i_op_str = $sformatf("%h", i_op);
-      o_of_str = $sformatf("%h", o_of);
+      i_en_str = (i_en === 1) ? "Y " : "N ";
+      i_op_str = (i_op === 1) ? "MULT" : "ADD";
       `uvmx_metadata_field("i_en", i_en_str)
       `uvmx_metadata_field("i_op", i_op_str)
-      `uvmx_metadata_field("o_of", o_of_str)
    endfunction
 
 endclass : uvma_mapu_cp_seq_item_c

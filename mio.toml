@@ -7,9 +7,3 @@
 name        = "mio_demo"
 full-name   = "Moore.io CLI Demo"
 description = ""
-
-[simulation]
-preferred-simulators = [ "vivado" ]
-
-[ip]
-paths = ["rtl", "dv/og"]
