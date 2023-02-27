@@ -60,7 +60,7 @@ class uvmt_mapu_rand_ill_stim_test_c extends uvmt_mapu_base_test_c;
    endtask
 
    /**
-    * Ensures that error events were observed, predicted, scoreboarded, and that the counts match what what driven in.
+    * Ensures that error events were observed, predicted, scoreboarded, and that the counts match what was driven in.
     */
    virtual function void check_phase(uvm_phase phase);
       super.check_phase(phase);
