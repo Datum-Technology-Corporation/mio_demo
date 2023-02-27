@@ -17,15 +17,18 @@ module uvmt_mapu_tb;
    import uvmx_pkg::*;
    import uvmt_mapu_pkg::*;
 
-   logic  clk, reset_n;
+   /// @name Clock & Reset
+   /// @{
+   logic  clk    ; ///< Clock signal
+   logic  reset_n; ///< Reset signal
+   uvma_clk_if    clk_if                (.*); ///< Clock generating interface
+   uvma_reset_if  reset_if(.clk(clk_if.clk)); ///< Reset assertion interface
    assign clk     = clk_if  .clk    ;
    assign reset_n = reset_if.reset_n;
+   /// @}
 
-   uvma_clk_if    clk_if  (.*); ///< Clock generating interface
-   uvma_reset_if  reset_if(.*); ///< Reset assertion interface
    uvma_mapu_if        agent_if(.*); ///< Block Agent interface
-   uvmt_mapu_dut_wrap  dut_wrap(.*); ///< DUT instance with interface ports
-
+   uvmt_mapu_dut_wrap  dut_wrap(.*); ///< DUT wrapper instance
    bind uvmt_mapu_dut_wrap : dut_wrap  uvma_mapu_if_chkr chkr(.*); ///< Checker instantiation and binding
 
    /**
