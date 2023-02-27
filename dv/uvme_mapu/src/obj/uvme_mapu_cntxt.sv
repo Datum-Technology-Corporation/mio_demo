@@ -15,7 +15,7 @@ class uvme_mapu_cntxt_c extends uvmx_env_cntxt_c;
 
    /// @name Integrals
    /// @{
-   int unsigned  overflow_count; ///< Count of out trn with overflow=1 predicted.
+   int unsigned  prd_overflow_count; ///< Count of out trn with overflow=1 predicted.
    /// @}
 
    /// @name Objects
@@ -52,7 +52,7 @@ class uvme_mapu_cntxt_c extends uvmx_env_cntxt_c;
     */
    virtual function void reset();
       agent_cntxt.reset();
-      overflow_count = 0;
+      prd_overflow_count = 0;
    endfunction
 
 endclass : uvme_mapu_cntxt_c

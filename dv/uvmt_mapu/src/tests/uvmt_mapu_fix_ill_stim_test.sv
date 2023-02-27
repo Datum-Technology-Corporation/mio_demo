@@ -20,10 +20,11 @@ class uvmt_mapu_fix_ill_stim_test_c extends uvmt_mapu_base_test_c;
 
 
    /**
-    * Rules for this test.
+    * Keep 'i_rdy' always ON.
     */
    constraint fix_ill_stim_cons {
       env_cfg.scoreboarding_enabled == 1;
+      env_cfg.agent_cfg.out_drv_ton_pct == 100;
    }
 
 
@@ -54,11 +55,11 @@ class uvmt_mapu_fix_ill_stim_test_c extends uvmt_mapu_base_test_c;
    endtask
 
    /**
-    * Ensures that overflow events were observed and predicted.
+    * Ensures that error events were observed and predicted.
     */
    virtual function void check_phase(uvm_phase phase);
       super.check_phase(phase);
-      if (env_cntxt.overflow_count == 0) begin
+      if (env_cntxt.prd_overflow_count == 0) begin
          `uvm_error("TEST", "Did not create overflow condition during test")
       end
       if (env_cntxt.agent_cntxt.mon_overflow_count == 0) begin

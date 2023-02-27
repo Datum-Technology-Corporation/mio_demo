@@ -112,8 +112,8 @@ class uvmt_mapu_base_test_c extends uvmx_test_c #(
     * Ensures that the number of overflow events observed and predicted match.
     */
    virtual function void check_phase(uvm_phase phase);
-      if (env_cntxt.overflow_count != env_cntxt.agent_cntxt.mon_overflow_count) begin
-         `uvm_error("TEST", $sformatf("Number of overflow events predicted (%0d) and observed (%0d) do not match", env_cntxt.overflow_count, env_cntxt.agent_cntxt.mon_overflow_count))
+      if (env_cntxt.prd_overflow_count != env_cntxt.agent_cntxt.mon_overflow_count) begin
+         `uvm_error("TEST", $sformatf("Number of predicte overflow events (%0d) and observed (%0d) do not match", env_cntxt.prd_overflow_count, env_cntxt.agent_cntxt.mon_overflow_count))
       end
    endfunction : check_phase
 

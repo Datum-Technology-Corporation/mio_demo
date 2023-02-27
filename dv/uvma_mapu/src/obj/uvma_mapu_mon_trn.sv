@@ -82,6 +82,12 @@ class uvma_mapu_mon_trn_c extends uvmx_mon_trn_c #(
       end
       mm = matrix.get_metadata();
       foreach (mm[ii]) begin
+         if (cfg.data_width == 32) begin
+            mm[ii].width = 12;
+         end
+         else if (cfg.data_width == 32) begin
+            mm[ii].width = 18;
+         end
          `uvmx_metadata_add(mm[ii])
       end
    endfunction

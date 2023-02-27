@@ -82,10 +82,22 @@ class uvma_mapu_seq_item_c extends uvmx_seq_item_c #(
       `uvmx_metadata_field("ton", ton_pct_str)
       mam = ma.get_metadata();
       foreach (mam[ii]) begin
+         if (cfg.data_width == 32) begin
+            mam[ii].width = 12;
+         end
+         else if (cfg.data_width == 32) begin
+            mam[ii].width = 18;
+         end
          `uvmx_metadata_add(mam[ii])
       end
       mbm = mb.get_metadata();
       foreach (mbm[ii]) begin
+         if (cfg.data_width == 32) begin
+            mbm[ii].width = 12;
+         end
+         else if (cfg.data_width == 32) begin
+            mbm[ii].width = 18;
+         end
          `uvmx_metadata_add(mbm[ii])
       end
    endfunction
