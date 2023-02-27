@@ -43,15 +43,14 @@ class uvma_mapu_cp_mon_trn_c extends uvmx_mon_trn_c #(
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      string i_en_str;
       string i_op_str;
       string o_of_str;
-      i_en_str = $sformatf("%h", i_en);
-      i_op_str = $sformatf("%h", i_op);
-      o_of_str = $sformatf("%h", o_of);
-      `uvmx_metadata_field("i_en", i_en_str)
-      `uvmx_metadata_field("i_op", i_op_str)
-      `uvmx_metadata_field("o_of", o_of_str)
+      if (i_en === 1) begin
+         i_op_str = (i_op === 1) ? "MULT" : "ADD";
+         o_of_str = (o_of === 1) ? "OF"   :    "";
+         `uvmx_metadata_field("i_op", i_op_str)
+         `uvmx_metadata_field("o_of", o_of_str)
+      end
    endfunction
 
 endclass : uvma_mapu_cp_mon_trn_c

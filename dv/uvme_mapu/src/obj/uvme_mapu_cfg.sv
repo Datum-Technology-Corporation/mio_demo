@@ -14,14 +14,14 @@
 class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
 
    // @name Integrals
-   /// @{ 
+   /// @{
    rand int unsigned data_width; ///< Selected data bit width.
    /// @}
 
    /// @name Objects
    /// @{
-   rand uvma_mapu_cfg_c  agent_cfg; ///< Block Agent configuration
-   rand uvml_sb_simplex_cfg_c  sb_cfg; ///< Data path scoreboard configuration
+   rand uvma_mapu_cfg_c        agent_cfg; ///< Block Agent configuration
+   rand uvml_sb_simplex_cfg_c  sb_cfg   ; ///< Data path scoreboard configuration
    /// @}
 
 
@@ -74,8 +74,11 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
     * Sets scoreboard configuration.
     */
    constraint sb_cons {
-      sb_cfg.enabled == scoreboarding_enabled;
-      sb_cfg.mode    == UVML_SB_MODE_IN_ORDER;
+      sb_cfg.enabled            == scoreboarding_enabled;
+      sb_cfg.mode               == UVML_SB_MODE_IN_ORDER;
+      sb_cfg.ignore_first_n_act == 0;
+      sb_cfg.ignore_first_n_exp == 0;
+      sb_cfg.log_enabled        == 1;
    }
 
 
@@ -90,7 +93,7 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
     * Creates objects.
     */
    virtual function void create_objects();
-      agent_cfg = uvma_mapu_cfg_c::type_id::create("agent_cfg");
+      agent_cfg = uvma_mapu_cfg_c      ::type_id::create("agent_cfg");
       sb_cfg    = uvml_sb_simplex_cfg_c::type_id::create("sb_cfg"   );
    endfunction
 
@@ -99,9 +102,16 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
     */
    function void post_randomize();
       sb_cfg.reset_log();
-      // TODO Add scoreboard transaction log fields
-      //      Ex: sb_cfg.add_to_log("abc");
-      //          sb_cfg.add_to_log("def");
+      sb_cfg.add_to_log("of"     );
+      sb_cfg.add_to_log("m[0][0]");
+      sb_cfg.add_to_log("m[0][1]");
+      sb_cfg.add_to_log("m[0][2]");
+      sb_cfg.add_to_log("m[1][0]");
+      sb_cfg.add_to_log("m[1][1]");
+      sb_cfg.add_to_log("m[1][2]");
+      sb_cfg.add_to_log("m[2][0]");
+      sb_cfg.add_to_log("m[2][1]");
+      sb_cfg.add_to_log("m[2][2]");
    endfunction
 
 endclass : uvme_mapu_cfg_c

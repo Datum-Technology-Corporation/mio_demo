@@ -19,19 +19,21 @@ class uvma_mapu_mon_trn_c extends uvmx_mon_trn_c #(
 
    /// @name Data
    /// @{
-   // TODO Add uvma_mapu_mon_trn_c data fields
-   //      Ex: logic [7:0]  abc; ///< Describe me!
+   uvma_mapu_op_enum  op    ; ///< Operation to be performed (only valid for dir_in=1)
+   uvml_math_mtx_c    matrix; ///< Matrix observed.
    /// @}
 
    /// @name Metadata
    /// @{
-   bit dir_in; ///< Specifies which side of the Data Plane this transaction was monitored (1=Output,0=Input).
+   bit  dir_in  ; ///< Specifies which side of the Data Plane this transaction was monitored (1=Output,0=Input).
+   bit  overflow; ///< '1' when matrix has values outside the configured bit width.
    /// @}
 
 
    `uvm_object_utils_begin(uvma_mapu_mon_trn_c)
-      // TODO Add UVM field utils for data fields
-      //      Ex: `uvm_field_int(abc, UVM_DEFAULT)
+      `uvm_field_object(matrix, UVM_DEFAULT + UVM_NOCOMPARE)
+      `uvm_field_int(overflow, UVM_DEFAULT)
+      `uvm_field_enum(uvma_mapu_op_enum, op, UVM_DEFAULT + UVM_NOCOMPARE)
    `uvm_object_utils_end
 
 
@@ -46,18 +48,42 @@ class uvma_mapu_mon_trn_c extends uvmx_mon_trn_c #(
     * Create sub-objects.
     */
    virtual function void create_objects();
-      // TODO Create sub-objects or remove
-      //      Ex: matrix = uvml_math_mtx_c::type_id::create("matrix");
+      matrix = uvml_math_mtx_c::type_id::create("matrix");
+      matrix.build(3, 3);
+   endfunction
+
+   /**
+    * Does not attempt to compare matrices if overflow condition.
+    */
+   virtual function bit do_compare(uvm_object rhs, uvm_comparer comparer);
+      uvma_mapu_mon_trn_c  rhs_t;
+      if (!$cast(rhs_t, rhs)) begin
+         `uvm_fatal("MAPU_MON_TRN", $sformatf("Could not cast 'rhs' (%s) to 'rhs_t' (%s)", $typename(rhs), $typename(rhs_t)))
+      end
+      do_compare = super.do_compare(rhs, comparer);
+      if (overflow === 0) begin
+         do_compare &= comparer.compare_object("matrix", matrix, rhs_t.matrix);
+      end
    endfunction
 
    /**
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      // TODO Create metadata for transaction logger
-      //      Ex: string  abc_str;
-      //          abc_str = $sformatf("%h", abc);
-      //          `uvmx_metadata_field("abc", abc_str)
+      string           overflow_str, op_str;
+      uvmx_metadata_t  mm;
+      if (!dir_in) begin
+         overflow_str = (overflow === 1) ? "OF" : "  ";
+         `uvmx_metadata_field("of", overflow_str)
+      end
+      else begin
+         op_str = (op === 0) ? "ADD " : "MULT";
+         `uvmx_metadata_field("op", op_str)
+      end
+      mm = matrix.get_metadata();
+      foreach (mm[ii]) begin
+         `uvmx_metadata_add(mm[ii])
+      end
    endfunction
 
 endclass : uvma_mapu_mon_trn_c

@@ -20,15 +20,16 @@ ip:
   block-diagram: "docs/env_block_diagram.svg"
   languages: ["sv"]
   simulators-supported:
+    mdc: "20230116.4.0"
     viv: "2022.2"
-    mdc: "20220822.10.0"
   tags: []
   copyright-holders: ["Acme Enterprises Inc."]
   licenses: ["All rights reserved."]
 
 dependencies:
-  "datum/uvmx"    : "~1.0"
-  "datum/uvml_sb" : "~1.0"
+  "datum/uvmx"     : "~1.0"
+  "datum/uvml_math": "~1.0"
+  "datum/uvml_sb"  : "~1.0"
   "uvma_mapu": "^"
 
 structure:

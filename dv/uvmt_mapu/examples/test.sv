@@ -9,7 +9,7 @@
 
 
 /**
- * Test which runs Virtual Sequence 'example_vseq' for 10 items of stimulus.
+ * Self-checking Test which runs Virtual Sequence 'example_vseq'.
  * @ingroup uvmt_mapu_tests
  */
 class uvmt_mapu_example_test_c extends uvmt_mapu_base_test_c;
@@ -24,7 +24,13 @@ class uvmt_mapu_example_test_c extends uvmt_mapu_base_test_c;
     * Rules for this test.
     */
    constraint example_cons {
-      example_vseq.num_items == 10;
+      env_cfg.scoreboarding_enabled == 1;
+      if (test_cfg.cli_num_items_override) {
+         example_vseq.num_items == test_cfg.cli_num_items;
+      }
+      else {
+         example_vseq.num_items == uvme_mapu_default_num_items_cons;
+      }
    }
 
 
@@ -53,6 +59,19 @@ class uvmt_mapu_example_test_c extends uvmt_mapu_base_test_c;
       `uvm_info("TEST", $sformatf("Finished 'example_vseq' Virtual Sequence:\n%s", example_vseq.sprint()), UVM_NONE)
       phase.drop_objection(this);
    endtask
+
+   /**
+    * Ensures that items were generated and that the scoreboard saw the same number of matches.
+    */
+   virtual function void check_phase(uvm_phase phase);
+      super.check_phase(phase);
+      if (example_vseq.num_items == 0) begin
+         `uvm_error("TEST", "No items were generated")
+      end
+      if (example_vseq.num_items != env_cntxt.sb_cntxt.match_count) begin
+         `uvm_error("TEST", $sformatf("Number of items driven in (%0d) and number of scoreboard matches (%0d) do not match", example_vseq.num_items, env_cntxt.sb_cntxt.match_count))
+      end
+   endfunction
 
 endclass : uvmt_mapu_example_test_c
 

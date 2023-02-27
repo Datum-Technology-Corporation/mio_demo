@@ -15,11 +15,12 @@ class uvme_mapu_cntxt_c extends uvmx_env_cntxt_c;
 
    /// @name Integrals
    /// @{
+   int unsigned  overflow_count; ///< Count of out trn with overflow=1 predicted.
    /// @}
 
    /// @name Objects
    /// @{
-   uvma_mapu_cntxt_c  agent_cntxt; ///< Block Agent context.
+   uvma_mapu_cntxt_c        agent_cntxt; ///< Block Agent context.
    uvml_sb_simplex_cntxt_c  sb_cntxt   ; ///< Scoreboard context
    /// @}
 
@@ -42,7 +43,7 @@ class uvme_mapu_cntxt_c extends uvmx_env_cntxt_c;
     * Creates objects.
     */
    virtual function void create_objects();
-      agent_cntxt = uvma_mapu_cntxt_c::type_id::create("agent_cntxt");
+      agent_cntxt = uvma_mapu_cntxt_c      ::type_id::create("agent_cntxt");
       sb_cntxt    = uvml_sb_simplex_cntxt_c::type_id::create("sb_cntxt"   );
    endfunction
 
@@ -51,6 +52,7 @@ class uvme_mapu_cntxt_c extends uvmx_env_cntxt_c;
     */
    virtual function void reset();
       agent_cntxt.reset();
+      overflow_count = 0;
    endfunction
 
 endclass : uvme_mapu_cntxt_c

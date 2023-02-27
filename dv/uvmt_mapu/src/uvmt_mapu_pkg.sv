@@ -37,11 +37,12 @@ package uvmt_mapu_pkg;
 
    import uvm_pkg       ::*;
    import uvmx_pkg      ::*;
+   import uvml_math_pkg ::*;
    import uvml_sb_pkg   ::*;
    import uvma_clk_pkg  ::*;
    import uvma_reset_pkg::*;
-   import uvma_mapu_pkg::*;
-   import uvme_mapu_pkg::*;
+   import uvma_mapu_pkg ::*;
+   import uvme_mapu_pkg ::*;
 
    // Constants / Structs / Enums
    `include "uvmt_mapu_tdefs.sv"

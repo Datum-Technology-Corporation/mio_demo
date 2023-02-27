@@ -18,30 +18,38 @@ class uvma_mapu_seq_item_c extends uvmx_seq_item_c #(
 
    /// @name Data
    /// @{
-   // TODO Add uvma_mapu_seq_item_c data fields
-   //      Ex: rand bit [7:0]  abc; ///< Describe me!
+   rand uvma_mapu_op_enum  op; ///< Matrix operation to be performed
+   rand uvml_math_mtx_c    ma; ///< Matrix A
+   rand uvml_math_mtx_c    mb; ///< Matrix B
    /// @}
 
    /// @name Metadata
    /// @{
-   // TODO Add uvma_mapu_seq_item_c metadata fields
-   //      Ex: logic [7:0]  def; ///< Describe me!
+   rand int unsigned ton_pct; ///< Percentage of active clock cycles.
    /// @}
 
 
    `uvm_object_utils_begin(uvma_mapu_seq_item_c)
-      // TODO Add uvma_mapu_seq_item_c UVM field utils
-      //      Ex: `uvm_field_int(abc, UVM_DEFAULT)
+      `uvm_field_enum(uvma_mapu_op_enum, op, UVM_DEFAULT)
+      `uvm_field_object(ma, UVM_DEFAULT)
+      `uvm_field_object(mb, UVM_DEFAULT)
+      `uvm_field_int(ton_pct, UVM_DEFAULT + UVM_DEC)
    `uvm_object_utils_end
 
 
-   // TODO Add uvma_mapu_seq_item_c constraints
-   //      Ex: /**
-   //           * Describe me!
-   //           */
-   //          constraint limits_cons {
-   //             abc inside {0,2,4,8,16,32};
-   //          }
+   /**
+    * * Ensures ton is a percentage
+    * * Sets matrices to be 3x3 unsigned values
+    */
+   constraint rules_cons {
+      ton_pct inside {[1:100]};
+      ma.min_val == 0;
+      mb.min_val == 0;
+      ma.num_rows == 3;
+      ma.num_cols == 3;
+      mb.num_rows == 3;
+      mb.num_cols == 3;
+   }
 
 
    /**
@@ -55,18 +63,31 @@ class uvma_mapu_seq_item_c extends uvmx_seq_item_c #(
     * Create sub-objects.
     */
    virtual function void create_objects();
-      // TODO Create sub-objects or remove
-      //      Ex: matrix = uvml_math_mtx_c::type_id::create("matrix");
+      ma = uvml_math_mtx_c::type_id::create("ma");
+      mb = uvml_math_mtx_c::type_id::create("mb");
    endfunction
 
    /**
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      // TODO Create metadata for transaction logger
-      //      Ex: string  abc_str;
-      //          abc_str = $sformatf("%h", abc);
-      //          `uvmx_metadata_field("abc", abc_str)
+      string  op_str, ton_pct_str;
+      uvmx_metadata_t  mam, mbm;
+      case (op)
+         UVMA_MAPU_OP_ADD : op_str = "ADD ";
+         UVMA_MAPU_OP_MULT: op_str = "MULT";
+      endcase
+      `uvmx_metadata_field("op", op_str)
+      ton_pct_str = $sformatf("%0d", ton_pct);
+      `uvmx_metadata_field("ton", ton_pct_str)
+      mam = ma.get_metadata();
+      foreach (mam[ii]) begin
+         `uvmx_metadata_add(mam[ii])
+      end
+      mbm = mb.get_metadata();
+      foreach (mbm[ii]) begin
+         `uvmx_metadata_add(mbm[ii])
+      end
    endfunction
 
 endclass : uvma_mapu_seq_item_c

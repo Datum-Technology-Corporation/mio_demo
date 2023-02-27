@@ -78,12 +78,15 @@ class uvme_mapu_env_c extends uvmx_env_c #(
     * Connects environment coverage model to agents/scoreboards/predictor.
     */
    virtual function void connect_coverage_model();
-      agent.seq_item_ap   .connect(cov_model.seq_item_fifo   .analysis_export);
-      agent.in_mon_trn_ap .connect(cov_model.in_mon_trn_fifo .analysis_export);
-      agent.out_mon_trn_ap.connect(cov_model.out_mon_trn_fifo.analysis_export);
-      agent.cp_mon_trn_ap .connect(cov_model.cp_mon_trn_fifo .analysis_export);
-      agent.dpi_mon_trn_ap.connect(cov_model.dpi_mon_trn_fifo.analysis_export);
-      agent.dpo_mon_trn_ap.connect(cov_model.dpo_mon_trn_fifo.analysis_export);
+      agent.seq_item_ap    .connect(cov_model.seq_item_fifo    .analysis_export);
+      agent.in_mon_trn_ap  .connect(cov_model.in_mon_trn_fifo  .analysis_export);
+      agent.out_mon_trn_ap .connect(cov_model.out_mon_trn_fifo .analysis_export);
+      agent.cp_seq_item_ap .connect(cov_model.cp_seq_item_fifo .analysis_export);
+      agent.dpi_seq_item_ap.connect(cov_model.dpi_seq_item_fifo.analysis_export);
+      agent.dpo_seq_item_ap.connect(cov_model.dpo_seq_item_fifo.analysis_export);
+      agent.cp_mon_trn_ap  .connect(cov_model.cp_mon_trn_fifo  .analysis_export);
+      agent.dpi_mon_trn_ap .connect(cov_model.dpi_mon_trn_fifo .analysis_export);
+      agent.dpo_mon_trn_ap .connect(cov_model.dpo_mon_trn_fifo .analysis_export);
    endfunction
 
    /**

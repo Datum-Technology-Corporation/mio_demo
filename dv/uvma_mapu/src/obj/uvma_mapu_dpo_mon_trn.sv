@@ -48,20 +48,19 @@ class uvma_mapu_dpo_mon_trn_c extends uvmx_mon_trn_c #(
     */
    virtual function uvmx_metadata_t get_metadata();
       string i_rdy_str;
-      string o_vld_str;
       string o_r0_str;
       string o_r1_str;
       string o_r2_str;
-      i_rdy_str = $sformatf("%h", i_rdy);
-      o_vld_str = $sformatf("%h", o_vld);
-      o_r0_str = $sformatf("%h", o_r0);
-      o_r1_str = $sformatf("%h", o_r1);
-      o_r2_str = $sformatf("%h", o_r2);
-      `uvmx_metadata_field("i_rdy", i_rdy_str)
-      `uvmx_metadata_field("o_vld", o_vld_str)
-      `uvmx_metadata_field("o_r0", o_r0_str)
-      `uvmx_metadata_field("o_r1", o_r1_str)
-      `uvmx_metadata_field("o_r2", o_r2_str)
+      if (o_vld === 1) begin
+         i_rdy_str = $sformatf("%h", i_rdy);
+         o_r0_str = $sformatf("%h", o_r0);
+         o_r1_str = $sformatf("%h", o_r1);
+         o_r2_str = $sformatf("%h", o_r2);
+         `uvmx_metadata_field("i_rdy", i_rdy_str)
+         `uvmx_metadata_field("o_r0", o_r0_str)
+         `uvmx_metadata_field("o_r1", o_r1_str)
+         `uvmx_metadata_field("o_r2", o_r2_str)
+      end
    endfunction
 
 endclass : uvma_mapu_dpo_mon_trn_c

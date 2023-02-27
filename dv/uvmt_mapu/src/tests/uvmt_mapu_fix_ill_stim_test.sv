@@ -8,7 +8,7 @@
 
 
 /**
- * Test which runs Virtual Sequence 'fix_ill_stim_vseq': reference partially illegal stimulus for the DUT.
+ * Self-checking Test which runs Virtual Sequence 'fix_ill_stim_vseq': reference partially illegal stimulus for the DUT.
  * @ingroup uvmt_mapu_tests
  */
 class uvmt_mapu_fix_ill_stim_test_c extends uvmt_mapu_base_test_c;
@@ -23,7 +23,7 @@ class uvmt_mapu_fix_ill_stim_test_c extends uvmt_mapu_base_test_c;
     * Rules for this test.
     */
    constraint fix_ill_stim_cons {
-      // env_cfg.scoreboarding_enabled == 1; // TODO Uncomment this line to enable scoreboarding for this test
+      env_cfg.scoreboarding_enabled == 1;
    }
 
 
@@ -52,6 +52,19 @@ class uvmt_mapu_fix_ill_stim_test_c extends uvmt_mapu_base_test_c;
       `uvm_info("TEST", $sformatf("Finished 'fix_ill_stim_vseq' Virtual Sequence:\n%s", fix_ill_stim_vseq.sprint()), UVM_NONE)
       phase.drop_objection(this);
    endtask
+
+   /**
+    * Ensures that overflow events were observed and predicted.
+    */
+   virtual function void check_phase(uvm_phase phase);
+      super.check_phase(phase);
+      if (env_cntxt.overflow_count == 0) begin
+         `uvm_error("TEST", "Did not create overflow condition during test")
+      end
+      if (env_cntxt.agent_cntxt.mon_overflow_count == 0) begin
+         `uvm_error("TEST", "Did not observe overflow during test")
+      end
+   endfunction : check_phase
 
 endclass : uvmt_mapu_fix_ill_stim_test_c
 

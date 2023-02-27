@@ -8,7 +8,7 @@
 
 
 /**
- * Test which runs Virtual Sequence 'rand_ill_stim_vseq': fixed number of items of completely random, partially illegal stimulus.
+ * Self-checking Test which runs Virtual Sequence 'rand_ill_stim_vseq': fixed number of items of completely random, partially illegal stimulus.
  * @ingroup uvmt_mapu_tests
  */
 class uvmt_mapu_rand_ill_stim_test_c extends uvmt_mapu_base_test_c;
@@ -58,6 +58,22 @@ class uvmt_mapu_rand_ill_stim_test_c extends uvmt_mapu_base_test_c;
       `uvm_info("TEST", $sformatf("Finished 'rand_ill_stim_vseq' Virtual Sequence:\n%s", rand_ill_stim_vseq.sprint()), UVM_NONE)
       phase.drop_objection(this);
    endtask
+
+   /**
+    * Ensures that overflow events were observed, predicted, and that the counts match what what driven in.
+    */
+   virtual function void check_phase(uvm_phase phase);
+      super.check_phase(phase);
+      if (env_cntxt.overflow_count == 0) begin
+         `uvm_error("TEST", "Did not create overflow condition during test")
+      end
+      if (env_cntxt.agent_cntxt.mon_overflow_count == 0) begin
+         `uvm_error("TEST", "Did not observe overflow during test")
+      end
+      if (rand_ill_stim_vseq.num_errors != env_cntxt.agent_cntxt.mon_overflow_count) begin
+         `uvm_error("TEST", $sformatf("Number of overflow events driven in (%0d) and observed (%0d) do not match", rand_ill_stim_vseq.num_errors, env_cntxt.agent_cntxt.mon_overflow_count))
+      end
+   endfunction : check_phase
 
 endclass : uvmt_mapu_rand_ill_stim_test_c
 

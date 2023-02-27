@@ -1,16 +1,18 @@
 dependencies:
+  acme/uvma_mapu: '@local'
+  acme/uvme_mapu: '@local'
   datum/uvma_clk: 1.0.0
   datum/uvma_reset: 1.0.0
+  datum/uvml_math: 1.0.0
   datum/uvml_sb: 1.0.0
   datum/uvmx: 1.0.0
-  uvma_mapu: '@local'
-  uvme_mapu: '@local'
 dut: acme/mapu
 hdl-src:
   directories:
   - .
   - tb
   - tests
+  so-libs: []
   test-name-template: uvmt_mapu_{{ name }}_test_c
   tests-path: tests
   top-constructs:
@@ -35,7 +37,7 @@ ip:
   name: uvmt_mapu
   repo-uri: ''
   simulators-supported:
-    mdc: 20220822.10.0
+    mdc: 20230116.4.0
     viv: '2022.2'
   sub-sub-type: Block
   sub-type: UVM Test Bench

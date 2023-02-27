@@ -14,8 +14,9 @@
 class uvma_mapu_cfg_c extends uvmx_agent_cfg_c;
 
    /// @name Integrals
-   /// @{ 
-   rand int unsigned data_width; ///< Selected data bit width.
+   /// @{
+   rand int unsigned data_width     ; ///< Selected data bit width.
+   rand int unsigned out_drv_ton_pct; ///<
    /// @}
 
    /// @name Virtual Sequence Types
@@ -26,12 +27,13 @@ class uvma_mapu_cfg_c extends uvmx_agent_cfg_c;
 
 
    `uvm_object_utils_begin(uvma_mapu_cfg_c)
-      `uvm_field_int (                         enabled        , UVM_DEFAULT)
-      `uvm_field_enum(uvm_active_passive_enum, is_active      , UVM_DEFAULT)
-      `uvm_field_int (                         bypass_mode    , UVM_DEFAULT)
-      `uvm_field_enum(uvmx_reset_type_enum   , reset_type     , UVM_DEFAULT)
-      `uvm_field_enum(uvm_sequencer_arb_mode , sqr_arb_mode   , UVM_DEFAULT)
-      `uvm_field_int (                         trn_log_enabled, UVM_DEFAULT)
+      `uvm_field_int (                         enabled        , UVM_DEFAULT          )
+      `uvm_field_enum(uvm_active_passive_enum, is_active      , UVM_DEFAULT          )
+      `uvm_field_int (                         out_drv_ton_pct, UVM_DEFAULT + UVM_DEC)
+      `uvm_field_int (                         bypass_mode    , UVM_DEFAULT          )
+      `uvm_field_enum(uvmx_reset_type_enum   , reset_type     , UVM_DEFAULT          )
+      `uvm_field_enum(uvm_sequencer_arb_mode , sqr_arb_mode   , UVM_DEFAULT          )
+      `uvm_field_int (                         trn_log_enabled, UVM_DEFAULT          )
    `uvm_object_utils_end
 
 
@@ -49,8 +51,8 @@ class uvma_mapu_cfg_c extends uvmx_agent_cfg_c;
    constraint rules_cons {
       cov_model_enabled == 0;
       data_width <= `UVMA_MAPU_DATA_MAX_WIDTH;
-      // TODO Add rules to constrain data_width
-      //      Ex: data_width inside {32,64};
+      data_width inside {16,32,64};
+      out_drv_ton_pct inside {[1:100]};
    }
 
 

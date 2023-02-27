@@ -25,38 +25,65 @@ class uvma_mapu_in_drv_vseq_c extends uvma_mapu_base_vseq_c;
    endfunction
 
    /**
-    * Trims data outside the configured widths.
-    */
-   virtual function void process(ref uvma_mapu_seq_item_c seq_item);
-      // TODO Implement uvma_mapu_in_drv_vseq_c::process() (or remove if not needed)
-      //      Ex: `uvmx_trim(seq_item.abc, cfg.data_width)
-   endfunction
-
-   /**
-    * TODO Describe uvma_mapu_in_drv_vseq_c::drive_item()
-    *      Note: For asynchronous protocols (async==1), the response must be sent via `virtual task respond(seq_item)`.
-    *            Use `uvma_mapu_cntxt_c` to store shared data.
+    * * Drives 2 matrices, row-by-row using drive_row, while ensuring `i_en=1` and `i_op` is correct on the last row of the second matrix.
+    * * Respects `ton` using `randcase`
     */
    virtual task drive_item(bit async=0, ref uvma_mapu_seq_item_c seq_item);
       uvma_mapu_cp_seq_item_c   cp_seq_item ;
       uvma_mapu_dpi_seq_item_c  dpi_seq_item;
-      // TODO Implement uvma_mapu_in_drv_vseq_c::drive()
-      //      Ex: fork
-      //             begin
-      //                `uvm_create_on(cp_seq_item, p_sequencer.cp_sequencer)
-      //                cp_seq_item.from(seq_item);
-      //                `uvm_rand_send_pri_with(cp_seq_item, `UVMX_PRI_DEFAULT, {
-      //                   def == seq_item.abc;
-      //                })
-      //             end
-      //             begin
-      //                `uvm_create_on(dpi_seq_item, p_sequencer.dpi_sequencer)
-      //                dpi_seq_item.from(seq_item);
-      //                `uvm_rand_send_pri_with(dpi_seq_item, `UVMX_PRI_DEFAULT, {
-      //                   xyz == seq_item.qrs;
-      //                })
-      //             end
-      //          join
+      int unsigned row_count = 0;
+      do begin
+         randcase
+            seq_item.ton_pct: begin
+               drive_row(seq_item, seq_item.ma, row_count);
+               row_count++;
+            end
+            (100-seq_item.ton_pct): begin
+               clk();
+            end
+         endcase
+      end while (row_count<3);
+      do begin
+         randcase
+            seq_item.ton_pct: begin
+               fork
+                  begin
+                     drive_row(seq_item, seq_item.mb, row_count-3);
+                  end
+                  begin
+                     if (row_count == 5) begin
+                        `uvm_create_on(cp_seq_item, p_sequencer.cp_sequencer)
+                        cp_seq_item.from(seq_item);
+                        cp_seq_item.i_en = 1;
+                        cp_seq_item.i_op = seq_item.op;
+                        `uvm_send_pri(cp_seq_item, `UVMX_PRI_DEFAULT)
+                     end
+                  end
+               join
+               row_count++;
+            end
+            (100-seq_item.ton_pct): begin
+               clk();
+            end
+         endcase
+      end while (row_count<6);
+   endtask
+
+   /**
+    * Drives a single matrix row into the DUT.
+    */
+   virtual task drive_row(uvma_mapu_seq_item_c seq_item, uvml_math_mtx_c matrix, int unsigned row);
+      uvma_mapu_dpi_seq_item_c  dpi_seq_item;
+      while (cntxt.vif.o_rdy !== 1) begin
+         clk();
+      end
+      `uvm_create_on(dpi_seq_item, p_sequencer.dpi_sequencer)
+      dpi_seq_item.from(seq_item);
+      dpi_seq_item.i_vld = 1;
+      dpi_seq_item.i_r0  = matrix.geti(row, 0, cfg.data_width);
+      dpi_seq_item.i_r1  = matrix.geti(row, 1, cfg.data_width);
+      dpi_seq_item.i_r2  = matrix.geti(row, 2, cfg.data_width);
+      `uvm_send_pri(dpi_seq_item, `UVMX_PRI_DEFAULT)
    endtask
 
 endclass : uvma_mapu_in_drv_vseq_c

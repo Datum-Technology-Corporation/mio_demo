@@ -25,24 +25,37 @@ class uvma_mapu_out_drv_vseq_c extends uvma_mapu_base_vseq_c;
    endfunction
 
    /**
-    * TODO Describe uvma_mapu_out_drv_vseq_c::drive()
+    * Samples row data while `o_vld=1`.
     */
    virtual task drive();
       uvma_mapu_dpo_seq_item_c  dpo_seq_item;
+      bit                       within_transfer;
       forever begin
-         clk(); // TODO Remove this line after implementing uvma_mapu_out_drv_vseq_c::drive()
-         // TODO Implement uvma_mapu_out_drv_vseq_c::drive()
-         //      Ex: randcase
-         //             cfg.ton: begin
-         //                `uvm_create_on(dpo_seq_item, p_sequencer.dpo_sequencer)
-         //                `uvm_rand_send_pri_with(dpo_seq_item, `UVMX_PRI_DEFAULT, {
-         //                   rdy == 1;
-         //                })
-         //             end
-         //             (100-cfg.ton): begin
-         //                clk();
-         //             end
-         //          endcase
+         within_transfer = 0;
+         if (dpo_seq_item != null) begin
+            if (dpo_seq_item.o_vld === 1) begin
+               within_transfer = 1;
+            end
+         end
+         if (within_transfer) begin
+            `uvm_create_on(dpo_seq_item, p_sequencer.dpo_sequencer)
+            `uvm_rand_send_pri_with(dpo_seq_item, `UVMX_PRI_DEFAULT, {
+               i_rdy == 1;
+            })
+         end
+         else begin
+            randcase
+               cfg.out_drv_ton_pct: begin
+                  `uvm_create_on(dpo_seq_item, p_sequencer.dpo_sequencer)
+                  `uvm_rand_send_pri_with(dpo_seq_item, `UVMX_PRI_DEFAULT, {
+                     i_rdy == 1;
+                  })
+               end
+               (100-cfg.out_drv_ton_pct): begin
+                  clk();
+               end
+            endcase
+         end
       end
    endtask
 

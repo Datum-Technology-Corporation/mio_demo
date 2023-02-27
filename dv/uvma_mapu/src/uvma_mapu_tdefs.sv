@@ -7,21 +7,13 @@
 `define __UVMA_MAPU_TDEFS_SV__
 
 
-// Add enums and structs here
-// Ex: typedef bit [(`UVMA_MAPU_ABC_MAX_WIDTH-1):0]  uvma_mapu_abc_b_t; ///< Describe me!
-// Ex: /*
-//      * Describe me!
-//      */
-//     typedef enum {
-//        UVMA_MAPU_EX_ABC
-//     } uvma_mapu_ex_enum;
-// Ex: /*
-//      * Describe me!
-//      */
-//     typedef struct {
-//        bit [2:0]  abc;
-//        logic      xyz;
-//     } uvma_mapu_ex_struct;
+/*
+ * MAPU matrix operations allowed.
+ */
+typedef enum bit {
+   UVMA_MAPU_OP_ADD  = 0,
+   UVMA_MAPU_OP_MULT = 1
+} uvma_mapu_op_enum;
 
 
 /// @name Vectors

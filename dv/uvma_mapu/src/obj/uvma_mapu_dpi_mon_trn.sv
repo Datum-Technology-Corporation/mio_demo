@@ -47,21 +47,17 @@ class uvma_mapu_dpi_mon_trn_c extends uvmx_mon_trn_c #(
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      string i_vld_str;
       string i_r0_str;
       string i_r1_str;
       string i_r2_str;
-      string o_rdy_str;
-      i_vld_str = $sformatf("%h", i_vld);
-      i_r0_str = $sformatf("%h", i_r0);
-      i_r1_str = $sformatf("%h", i_r1);
-      i_r2_str = $sformatf("%h", i_r2);
-      o_rdy_str = $sformatf("%h", o_rdy);
-      `uvmx_metadata_field("i_vld", i_vld_str)
-      `uvmx_metadata_field("i_r0", i_r0_str)
-      `uvmx_metadata_field("i_r1", i_r1_str)
-      `uvmx_metadata_field("i_r2", i_r2_str)
-      `uvmx_metadata_field("o_rdy", o_rdy_str)
+      if ((i_vld === 1) && (o_rdy === 1)) begin
+         i_r0_str = $sformatf("%h", i_r0);
+         i_r1_str = $sformatf("%h", i_r1);
+         i_r2_str = $sformatf("%h", i_r2);
+         `uvmx_metadata_field("i_r0", i_r0_str)
+         `uvmx_metadata_field("i_r1", i_r1_str)
+         `uvmx_metadata_field("i_r2", i_r2_str)
+      end
    endfunction
 
 endclass : uvma_mapu_dpi_mon_trn_c

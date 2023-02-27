@@ -33,8 +33,9 @@
  */
 package uvma_mapu_pkg;
 
-   import uvm_pkg ::*;
-   import uvmx_pkg::*;
+   import uvm_pkg      ::*;
+   import uvmx_pkg     ::*;
+   import uvml_math_pkg::*;
 
    // Constants / Structs / Enums
    `include "uvma_mapu_tdefs.sv"

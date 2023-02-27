@@ -8,7 +8,7 @@
 
 
 /**
- * Test which runs Virtual Sequence 'fix_stim_vseq': reference stimulus for the DUT.
+ * Self-checking Test which runs Virtual Sequence 'fix_stim_vseq': reference stimulus for the DUT.
  * @ingroup uvmt_mapu_tests
  */
 class uvmt_mapu_fix_stim_test_c extends uvmt_mapu_base_test_c;
@@ -20,10 +20,11 @@ class uvmt_mapu_fix_stim_test_c extends uvmt_mapu_base_test_c;
 
 
    /**
-    * Rules for this test.
+    * Keep 'i_rdy' always ON.
     */
    constraint fix_stim_cons {
-      // env_cfg.scoreboarding_enabled == 1; // TODO Uncomment this line to enable scoreboarding for this test
+      env_cfg.scoreboarding_enabled == 1;
+      env_cfg.agent_cfg.out_drv_ton_pct == 100;
    }
 
 
@@ -52,6 +53,16 @@ class uvmt_mapu_fix_stim_test_c extends uvmt_mapu_base_test_c;
       `uvm_info("TEST", $sformatf("Finished 'fix_stim_vseq' Virtual Sequence:\n%s", fix_stim_vseq.sprint()), UVM_NONE)
       phase.drop_objection(this);
    endtask
+
+   /**
+    * Ensures that the scoreboard saw at least one match.
+    */
+   virtual function void check_phase(uvm_phase phase);
+      super.check_phase(phase);
+      if (env_cntxt.sb_cntxt.match_count == 0) begin
+         `uvm_error("TEST", "Scoreboard did not see any matches")
+      end
+   endfunction : check_phase
 
 endclass : uvmt_mapu_fix_stim_test_c
 

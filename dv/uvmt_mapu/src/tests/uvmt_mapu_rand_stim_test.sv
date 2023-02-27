@@ -8,7 +8,7 @@
 
 
 /**
- * Test which runs Virtual Sequence 'rand_stim_vseq': fixed number of items of completely random stimulus.
+ * Self-checking Test which runs Virtual Sequence 'rand_stim_vseq': fixed number of items of completely random stimulus.
  * @ingroup uvmt_mapu_tests
  */
 class uvmt_mapu_rand_stim_test_c extends uvmt_mapu_base_test_c;
@@ -23,7 +23,7 @@ class uvmt_mapu_rand_stim_test_c extends uvmt_mapu_base_test_c;
     * Rules for this test.
     */
    constraint rand_stim_cons {
-      // env_cfg.scoreboarding_enabled == 1; // TODO Uncomment this line to enable scoreboarding for this test
+      env_cfg.scoreboarding_enabled == 1;
       if (test_cfg.cli_num_items_override) {
          rand_stim_vseq.num_items == test_cfg.cli_num_items;
       }
@@ -58,6 +58,19 @@ class uvmt_mapu_rand_stim_test_c extends uvmt_mapu_base_test_c;
       `uvm_info("TEST", $sformatf("Finished 'rand_stim_vseq' Virtual Sequence:\n%s", rand_stim_vseq.sprint()), UVM_NONE)
       phase.drop_objection(this);
    endtask
+
+   /**
+    * Ensures that items were generated and that the scoreboard saw the same number of matches.
+    */
+   virtual function void check_phase(uvm_phase phase);
+      super.check_phase(phase);
+      if (rand_stim_vseq.num_items == 0) begin
+         `uvm_error("TEST", "No items were generated")
+      end
+      if (rand_stim_vseq.num_items != env_cntxt.sb_cntxt.match_count) begin
+         `uvm_error("TEST", $sformatf("Number of items driven in (%0d) and number of scoreboard matches (%0d) do not match", rand_stim_vseq.num_items, env_cntxt.sb_cntxt.match_count))
+      end
+   endfunction : check_phase
 
 endclass : uvmt_mapu_rand_stim_test_c
 
