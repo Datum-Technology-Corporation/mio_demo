@@ -1,5 +1,5 @@
 Plane,Name,Direction,Width,Description
-,data,,[32:64],
+,data,,[32:64], Data bus
 cp,i_en,in,,Block enable
 cp,i_op,in,,Matrix operation to be performed
 cp,o_of,out,,Overflow indicator
