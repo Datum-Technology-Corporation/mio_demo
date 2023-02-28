@@ -20,23 +20,13 @@ class uvme_example_env_cfg_c extends uvmx_env_cfg_c;
       `uvm_field_object(mapu_cfg, UVM_DEFAULT)
    `uvm_object_utils_end
 
-   /**
-    * Rules for safe default options
-    */
    constraint defaults_cons {
       soft mapu_cfg.enabled == 1;
    }
-
-   /**
-    * Default constructor.
-    */
    function new(uvm_component parent=null, string name="uvme_example_env_cfg");
       super.new(parent, name);
    endfunction
 
-   /**
-    * Creates sub-configuration objects
-    */
    virtual function void create_objects();
       mapu_cfg = uvma_mapu_cfg_c::type_id::create("mapu_cfg");
    endfunction
@@ -62,17 +52,11 @@ class uvme_example_env_cntxt_c extends uvmx_env_cntxt_c;
       `uvm_field_object(mapu_cntxt, UVM_DEFAULT)
    `uvm_object_utils_end
 
-   /**
-    * Creates sub-context objects
-    */
    function new(uvm_component parent=null, string name="uvme_example_env_cntxt");
       super.new(parent, name);
       cntxt = uvma_mapu_cntxt_c::type_id::create("mapu_cntxt");
    endfunction
 
-   /**
-    * Creates sub-context objects
-    */
    virtual function void create_objects();
       mapu_cntxt = uvma_mapu_cntxt_c::type_id::create("mapu_cntxt");
    endfunction
@@ -103,9 +87,6 @@ class uvme_example_env_c extends uvmx_env_c #(
 
    `uvm_component_utils(uvme_example_env_c)
 
-   /**
-    * Default constructor.
-    */
    function new(uvm_component parent=null, string name="uvme_example_env");
       super.new(parent, name);
    endfunction
