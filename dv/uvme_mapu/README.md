@@ -26,4 +26,4 @@ It is dependent on the following IP:
 
 * [uvmx](https://www.mooreio.com/catalog/1152)
 * [uvml_sb](https://www.mooreio.com/catalog/1155)
-* uvma_mapu
+* [uvma_mapu](../uvma_mapu)
