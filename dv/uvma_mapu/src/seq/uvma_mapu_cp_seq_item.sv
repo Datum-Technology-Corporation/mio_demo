@@ -18,8 +18,8 @@ class uvma_mapu_cp_seq_item_c extends uvmx_seq_item_c #(
 
    /// @name Data
    /// @{
-   rand bit  i_en; ///< Block enable
-   rand bit  i_op; ///< Matrix operation to be performed
+   rand bit        i_en; ///< Block enable
+   rand bit [1:0]  i_op; ///< Matrix operation to be performed
    /// @}
 
    /// @name Metadata
@@ -49,7 +49,11 @@ class uvma_mapu_cp_seq_item_c extends uvmx_seq_item_c #(
       string i_en_str;
       string i_op_str;
       i_en_str = (i_en === 1) ? "Y " : "N ";
-      i_op_str = (i_op === 1) ? "MULT" : "ADD";
+      case (i_op)
+            2'b00  : i_op_str = "ADD ";
+            2'b01  : i_op_str = "MULT";
+            default: i_op_str = "????";
+         endcase
       `uvmx_metadata_field("i_en", i_en_str)
       `uvmx_metadata_field("i_op", i_op_str)
    endfunction

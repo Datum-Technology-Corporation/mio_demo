@@ -15,8 +15,8 @@ class uvma_mapu_cfg_c extends uvmx_agent_cfg_c;
 
    /// @name Integrals
    /// @{
-   rand int unsigned data_width     ; ///< Selected data bit width.
-   rand int unsigned out_drv_ton_pct; ///<
+   rand int unsigned data_width     ; ///< Data bus width.
+   rand int unsigned out_drv_ton_pct; ///< Percentage of active clock cycles for out_drv_vseq_type.
    /// @}
 
    /// @name Virtual Sequence Types

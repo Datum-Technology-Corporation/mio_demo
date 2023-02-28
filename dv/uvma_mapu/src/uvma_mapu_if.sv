@@ -22,7 +22,7 @@ interface uvma_mapu_if #(
    /// @name Control Plane Signals
    /// @{
    wire                     i_en ; ///< Block enable
-   wire                     i_op ; ///< Matrix operation to be performed
+   wire              [1:0]  i_op ; ///< Matrix operation to be performed
    wire                     o_of ; ///< Overflow indicator
    /// @}
 

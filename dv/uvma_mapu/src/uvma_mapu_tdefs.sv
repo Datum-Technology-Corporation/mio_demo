@@ -10,9 +10,9 @@
 /*
  * MAPU matrix operations allowed.
  */
-typedef enum bit {
-   UVMA_MAPU_OP_ADD  = 0,
-   UVMA_MAPU_OP_MULT = 1
+typedef enum bit [1:0] {
+   UVMA_MAPU_OP_ADD  = 2'b00,
+   UVMA_MAPU_OP_MULT = 2'b01
 } uvma_mapu_op_enum;
 
 

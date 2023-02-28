@@ -19,9 +19,9 @@ class uvma_mapu_cp_mon_trn_c extends uvmx_mon_trn_c #(
 
    /// @name Data
    /// @{
-   logic  i_en; ///< Block enable
-   logic  i_op; ///< Matrix operation to be performed
-   logic  o_of; ///< Overflow indicator
+   logic        i_en; ///< Block enable
+   logic [1:0]  i_op; ///< Matrix operation to be performed
+   logic        o_of; ///< Overflow indicator
    /// @}
 
 
@@ -46,8 +46,12 @@ class uvma_mapu_cp_mon_trn_c extends uvmx_mon_trn_c #(
       string i_op_str;
       string o_of_str;
       if (i_en === 1) begin
-         i_op_str = (i_op === 1) ? "MULT" : "ADD";
-         o_of_str = (o_of === 1) ? "OF"   :    "";
+         case (i_op)
+            2'b00  : i_op_str = "ADD ";
+            2'b01  : i_op_str = "MULT";
+            default: i_op_str = "????";
+         endcase
+         o_of_str = (o_of === 1) ? "OF" : "";
          `uvmx_metadata_field("i_op", i_op_str)
          `uvmx_metadata_field("o_of", o_of_str)
       end

@@ -15,7 +15,7 @@ class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
 
    // @name Integrals
    /// @{
-   rand int unsigned data_width; ///< Selected data bit width.
+   rand int unsigned data_width; ///< Data bus width.
    /// @}
 
    /// @name Objects

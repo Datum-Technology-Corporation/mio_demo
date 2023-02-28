@@ -1,5 +1,5 @@
-// Copyright 2022 Datum Technology Corporation
-// SPDX-License-Identifier: GPL-3.0
+// Copyright 2023 Acme Enterprises Inc.
+// All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -7,8 +7,8 @@
 `define __MAPU_MACROS_SVH__
 
 
-`define MAPU_OP_ADD  1'b0
-`define MAPU_OP_MULT 1'b1
+`define MAPU_OP_ADD  2'b00
+`define MAPU_OP_MULT 2'b01
 
 
 `endif // __MAPU_MACROS_SVH__

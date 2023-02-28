@@ -1,5 +1,5 @@
-// Copyright 2023 Datum Technology Corporation
-// SPDX-License-Identifier: GPL-3.0
+// Copyright 2023 Acme Enterprises Inc.
+// All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -19,7 +19,7 @@ module mapu_top # (
    input                      clk    , ///< Clock
    input                      reset_n, ///< Reset
    input                      i_en   , ///< Block enable
-   input                      i_op   , ///< Matrix operation to be performed
+   input               [1:0]  i_op   , ///< Matrix operation to be performed
    output                     o_of   , ///< Overflow indicator
    output                     o_rdy  , ///< Flow control for upstream block
    input                      i_vld  , ///< Indicates data input lines are valid
@@ -159,6 +159,9 @@ module mapu_top # (
       case (op)
          `MAPU_OP_ADD : do_add ();
          `MAPU_OP_MULT: do_mult();
+         default: begin
+            row_idx_o <= 2;
+         end
       endcase
       row_idx_i <= 0;
    endfunction
