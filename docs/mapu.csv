@@ -1,7 +1,7 @@
 Plane,Name,Direction,Width,Description
 ,data,,[32:64], Data bus
 cp,i_en,in,,Block enable
-cp,i_op,in,,Matrix operation to be performed
+cp,i_op,in,2,Matrix operation to be performed
 cp,o_of,out,,Overflow indicator
 dpi,o_rdy,out,,Flow control for upstream block
 dpi,i_vld,in,,Indicates data input lines are valid
