@@ -80,7 +80,7 @@ class uvmt_mapu_base_test_c extends uvmx_test_c #(
    endfunction
 
    /**
-    * Creates Sequences.
+    * Creates Clock and Reset Sequences.
     */
    virtual function void create_sequences();
       clk_vseq   = uvma_clk_start_vseq_c  ::type_id::create("clk_vseq"  );
