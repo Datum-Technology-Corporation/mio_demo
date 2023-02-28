@@ -20,7 +20,9 @@ module uvmt_mapu_dut_wrap (
    /**
     * Matrix APU Device Under Test from IP 'acme/mapu'.
     */
-   mapu_top  dut (
+   mapu_top #(
+      .DATA_WIDTH(`UVMT_MAPU_DATA_WIDTH)
+   )  dut (
       // Control Plane
       .i_en  (agent_if.i_en ),
       .i_op  (agent_if.i_op ),
@@ -37,7 +39,7 @@ module uvmt_mapu_dut_wrap (
       .o_r0  (agent_if.o_r0 ),
       .o_r1  (agent_if.o_r1 ),
       .o_r2  (agent_if.o_r2 ),
-      
+      // Clock & Reset
       .clk     (clk_if  .clk    ),
       .reset_n (reset_if.reset_n)
    );

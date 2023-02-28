@@ -45,6 +45,7 @@ class uvmt_mapu_base_test_c extends uvmx_test_c #(
       env_cfg .reset_type        == test_cfg.reset_type       ;
       env_cfg .trn_log_enabled   == test_cfg.trn_log_enabled  ;
       env_cfg .cov_model_enabled == test_cfg.cov_model_enabled;
+      env_cfg .data_width == `UVMT_MAPU_DATA_WIDTH;
    }
 
 
