@@ -18,9 +18,9 @@ class uvma_mapu_mon_c extends uvmx_mon_c #(
 
    /// @name Components
    /// @{
-   uvma_mapu_cp_mon_c   cp_monitor ; ///<
-   uvma_mapu_dpi_mon_c  dpi_monitor; ///<
-   uvma_mapu_dpo_mon_c  dpo_monitor; ///<
+   uvma_mapu_cp_mon_c   cp_monitor ; ///< Control Plane Monitor.
+   uvma_mapu_dpi_mon_c  dpi_monitor; ///< Data Plane Input Monitor.
+   uvma_mapu_dpo_mon_c  dpo_monitor; ///< Data Plane Output Monitor.
    /// @}
 
 
