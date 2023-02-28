@@ -23,3 +23,4 @@ This package contains the Acme Matrix APU Block UVM Agent.
 It is dependent on the following IP:
 
 * [uvmx](https://www.mooreio.com/catalog/1152)
+* [uvml_math](https://www.mooreio.com/catalog/1551)
