@@ -21,7 +21,7 @@ module uvmt_mapu_dut_wrap (
     * Matrix APU Device Under Test from IP 'acme/mapu'.
     */
    mapu_top #(
-      .DATA_WIDTH(`UVMT_MAPU_DATA_WIDTH)
+      .DATA_WIDTH (`UVMT_MAPU_DATA_WIDTH)
    )  dut (
       // Control Plane
       .i_en  (agent_if.i_en ),
