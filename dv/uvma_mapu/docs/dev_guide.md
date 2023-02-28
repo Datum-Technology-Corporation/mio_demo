@@ -1,4 +1,4 @@
-@page user_guide User Guide
+@page dev_guide Developer Guide
 @htmlonly
 <div class="autonumbering">
 @endhtmlonly
@@ -7,27 +7,27 @@
 @tableofcontents
 
 
-@section user_guide_license_agreement License Agreement
+@section dev_guide_license_agreement License Agreement
 © Copyright 2023 Acme Enterprises Inc.
 
 All rights reserved.
 
 
-@section user_guide_revision_history Revision History
+@section dev_guide_revision_history Revision History
 Revision  | Date | Description
 --------- | ---- | -----------
 1.0 | 2023/02/28 | Initial Version
 
-@subsection user_guide_description Description
+@subsection dev_guide_description Description
 
 
-@section user_guide_definitions Definitions
+@section dev_guide_definitions Definitions
 Symbol | Definition
 ------ | ----------
  'SYMBOL' | Definition
 
 
-@section user_guide_contents Contents
+@section dev_guide_contents Contents
 
 
 @htmlonly
