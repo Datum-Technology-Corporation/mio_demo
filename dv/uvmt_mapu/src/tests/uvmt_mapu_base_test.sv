@@ -38,9 +38,10 @@ class uvmt_mapu_base_test_c extends uvmx_test_c #(
 
 
    /**
-    * Describe rules_cons
+    * * Sets clock frequency
+    * * Sets up basic configuration for env
     */
-   constraint rules_cons {
+   constraint base_cons {
       clk_vseq.frequency         == test_cfg.clk_frequency    ;
       env_cfg .reset_type        == test_cfg.reset_type       ;
       env_cfg .trn_log_enabled   == test_cfg.trn_log_enabled  ;
