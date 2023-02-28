@@ -7,7 +7,7 @@ This IP contains the Acme Matrix APU Block UVM Test Bench.
 TODO Describe Matrix APU
 
 
-# #Block Diagram
+## Block Diagram
 ![alt text](./docs/tb_block_diagram.svg "Matrix APU Block UVM Test Bench Block Diagram")
 
 ## Directory Structure
