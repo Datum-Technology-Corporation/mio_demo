@@ -50,3 +50,15 @@ hdl-src:
   so-libs: []
   tests-path: "tests"
   test-name-template: "uvmt_mapu_{{ name }}_test_c"
+
+targets:
+  default:
+    cmp:
+      UVMT_MAPU_DATA_WIDTH: 32
+    elab:
+    sim:
+  dw64:
+    cmp:
+      UVMT_MAPU_DATA_WIDTH: 64
+    elab:
+    sim:
