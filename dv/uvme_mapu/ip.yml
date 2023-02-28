@@ -27,9 +27,8 @@ ip:
   licenses: ["All rights reserved."]
 
 dependencies:
-  "datum/uvmx"     : "~1.0"
-  "datum/uvml_math": "~1.0"
-  "datum/uvml_sb"  : "~1.0"
+  "datum/uvmx"   : "~1.0"
+  "datum/uvml_sb": "~1.0"
   "uvma_mapu": "^"
 
 structure:
