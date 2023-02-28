@@ -1,7 +1,7 @@
 // Copyright 2023 Acme Enterprises Inc.
 // All rights reserved.
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// This file contains sample code that demonstrates how to add a new sequence to the Matrix APU Block environment.
+// This file contains sample code that demonstrates how to add a new sequence to the Matrix APU Block UVM Environment.
 
 
 `ifndef __UVME_MAPU_EXAMPLE_VSEQ_SV__
