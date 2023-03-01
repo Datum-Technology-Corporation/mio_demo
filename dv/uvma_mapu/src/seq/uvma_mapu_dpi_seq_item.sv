@@ -50,12 +50,10 @@ class uvma_mapu_dpi_seq_item_c extends uvmx_seq_item_c #(
     * Describes transaction for logger.
     */
    virtual function uvmx_metadata_t get_metadata();
-      string i_vld_str;
       string i_r0_str;
       string i_r1_str;
       string i_r2_str;
-      string o_rdy_str;
-      if ((i_vld === 1) && (o_rdy === 1)) begin
+      if (i_vld === 1) begin
          i_r0_str = $sformatf("%h", i_r0);
          i_r1_str = $sformatf("%h", i_r1);
          i_r2_str = $sformatf("%h", i_r2);

@@ -3,7 +3,6 @@ dependencies:
   acme/uvme_mapu: '@local'
   datum/uvma_clk: 1.0.0
   datum/uvma_reset: 1.0.0
-  datum/uvml_math: 1.0.0
   datum/uvml_sb: 1.0.0
   datum/uvmx: 1.0.0
 dut: acme/mapu
@@ -50,3 +49,10 @@ structure:
   examples-path: examples
   scripts-path: bin
   src-path: src
+targets:
+  default:
+    cmp:
+      UVMT_MAPU_DATA_WIDTH: 32
+  dw64:
+    cmp:
+      UVMT_MAPU_DATA_WIDTH: 64
