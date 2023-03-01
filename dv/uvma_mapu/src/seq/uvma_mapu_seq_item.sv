@@ -85,7 +85,7 @@ class uvma_mapu_seq_item_c extends uvmx_seq_item_c #(
          if (cfg.data_width == 32) begin
             mam[ii].width = 12;
          end
-         else if (cfg.data_width == 32) begin
+         else if (cfg.data_width == 64) begin
             mam[ii].width = 18;
          end
          `uvmx_metadata_add(mam[ii])
@@ -95,7 +95,7 @@ class uvma_mapu_seq_item_c extends uvmx_seq_item_c #(
          if (cfg.data_width == 32) begin
             mbm[ii].width = 12;
          end
-         else if (cfg.data_width == 32) begin
+         else if (cfg.data_width == 64) begin
             mbm[ii].width = 18;
          end
          `uvmx_metadata_add(mbm[ii])
