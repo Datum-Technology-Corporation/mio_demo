@@ -85,7 +85,7 @@ class uvma_mapu_mon_trn_c extends uvmx_mon_trn_c #(
          if (cfg.data_width == 32) begin
             mm[ii].width = 12;
          end
-         else if (cfg.data_width == 32) begin
+         else if (cfg.data_width == 64) begin
             mm[ii].width = 18;
          end
          `uvmx_metadata_add(mm[ii])
