@@ -8,7 +8,7 @@ test-suite:
     name: Matrix APU Block UVM Test Suite
     ip: uvmt_mapu
   target:
-    name: default
+    name: "*"
     cmp-args : []
     elab-args: []
     sim-args : []
