@@ -4,17 +4,17 @@
 
 
 test-suite:
-  info:
-    name: Matrix APU Block UVM Test Suite
-    ip: uvmt_mapu
-    target: "*"
-  settings:
-    waves: [sanity, bugs]
-    cov  : [nightly, weekly]
-    max-errors  : { 'sanity':      1, 'nightly':       30, 'weekly':    30, 'bugs':       1 }
-    verbosity   : { 'sanity': 'high', 'nightly': 'medium', 'weekly': 'low', 'bugs': 'debug' }
-    max-duration: { 'sanity':      1, 'nightly':        5, 'weekly':    12, 'bugs':       1 }
-    max-jobs    : { 'sanity':      5, 'nightly':       10, 'weekly':    20, 'bugs':       1 }
+  name: Matrix APU Block UVM Test Suite
+  ip: uvmt_mapu
+  target: "*"
+
+settings:
+  waves: [sanity, bugs]
+  cov  : [nightly, weekly]
+  max-errors  : { 'sanity':      1, 'nightly':       30, 'weekly':    30, 'bugs':       1 }
+  verbosity   : { 'sanity': 'high', 'nightly': 'medium', 'weekly': 'low', 'bugs': 'debug' }
+  max-duration: { 'sanity':      1, 'nightly':        5, 'weekly':    12, 'bugs':       1 }
+  max-jobs    : { 'sanity':      5, 'nightly':       10, 'weekly':    20, 'bugs':       1 }
 
 functional:
   directed:
