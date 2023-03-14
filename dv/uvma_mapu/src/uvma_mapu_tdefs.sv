@@ -39,33 +39,6 @@ typedef class uvma_mapu_out_drv_vseq_c;
 
 
 /**
- * Control Plane Sequencer.
- */
-typedef uvmx_sqr_c #(
-   .T_CFG     (uvma_mapu_cfg_c        ),
-   .T_CNTXT   (uvma_mapu_cntxt_c      ),
-   .T_SEQ_ITEM(uvma_mapu_cp_seq_item_c)
-) uvma_mapu_cp_sqr_c;
-
-/**
- * Data Plane Input Sequencer.
- */
-typedef uvmx_sqr_c #(
-   .T_CFG     (uvma_mapu_cfg_c         ),
-   .T_CNTXT   (uvma_mapu_cntxt_c       ),
-   .T_SEQ_ITEM(uvma_mapu_dpi_seq_item_c)
-) uvma_mapu_dpi_sqr_c;
-
-/**
- * Data Plane Output Sequencer.
- */
-typedef uvmx_sqr_c #(
-   .T_CFG     (uvma_mapu_cfg_c         ),
-   .T_CNTXT   (uvma_mapu_cntxt_c       ),
-   .T_SEQ_ITEM(uvma_mapu_dpo_seq_item_c)
-) uvma_mapu_dpo_sqr_c;
-
-/**
  * Empty coverage model.
  */
 typedef uvmx_agent_cov_model_c #(
