@@ -11,7 +11,7 @@
  * Object encapsulating all state variables for all Matrix APU Agent (uvma_mapu_agent_c) components.
  * @ingroup uvma_mapu_obj
  */
-class uvma_mapu_cntxt_c extends uvmx_agent_cntxt_c #(
+class uvma_mapu_cntxt_c extends uvmx_block_agent_cntxt_c #(
    .T_VIF(virtual uvma_mapu_if)
 );
    /// @name Integrals

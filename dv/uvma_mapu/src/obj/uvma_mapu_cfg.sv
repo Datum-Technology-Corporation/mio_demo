@@ -11,7 +11,7 @@
  * Object encapsulating all parameters for creating, connecting and running all Matrix APU Agent (uvma_mapu_agent_c) components.
  * @ingroup uvma_mapu_obj
  */
-class uvma_mapu_cfg_c extends uvmx_agent_cfg_c;
+class uvma_mapu_cfg_c extends uvmx_block_agent_cfg_c;
 
    /// @name Integrals
    /// @{
@@ -45,11 +45,9 @@ class uvma_mapu_cfg_c extends uvmx_agent_cfg_c;
    }
 
    /**
-    * * Disables the agent coverage model (model is in IP 'uvme_mapu')
-    * * Sets max sizes for all variable width buses
+    * Sets max sizes for all variable width buses.
     */
    constraint rules_cons {
-      cov_model_enabled == 0;
       data_width <= `UVMA_MAPU_DATA_MAX_WIDTH;
       data_width inside {16,32,64};
       out_drv_ton_pct inside {[1:100]};

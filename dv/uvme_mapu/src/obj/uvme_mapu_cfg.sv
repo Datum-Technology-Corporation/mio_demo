@@ -11,7 +11,7 @@
  * Object encapsulating all parameters for creating, connecting and running the Matrix APU Block environment (uvme_mapu_env_c).
  * @ingroup uvme_mapu_obj
  */
-class uvme_mapu_cfg_c extends uvmx_env_cfg_c;
+class uvme_mapu_cfg_c extends uvmx_block_env_cfg_c;
 
    // @name Integrals
    /// @{
