@@ -40,6 +40,15 @@ class uvma_mapu_dpi_mon_c extends uvmx_mp_mon_c #(
       trn.o_rdy = mp.dpi_mon_cb.o_rdy;
    endtask
 
+   /**
+    * Trims data outside configured widths.
+    */
+   virtual function void process_trn(ref uvma_mapu_dpi_mon_trn_c trn);
+      `uvmx_trim(trn.i_r0, cfg.data_width)
+      `uvmx_trim(trn.i_r1, cfg.data_width)
+      `uvmx_trim(trn.i_r2, cfg.data_width)
+   endfunction
+
 endclass : uvma_mapu_dpi_mon_c
 
 
