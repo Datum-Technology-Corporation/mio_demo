@@ -25,7 +25,6 @@ class uvma_mapu_mon_c extends uvmx_mon_c #(
 
 
    `uvm_component_utils(uvma_mapu_mon_c)
-   `uvmx_mon_clk  (clk    , UVMX_POS_EDGE  )
    `uvmx_mon_reset(reset_n, UVMX_ACTIVE_LOW)
 
 
