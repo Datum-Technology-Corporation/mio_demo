@@ -11,4 +11,4 @@ Copyright 2023 [Datum Technology Corporation](https://datumtc.ca/)
 The entire demo video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
 
 # Contents
-TBD
+[![Block Diagram](docs/tb_block_diagram.svg)](docs/tb_block_diagram.svg)
