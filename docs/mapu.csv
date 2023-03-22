@@ -1,5 +1,5 @@
 Genre,Name,Type,Value(s)/Dimension(s),Description
-/b,mapu_ui3x3_top,mapu,dv/blocks,Matrix APU
+/b,mapu_top,mapu,dv/blocks,Matrix APU
 target,dw32,,$data=32,32-bit data width
 target,dw64,,$data=64,64-bit data width
 param,data,bw,[32;64],Matrix entry bit width
