@@ -48,8 +48,7 @@ class uvma_mapu_cfg_c extends uvmx_block_agent_cfg_c;
     * Sets max sizes for all variable width buses.
     */
    constraint rules_cons {
-      data_width <= `UVMA_MAPU_DATA_MAX_WIDTH;
-      data_width inside {16,32,64};
+      data_width inside {32,64};
       out_drv_ton_pct inside {[1:100]};
    }
 
