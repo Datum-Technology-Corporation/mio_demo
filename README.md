@@ -24,7 +24,7 @@ The entire demo video series is available on [YouTube](https://www.youtube.com/c
 1. Clone the Moore.io demo Git repository for this video: `git clone https://github.com/Datum-Technology-Corporation/mio_demo.git -b p1_start mio_p1`
 2. Import project
 
-> 1. `cd mio_demo`
+> 1. `cd mio_p1`
 > 2. `mio init`
 
 3. Import design IP
