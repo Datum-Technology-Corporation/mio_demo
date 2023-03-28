@@ -39,6 +39,7 @@ The entire demo video series is available on [YouTube](https://www.youtube.com/c
 > 1. `pushd dv/tb`
 > 2. `mio init`
 > 3. `kwrite ip.yml`
+> 4. `kwrite ts.yml`
 > 4. `popd`
 
 
