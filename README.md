@@ -16,7 +16,7 @@ The entire demo video series is available on [YouTube](https://www.youtube.com/c
 2. Ensure `mio` is properly installed: `mio --version`
 3. Download the Vivado self-extracting web installter (`Xilinx_Unified_2022.2_1014_8888_Lin64.bin` from https://www.xilinx.com/support/download.html
 4. Install Vivado: `./Xilinx_Unified_2022.2_1014_8888_Lin64.bin`
-5. Set up an environment variable, `MIO_VIVADO_HOME`, to point to the Vivado installation location: `export MIO_VIVOAD_HOME=.../bin`
+5. Set up an environment variable, `MIO_VIVADO_HOME`, to point to the Vivado installation location: `export MIO_VIVADO_HOME=.../bin`
 6. Ensure that the Moore.io CLI Client is ready for work: `mio doctor`
 
 
