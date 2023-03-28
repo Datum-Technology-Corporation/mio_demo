@@ -17,7 +17,8 @@ The entire demo video series is available on [YouTube](https://www.youtube.com/c
 3. Download the Vivado self-extracting web installer (`Xilinx_Unified_2022.2_1014_8888_Lin64.bin` from https://www.xilinx.com/support/download.html
 4. Install Vivado: `./Xilinx_Unified_2022.2_1014_8888_Lin64.bin`
 5. Set up an environment variable, `MIO_VIVADO_HOME`, to point to the Vivado installation location: `export MIO_VIVADO_HOME=.../bin`
-6. Ensure that the Moore.io CLI Client is ready for work: `mio doctor`
+6. Enter user credentials: `mio login`
+7. Ensure that the Moore.io CLI Client is ready for work: `mio doctor`
 
 
 ### 2 - Import existing codebase
