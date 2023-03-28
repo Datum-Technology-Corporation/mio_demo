@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://opensource.org/licenses/GPL-3.0)
 
-# [Moore.io Demo Project](https://github.com/Datum-Technology-Corporation/mio_demo) - Part 1 - Start
+# [Moore.io Demo Project](https://github.com/Datum-Technology-Corporation/mio_demo) - Part 1 - Hello, UVM World!
 Copyright 2023 [Datum Technology Corporation](https://datumtc.ca/)
 
 ## About
@@ -27,14 +27,14 @@ The entire demo video series is available on [YouTube](https://www.youtube.com/c
 > 1. `cd mio_p1`
 > 2. `mio init`
 
-3. - [ ] Import design IP
+3. - [ ] Import design
 
 > 1. `pushd rtl/design`
 > 2. `mio init`
 > 3. `kwrite ip.yml`
 > 4. `popd`
 
-4. - [ ] Import UVM test bench IP
+4. - [ ] Import test bench
 
 > 1. `pushd dv/tb`
 > 2. `mio init`
