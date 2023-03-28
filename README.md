@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://opensource.org/licenses/GPL-3.0)
 
-# [Moore.io Demo Project](https://github.com/Datum-Technology-Corporation/mio_demo) - Part 1 - Hello, UVM World!
+# Moore.io Demo Project - [Part 1 - Hello, UVM World!](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g)
 Copyright 2023 [Datum Technology Corporation](https://datumtc.ca/)
 
 ## About
@@ -12,12 +12,13 @@ The entire demo video series is available on [YouTube](https://www.youtube.com/c
 
 ## Contents
 ### 1 - Installation
-1. Install the Moore.io CLI Client: `pip3 install mio-cli`
-2. Ensure `mio` is properly installed: `mio --version`
-3. Download the Vivado self-extracting web installter (`Xilinx_Unified_2022.2_1014_8888_Lin64.bin` from https://www.xilinx.com/support/download.html
-4. Install Vivado: `./Xilinx_Unified_2022.2_1014_8888_Lin64.bin`
-5. Set up an environment variable, `MIO_VIVADO_HOME`, to point to the Vivado installation location: `export MIO_VIVADO_HOME=.../bin`
-6. Ensure that the Moore.io CLI Client is ready for work: `mio doctor`
+1. Sign up for a free Moore.io user account: https://www.mooreio.com/register
+2. Install the Moore.io CLI Client: `pip3 install mio-cli`
+3. Ensure `mio` is properly installed: `mio --version`
+4. Download the Vivado self-extracting web installer (`Xilinx_Unified_2022.2_1014_8888_Lin64.bin` from https://www.xilinx.com/support/download.html
+5. Install Vivado: `./Xilinx_Unified_2022.2_1014_8888_Lin64.bin`
+6. Set up an environment variable, `MIO_VIVADO_HOME`, to point to the Vivado installation location: `export MIO_VIVADO_HOME=.../bin`
+7. Ensure that the Moore.io CLI Client is ready for work: `mio doctor`
 
 
 ### 2 - Import existing codebase
