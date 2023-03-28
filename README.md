@@ -10,5 +10,38 @@ Copyright 2023 [Datum Technology Corporation](https://datumtc.ca/)
 
 The entire demo video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
 
-# Contents
-TBD
+## Contents
+### 1. Installation
+1. Install the Moore.io CLI Client: `pip3 install mio-cli`
+2. Check it `mio` is properly installed: `mio --version`
+3. Download Vivado self-extracting web installter (`Xilinx_Unified_2022.2_1014_8888_Lin64.bin` from https://www.xilinx.com/support/download.html
+4. Install Vivado from the downloaded: `*.bin`
+5. Set up an environment variable, `MIO_VIVADO_HOME`, to point to the Vivado installation location.
+6. Ensure that the Moore.io CLI Client is ready for work: `mio doctor`
+
+
+### 2. Import existing codebase
+1. Clone the Moore.io demo Git repository for this video: `git clone https://github.com/Datum-Technology-Corporation/mio_demo.git -b p1_start mio_p1`
+2. Import project
+
+> 1. `cd mio_demo`
+> 2. `mio init`
+
+3. Import design IP
+
+> 1. `pushd rtl/design`
+> 2. `mio init`
+> 3. `kwrite ip.yml`
+> 4. `popd`
+
+4. Import UVM test bench IP
+
+> 1. `pushd dv/tb`
+> 2. `mio init`
+> 3. `kwrite ip.yml`
+> 4. `popd`
+
+
+### 3. Simulation
+1. Run a single simulation (interactive mode): `mio sim tb -t hello_world -s 1 -a viv -w`
+2. Run a regression: `mio regr tb sanity -a viv`
