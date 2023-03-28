@@ -1,4 +1,4 @@
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://opensource.org/licenses/GPL-3.0)
 
 # [Moore.io Demo Project](https://github.com/Datum-Technology-Corporation/mio_demo) - Part 1 - End
 Copyright 2023 [Datum Technology Corporation](https://datumtc.ca/)
