@@ -15,10 +15,10 @@ Set up a new user and workstation for [`mio-cli`](https://pypi.org/project/mio-c
 Verify a matrix APU by starting with a pin list in a spreadsheet and finishing with a set of constrained-random regressions with prediction, scoreboarding and self-checking tests.
 
 ## Part 3 - Self-Tested UVM agent
-Coming soon
+Create a sequence-based, multi-channel UVM agent starting with a pin list in a spreadsheet, and ending with a 3 agent self-testing environment and test bench with constrained-random regressions with prediction, scoreboarding and self-checking tests.
 
 ## Part 4 - Sub-System design UVM verification
-Coming soon
+Verify a matrix APU channel sub-system design by starting with a spreadsheet specification, including register and memory definitions.
 
 ## Part 5 - FPGA design UVM verification
 Coming soon
