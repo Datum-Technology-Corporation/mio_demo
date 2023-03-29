@@ -1,6 +1,6 @@
 [![License](https://img.shields.io/badge/License-GPL%203.0-blue.svg)](https://opensource.org/licenses/GPL-3.0)
 
-# Moore.io Demo Project - [Part 1 - Hello, UVM World!](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g)
+# Moore.io Demo Project - [Part 1 - Installation and Simulation](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g)
 Copyright 2023 [Datum Technology Corporation](https://datumtc.ca/)
 
 ## About
@@ -40,10 +40,10 @@ The entire demo video series is available on [YouTube](https://www.youtube.com/c
 > 1. `pushd dv/tb`
 > 2. `mio init`
 > 3. `kwrite ip.yml`
-> 4. `kwrite src/test/ts.yml`
-> 5. `popd`
+> 4. `popd`
 
 
 ### 3 - Simulation
 1. Run a single simulation (interactive mode): `mio sim tb -t hello_world -s 1 -w -v none`
-2. Run a regression: `mio regr tb sanity`
+2. Add 'hello_world' to test suite: `kwrite dv/tb/src/ts.yml`
+3. Run a regression: `mio regr tb sanity`
