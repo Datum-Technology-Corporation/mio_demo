@@ -46,4 +46,4 @@ This demo series is broken into several parts: this branch (`p1_start`) contains
 3. Run a regression: `mio regr tb sanity`
 
 
-## Next: [Part 2 - Block level design UVM verification](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p2_start)
+## Next: [Part 2 - Block design UVM verification](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p2_start)
