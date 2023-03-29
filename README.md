@@ -46,4 +46,4 @@ The entire demo video series is available on [YouTube](https://www.youtube.com/c
 
 ### 3 - Simulation
 1. Run a single simulation (interactive mode): `mio sim tb -t hello_world -s 1 -w -v none`
-2. Run a regression: `mio regr tb sanity -a viv`
+2. Run a regression: `mio regr tb sanity`
