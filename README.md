@@ -4,7 +4,9 @@
 Copyright 2023 [Datum Technology Corporation](https://datumtc.ca/)
 
 ## Summary
-Set up a new user and workstation for `mio` and Xilinx® Vivado™, import existing Design and Test Bench code, and run UVM simulations and regressions. This is part 1 of 5; the entire demo video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
+Set up a new user and workstation for `mio` and Xilinx® Vivado™, import existing Design and Test Bench code, and run UVM simulations and regressions.
+
+This demo series is broken into several parts: this branch (`p1_start`) contains the instructions and [`p1_end`](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p1_end) is the 'solution' branch.  The entire demo video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
 
 ## 1 - Installation
 1. Sign up for a free Moore.io user account: https://www.mooreio.com/register
