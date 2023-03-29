@@ -3,30 +3,19 @@
 # [Moore.io](https://www.mooreio.com/) Demo Project
 Copyright 2022 [Datum Technology Corporation](https://datumtc.ca/)
 
-## About
-|  | Executive Summary |
+## Executive Summary
+|  | **[From Spreadsheet to UVM Simulation](https://mio-cli.readthedocs.io/en/latest/code_templates.html)** |
 |-|-|
-| [![Moore.io Logo](https://www.mooreio.com/content/images/logo.png)](https://www.mooreio.com/) | The [Moore.io](https://www.mooreio.com/) Demo project demonstrates the power of the [Moore.io CLI](https://mio-cli.readthedocs.io/en/latest/commands.html) and [UVMx Template System](https://mio-cli.readthedocs.io/en/latest/code_templates.html).  Both are described thoroughly in the [Moore.io CLI User Manual](https://mio-cli.readthedocs.io/en/latest/index.html).  This demo is broken into several Parts.  This branch (`main`) contains all code for all Parts.  The entire video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
+| [![Moore.io Logo](https://www.mooreio.com/content/images/logo.png)](https://www.mooreio.com/) | The [Moore.io](https://www.mooreio.com/) Demo project demonstrates the power of the [Moore.io CLI](https://mio-cli.readthedocs.io/en/latest/commands.html) and [UVMx](https://datumtc.ca/products/uvmx).  Both are used to fully verify a telecom-grade FPGA design in record time by generating >90% of the codebase directly from a spreadsheet specification and using a free simulator (Vivado).  This demo is broken into several Parts and this branch (`main`) contains all code for all parts.  The entire video series is available on [YouTube](https://www.youtube.com/channel/UCSqqT6JtmecBIoC_3DMLk0g).
 
-For those who want to play along, it is best to fork this repository and start at the designated branches for each Part.
+## [Part 1 - Installation and Simulation](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p1_start)
+Guide for setting up a user and workstation for `mio` and [Xilinx® Vivado™ ML Edition](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html), importing existing Design and Test Bench code, and running UVM simulations.
 
-## Section 1 - Setup
-### [Part 1 - Hello, UVM World!](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p1_start)
-The first Part deals with setting up a workstation for `mio` and [Xilinx® Vivado™ ML Edition](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html), importing existing Design and Test Bench code and running a simulation in Vivado.
+## [Part 2 - Block level design UVM verification](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p2_start)
+Verify a 3x3 matrix APU by starting with a pin list in a spreadsheet and finishing with a set of constrained-random regressions with prediction, scoreboarding and self-checking tests.
 
+## Part 3 - UVM agent for a custom interface
 
-## Section 2 - Spreadsheet to Simulation
-### [Part 2 - Generating a block UVM test bench from Excel](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p2_start)
-A 3x3 Matrix APU Block is the subject of a Block-level UVM Test Bench in this chapter.  This makes use of Datum's [UVMx block code template generator](https://mio-cli.readthedocs.io/en/latest/code_templates.html#block-test-bench) and associated Libraries.
+## Part 4 - Sub-System design UVM verification
 
-### Part 3 - Generating a UVM agent from Excel
-**Coming soon**
-
-### Part 4 - Generating a UVM register model from Excel
-**Coming soon**
-
-### Part 5 - Generating a sub-system UVM test bench from Excel
-**Coming soon**
-
-### Part 6 - Generating an FPGA UVM test bench from Excel
-**Coming soon**
+## Part 5 - FPGA design UVM verification
