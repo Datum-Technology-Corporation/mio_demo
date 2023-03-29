@@ -14,7 +14,7 @@ Set up a new user and workstation for [`mio-cli`](https://pypi.org/project/mio-c
 ## [Part 2 - Block level design UVM verification](https://github.com/Datum-Technology-Corporation/mio_demo/tree/p2_start)
 Verify a matrix APU by starting with a pin list in a spreadsheet and finishing with a set of constrained-random regressions with prediction, scoreboarding and self-checking tests.
 
-## Part 3 - UVM agent for a custom interface
+## Part 3 - Self-tested UVM agent for a custom interface
 Coming soon
 
 ## Part 4 - Sub-System design UVM verification
